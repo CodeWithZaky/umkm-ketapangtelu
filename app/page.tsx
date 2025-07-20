@@ -1,30 +1,45 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Search, ShoppingBag } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { umkmData, getAllProducts } from "@/lib/data"
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Input } from "@/components/ui/input";
+import { getAllProducts, umkmData } from "@/lib/data";
+import LogoUMKMKetapangelu from "@/public/logo_umkm_ketapangtelu.png";
+import { Search } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useMemo, useState } from "react";
 
 export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const allProducts = getAllProducts()
+  const [searchQuery, setSearchQuery] = useState("");
+  const allProducts = getAllProducts();
 
   // Filter products based on search query
   const filteredProducts = useMemo(() => {
-    if (!searchQuery.trim()) return allProducts
-    return allProducts.filter((product) => product.title.toLowerCase().includes(searchQuery.toLowerCase()))
-  }, [searchQuery, allProducts])
+    if (!searchQuery.trim()) return allProducts;
+    return allProducts.filter((product) =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery, allProducts]);
 
   // Get featured products for carousel
-  const featuredProducts = allProducts.slice(0, 5)
+  const featuredProducts = allProducts.slice(0, 5);
 
   // Get random products for grid (excluding featured ones)
-  const randomProducts = allProducts.slice(5, 13)
+  const randomProducts = allProducts.slice(5, 13);
 
   const categories = [
     {
@@ -48,21 +63,29 @@ export default function HomePage() {
       image: "/placeholder.svg?height=200&width=300",
       count: umkmData.terasi.length,
     },
-  ]
+  ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between px-4">
+      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
+        <div className="flex justify-between items-center px-4 h-16 container">
           <div className="flex items-center space-x-2">
-            <ShoppingBag className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold text-primary">UMKM KETAPANGTELU</span>
+            <Image
+              src={LogoUMKMKetapangelu}
+              alt="UMKM Ketapangtelu Logo"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+            <span className="font-bold text-primary text-xl">
+              UMKM KETAPANGTELU
+            </span>
           </div>
 
           {/* Search Bar */}
           <div className="relative w-full max-w-md">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
             <Input
               placeholder="Cari produk..."
               value={searchQuery}
@@ -75,23 +98,27 @@ export default function HomePage() {
 
       {/* Hero Carousel */}
       {!searchQuery && (
-        <section className="container px-4 py-8">
+        <section className="px-4 py-8 container">
           <Carousel className="w-full">
             <CarouselContent>
               {featuredProducts.map((product, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative h-[400px] overflow-hidden rounded-lg">
+                  <div className="relative rounded-lg h-[400px] overflow-hidden">
                     <Image
                       src={product.images[0] || "/placeholder.svg"}
                       alt={product.title}
                       fill
-                      className="object-cover transition-transform duration-300 hover:scale-105"
+                      className="object-cover hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-6 left-6 text-white">
-                      <h2 className="text-3xl font-bold mb-2">{product.title}</h2>
-                      <p className="text-lg mb-2">{product.price}</p>
-                      <p className="text-sm opacity-90 max-w-md">{product.description}</p>
+                    <div className="bottom-6 left-6 absolute text-white">
+                      <h2 className="mb-2 font-bold text-3xl">
+                        {product.title}
+                      </h2>
+                      <p className="mb-2 text-lg">{product.price}</p>
+                      <p className="opacity-90 max-w-md text-sm">
+                        {product.description}
+                      </p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -105,30 +132,34 @@ export default function HomePage() {
 
       {/* Category Cards */}
       {!searchQuery && (
-        <section className="container px-4 py-8">
-          <h2 className="text-2xl font-bold mb-6 text-center">Kategori Produk</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section className="px-4 py-8 container">
+          <h2 className="mb-6 font-bold text-2xl text-center">
+            Kategori Produk
+          </h2>
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
             {categories.map((category) => (
               <Card
                 key={category.id}
-                className="group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer"
               >
                 <CardHeader className="p-0">
-                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                  <div className="relative rounded-t-lg h-48 overflow-hidden">
                     <Image
                       src={category.image || "/placeholder.svg"}
                       alt={category.name}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
                 </CardHeader>
                 <CardContent className="p-4">
-                  <CardTitle className="flex items-center justify-between">
+                  <CardTitle className="flex justify-between items-center">
                     {category.name}
                     <Badge variant="secondary">{category.count} produk</Badge>
                   </CardTitle>
-                  <CardDescription className="mt-2">{category.description}</CardDescription>
+                  <CardDescription className="mt-2">
+                    {category.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -137,51 +168,63 @@ export default function HomePage() {
       )}
 
       {/* Products Grid */}
-      <section className="container px-4 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-center">
+      <section className="px-4 py-8 container">
+        <h2 className="mb-6 font-bold text-2xl text-center">
           {searchQuery ? `Hasil Pencarian "${searchQuery}"` : "Produk Pilihan"}
         </h2>
 
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">Tidak ada produk yang ditemukan.</p>
+          <div className="py-12 text-center">
+            <p className="text-muted-foreground">
+              Tidak ada produk yang ditemukan.
+            </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {(searchQuery ? filteredProducts : randomProducts).map((product) => (
-              <Link key={product.id} href={`/produk/${product.id}`}>
-                <Card className="group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full">
-                  <CardHeader className="p-0">
-                    <div className="relative h-48 overflow-hidden rounded-t-lg">
-                      <Image
-                        src={product.images[0] || "/placeholder.svg"}
-                        alt={product.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4 flex flex-col flex-grow">
-                    <CardTitle className="text-lg mb-2 line-clamp-2">{product.title}</CardTitle>
-                    <p className="text-xl font-bold text-primary mb-2">{product.price}</p>
-                    <CardDescription className="line-clamp-3 flex-grow">{product.description}</CardDescription>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+          <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {(searchQuery ? filteredProducts : randomProducts).map(
+              (product) => (
+                <Link key={product.id} href={`/produk/${product.id}`}>
+                  <Card className="group hover:shadow-xl h-full transition-all hover:-translate-y-2 duration-300 cursor-pointer">
+                    <CardHeader className="p-0">
+                      <div className="relative rounded-t-lg h-48 overflow-hidden">
+                        <Image
+                          src={product.images[0] || "/placeholder.svg"}
+                          alt={product.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex flex-col flex-grow p-4">
+                      <CardTitle className="mb-2 text-lg line-clamp-2">
+                        {product.title}
+                      </CardTitle>
+                      <p className="mb-2 font-bold text-primary text-xl">
+                        {product.price}
+                      </p>
+                      <CardDescription className="flex-grow line-clamp-3">
+                        {product.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </Link>
+              )
+            )}
           </div>
         )}
       </section>
 
       {/* Footer */}
-      <footer className="bg-muted/50 border-t mt-12">
-        <div className="container px-4 py-8">
+      <footer className="bg-muted/50 mt-12 border-t">
+        <div className="px-4 py-8 container">
           <div className="text-center">
-            <h3 className="text-lg font-semibold mb-2">UMKM KETAPANGTELU</h3>
-            <p className="text-muted-foreground">Produk berkualitas dari UMKM lokal Ketapangtelu</p>
+            <h3 className="mb-2 font-semibold text-lg">UMKM KETAPANGTELU</h3>
+            <p className="text-muted-foreground">
+              Produk berkualitas dari UMKM lokal Ketapangtelu
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
