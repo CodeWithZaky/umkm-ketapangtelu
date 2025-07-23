@@ -152,7 +152,7 @@ export default function HomePage() {
           {/* Search Bar */}
           <div className="flex items-center">
             {/* Desktop Search */}
-            <div className="hidden md:block w-full max-w-md">
+            <div className="hidden md:block relative w-full max-w-md">
               <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
               <Input
                 placeholder="Cari produk..."
