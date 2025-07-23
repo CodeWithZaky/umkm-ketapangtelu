@@ -139,16 +139,20 @@ export default function HomePage() {
 
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <ShoppingBag className="w-6 h-6 text-primary" />
-            <span className="font-bold text-primary text-xl">
-              UMKM KETAPANGTELU
-            </span>
+            {!isSearchExpanded && (
+              <>
+                <ShoppingBag className="w-6 h-6 text-primary" />
+                <span className="font-bold text-primary text-xl">
+                  UMKM KETAPANGTELU
+                </span>
+              </>
+            )}
           </div>
 
           {/* Search Bar */}
           <div className="flex items-center">
             {/* Desktop Search */}
-            <div className="hidden md:block relative w-full max-w-md">
+            <div className="hidden md:block w-full max-w-md">
               <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
               <Input
                 placeholder="Cari produk..."
@@ -159,7 +163,7 @@ export default function HomePage() {
             </div>
 
             {/* Mobile Search */}
-            <div className="md:hidden flex items-center">
+            <div className="md:hidden relative flex items-center">
               {!isSearchExpanded ? (
                 <Button
                   variant="ghost"
@@ -170,7 +174,7 @@ export default function HomePage() {
                 </Button>
               ) : (
                 <div className="slide-in-from-right-2 flex items-center space-x-2 animate-in duration-200">
-                  <div className="relative w-48">
+                  <div className="w-full">
                     <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
                     <Input
                       placeholder="Cari produk..."

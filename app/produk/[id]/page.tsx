@@ -16,14 +16,14 @@ interface ProductPageProps {
 
 export async function generateStaticParams() {
   const products = getAllProducts();
-  return products.map((product) => ({
+  return products.map((product: any) => ({
     id: product.id,
   }));
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
   const products = getAllProducts();
-  const product = products.find((p) => p.id === params.id);
+  const product = products.find((p: any) => p.id === params.id);
 
   if (!product) {
     notFound();
@@ -130,7 +130,6 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <Separator />
-
             <div>
               <h2 className="mb-3 font-semibold text-xl">Deskripsi Produk</h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -139,28 +138,56 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <Separator />
-
             {/* Social Media Links */}
             {product.link && product.link.length > 0 && (
               <div>
                 <h2 className="mb-3 font-semibold text-xl">Hubungi Penjual</h2>
                 <div className="space-y-2">
                   {product.link.map((url: string, index: number) => (
-                    <Link
-                      key={index}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button
-                        variant="outline"
-                        className="justify-start bg-transparent w-full"
+                    <div key={index}>
+                      <Link
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <Instagram className="mr-2 w-4 h-4" />
-                        Instagram
-                        <ExternalLink className="ml-auto w-4 h-4" />
-                      </Button>
-                    </Link>
+                        <Button
+                          variant="outline"
+                          className="justify-start bg-transparent w-full"
+                        >
+                          <Instagram className="mr-2 w-4 h-4" />
+                          Instagram
+                          <ExternalLink className="ml-auto w-4 h-4" />
+                        </Button>
+                      </Link>
+                      <Link
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          variant="outline"
+                          className="justify-start bg-transparent w-full"
+                        >
+                          <Instagram className="mr-2 w-4 h-4" />
+                          Instagram
+                          <ExternalLink className="ml-auto w-4 h-4" />
+                        </Button>
+                      </Link>
+                      <Link
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          variant="outline"
+                          className="justify-start bg-transparent w-full"
+                        >
+                          <Instagram className="mr-2 w-4 h-4" />
+                          Instagram
+                          <ExternalLink className="ml-auto w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -197,10 +224,11 @@ export default function ProductPage({ params }: ProductPageProps) {
           <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {products
               .filter(
-                (p) => p.category === product.category && p.id !== product.id
+                (p: any) =>
+                  p.category === product.category && p.id !== product.id
               )
               .slice(0, 4)
-              .map((relatedProduct) => (
+              .map((relatedProduct: any) => (
                 <Link
                   key={relatedProduct.id}
                   href={`/produk/${relatedProduct.id}`}
