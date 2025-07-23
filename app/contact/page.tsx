@@ -1,3 +1,4 @@
+import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +10,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  ShoppingBag,
   Users,
 } from "lucide-react";
 import Link from "next/link";
@@ -90,7 +90,7 @@ export default function ContactPage() {
             </Button>
           </Link>
           <div className="flex items-center space-x-2">
-            <ShoppingBag className="w-6 h-6 text-primary" />
+            <LogoUmkmKetapangtelu />
             <span className="font-bold text-primary text-xl">
               UMKM KETAPANGTELU
             </span>

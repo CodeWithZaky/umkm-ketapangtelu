@@ -1,5 +1,6 @@
 "use client";
 
+import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,7 +28,7 @@ import {
 } from "@/components/ui/sheet";
 import { getAllProducts, getCategories, getShuffledProducts } from "@/lib/data";
 import Autoplay from "embla-carousel-autoplay";
-import { Menu, Search, ShoppingBag, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -141,7 +142,7 @@ export default function HomePage() {
           <div className="flex items-center space-x-2">
             {!isSearchExpanded && (
               <>
-                <ShoppingBag className="w-6 h-6 text-primary" />
+                <LogoUmkmKetapangtelu />
                 <span className="font-bold text-primary text-xl">
                   UMKM KETAPANGTELU
                 </span>

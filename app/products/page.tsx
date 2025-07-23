@@ -1,5 +1,6 @@
 "use client";
 
+import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getAllProducts, getCategories } from "@/lib/data";
-import { ArrowLeft, Grid3X3, ShoppingBag } from "lucide-react";
+import { ArrowLeft, Grid3X3 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -147,7 +148,7 @@ export default function ProductsPage() {
             </Button>
           </Link>
           <div className="flex items-center space-x-2">
-            <ShoppingBag className="w-6 h-6 text-primary" />
+            <LogoUmkmKetapangtelu />
             <span className="font-bold text-primary text-xl">
               UMKM KETAPANGTELU
             </span>
@@ -302,7 +303,7 @@ export default function ProductsPage() {
         {products.length === 0 && (
           <div className="py-16 text-center">
             <div className="flex justify-center items-center bg-muted mx-auto mb-6 rounded-full w-24 h-24">
-              <ShoppingBag className="w-12 h-12 text-muted-foreground" />
+              <LogoUmkmKetapangtelu />
             </div>
             <h3 className="mb-2 font-semibold text-xl">Tidak Ada Produk</h3>
             <p className="mb-6 text-muted-foreground">
