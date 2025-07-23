@@ -1,61 +1,110 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, ExternalLink, Instagram } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { getAllProducts } from "@/lib/data"
-import { notFound } from "next/navigation"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { getAllProducts } from "@/lib/data";
+import { ArrowLeft, ExternalLink, Instagram } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface ProductPageProps {
   params: {
-    id: string
-  }
+    id: string;
+  };
 }
 
 export async function generateStaticParams() {
-  const products = getAllProducts()
+  const products = getAllProducts();
   return products.map((product) => ({
     id: product.id,
-  }))
+  }));
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
-  const products = getAllProducts()
-  const product = products.find((p) => p.id === params.id)
+  const products = getAllProducts();
+  const product = products.find((p) => p.id === params.id);
 
   if (!product) {
-    notFound()
+    notFound();
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center px-4">
+      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
+        {/* Desktop Navigation */}
+        <div className="hidden md:block border-b border-border/40">
+          <div className="px-4 container">
+            <div className="flex justify-center items-center space-x-8 h-12">
+              <Link
+                href="/"
+                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
+              >
+                Beranda
+              </Link>
+              <Link
+                href="/about"
+                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
+              >
+                Tentang
+              </Link>
+              <Link
+                href="/categories"
+                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
+              >
+                Kategori
+              </Link>
+              <Link
+                href="/products"
+                className="font-medium text-primary text-sm transition-colors"
+              >
+                Produk
+              </Link>
+              <Link
+                href="/contact"
+                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
+              >
+                Kontak
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Navbar */}
+        <div className="flex items-center px-4 h-16 container">
           <Link href="/">
             <Button variant="ghost" size="sm" className="mr-4">
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft className="mr-2 w-4 h-4" />
               Kembali
             </Button>
           </Link>
-          <span className="text-xl font-bold text-primary">UMKM KETAPANGTELU</span>
+          <span className="font-bold text-primary text-xl">
+            UMKM KETAPANGTELU
+          </span>
         </div>
       </nav>
 
-      <div className="container px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="px-4 py-8 container">
+        <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="relative h-96 overflow-hidden rounded-lg">
-              <Image src={product.images[0] || "/placeholder.svg"} alt={product.title} fill className="object-cover" />
+            <div className="relative rounded-lg h-96 overflow-hidden">
+              <Image
+                src={product.images[0] || "/placeholder.svg"}
+                alt={product.title}
+                fill
+                className="object-cover"
+              />
             </div>
 
             {product.images.length > 1 && (
-              <div className="grid grid-cols-3 gap-2">
-                {product.images.slice(1).map((image, index) => (
-                  <div key={index} className="relative h-24 overflow-hidden rounded-lg">
+              <div className="gap-2 grid grid-cols-3">
+                {product.images.slice(1).map((image: string, index: number) => (
+                  <div
+                    key={index}
+                    className="relative rounded-lg h-24 overflow-hidden"
+                  >
                     <Image
                       src={image || "/placeholder.svg"}
                       alt={`${product.title} ${index + 2}`}
@@ -74,15 +123,19 @@ export default function ProductPage({ params }: ProductPageProps) {
               <Badge variant="secondary" className="mb-2">
                 {product.category}
               </Badge>
-              <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-              <p className="text-3xl font-bold text-primary mb-4">{product.price}</p>
+              <h1 className="mb-4 font-bold text-3xl">{product.title}</h1>
+              <p className="mb-4 font-bold text-primary text-3xl">
+                {product.price}
+              </p>
             </div>
 
             <Separator />
 
             <div>
-              <h2 className="text-xl font-semibold mb-3">Deskripsi Produk</h2>
-              <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+              <h2 className="mb-3 font-semibold text-xl">Deskripsi Produk</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {product.description}
+              </p>
             </div>
 
             <Separator />
@@ -90,14 +143,22 @@ export default function ProductPage({ params }: ProductPageProps) {
             {/* Social Media Links */}
             {product.link && product.link.length > 0 && (
               <div>
-                <h2 className="text-xl font-semibold mb-3">Hubungi Penjual</h2>
+                <h2 className="mb-3 font-semibold text-xl">Hubungi Penjual</h2>
                 <div className="space-y-2">
-                  {product.link.map((url, index) => (
-                    <Link key={index} href={url} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="w-full justify-start bg-transparent">
-                        <Instagram className="h-4 w-4 mr-2" />
+                  {product.link.map((url: string, index: number) => (
+                    <Link
+                      key={index}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        className="justify-start bg-transparent w-full"
+                      >
+                        <Instagram className="mr-2 w-4 h-4" />
                         Instagram
-                        <ExternalLink className="h-4 w-4 ml-auto" />
+                        <ExternalLink className="ml-auto w-4 h-4" />
                       </Button>
                     </Link>
                   ))}
@@ -132,27 +193,36 @@ export default function ProductPage({ params }: ProductPageProps) {
 
         {/* Related Products */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-6">Produk Lainnya</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="mb-6 font-bold text-2xl">Produk Lainnya</h2>
+          <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {products
-              .filter((p) => p.category === product.category && p.id !== product.id)
+              .filter(
+                (p) => p.category === product.category && p.id !== product.id
+              )
               .slice(0, 4)
               .map((relatedProduct) => (
-                <Link key={relatedProduct.id} href={`/produk/${relatedProduct.id}`}>
-                  <Card className="group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <Link
+                  key={relatedProduct.id}
+                  href={`/produk/${relatedProduct.id}`}
+                >
+                  <Card className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer">
                     <CardHeader className="p-0">
-                      <div className="relative h-32 overflow-hidden rounded-t-lg">
+                      <div className="relative rounded-t-lg h-32 overflow-hidden">
                         <Image
                           src={relatedProduct.images[0] || "/placeholder.svg"}
                           alt={relatedProduct.title}
                           fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                     </CardHeader>
                     <CardContent className="p-3">
-                      <CardTitle className="text-sm mb-1 line-clamp-2">{relatedProduct.title}</CardTitle>
-                      <p className="text-sm font-bold text-primary">{relatedProduct.price}</p>
+                      <CardTitle className="mb-1 text-sm line-clamp-2">
+                        {relatedProduct.title}
+                      </CardTitle>
+                      <p className="font-bold text-primary text-sm">
+                        {relatedProduct.price}
+                      </p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -161,5 +231,5 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

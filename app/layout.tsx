@@ -21,9 +21,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={inter.className}>
-        <main className="flex flex-col justify-center items-center">
-          {children}
-        </main>
+        <main className="flex justify-center items-center">{children}</main>
       </body>
     </html>
   );
