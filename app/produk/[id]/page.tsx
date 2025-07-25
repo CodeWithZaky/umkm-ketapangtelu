@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getAllProducts } from "@/lib/data";
-import { ArrowLeft, ExternalLink, Instagram } from "lucide-react";
+import { ArrowLeft, ExternalLink, MapPin, PhoneCall } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -152,10 +152,10 @@ export default function ProductPage({ params }: ProductPageProps) {
                       >
                         <Button
                           variant="outline"
-                          className="justify-start bg-transparent w-full"
+                          className="justify-start bg-green-500/80 w-full text-slate-100"
                         >
-                          <Instagram className="mr-2 w-4 h-4" />
-                          Instagram
+                          <PhoneCall className="mr-2 w-4 h-4" />
+                          Whatsapp
                           <ExternalLink className="ml-auto w-4 h-4" />
                         </Button>
                       </Link>
@@ -166,24 +166,10 @@ export default function ProductPage({ params }: ProductPageProps) {
                       >
                         <Button
                           variant="outline"
-                          className="justify-start bg-transparent w-full"
+                          className="justify-start bg-red-500/80 w-full text-slate-100"
                         >
-                          <Instagram className="mr-2 w-4 h-4" />
-                          Instagram
-                          <ExternalLink className="ml-auto w-4 h-4" />
-                        </Button>
-                      </Link>
-                      <Link
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button
-                          variant="outline"
-                          className="justify-start bg-transparent w-full"
-                        >
-                          <Instagram className="mr-2 w-4 h-4" />
-                          Instagram
+                          <MapPin className="mr-2 w-4 h-4" />
+                          Map
                           <ExternalLink className="ml-auto w-4 h-4" />
                         </Button>
                       </Link>
