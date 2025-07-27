@@ -1,3 +1,24 @@
+import KerupukIkanBandeng1 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-1.jpg";
+import KerupukIkanBandeng10 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-10.jpg";
+import KerupukIkanBandeng11 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-11.jpg";
+import KerupukIkanBandeng12 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-12.jpg";
+import KerupukIkanBandeng2 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-2.jpg";
+import KerupukIkanBandeng3 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-3.jpg";
+import KerupukIkanBandeng4 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-4.jpg";
+import KerupukIkanBandeng5 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-5.jpg";
+import KerupukIkanBandeng6 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-6.jpg";
+import KerupukIkanBandeng7 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-7.jpg";
+import KerupukIkanBandeng8 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-8.jpg";
+import KerupukIkanBandeng9 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-9.jpg";
+
+import KerupukSamiler1 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-1.jpg";
+import KerupukSamiler2 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-2.jpg";
+import KerupukSamiler3 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-3.jpg";
+
+import KerupukSamilerMatang1 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler-matang/kerupuk-samiler-matang-1.jpg";
+import KerupukSamilerMatang2 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler-matang/kerupuk-samiler-matang-2.jpg";
+import KerupukSamilerMatang3 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler-matang/kerupuk-samiler-matang-3.jpg";
+
 export const sitinurhayati = {
   sellerName: "Siti Nur Hayati",
   productName: "ikan asap",
@@ -8,82 +29,57 @@ export const sitinurhayati = {
   productTagline: "murah higenis aman",
   products: [
     {
-      id: "ikan-asap-lele-1",
-      title: "Ikan Asap Lele Premium",
-      price: "Rp 15.000",
+      id: "kerupuk-ikan-bandeng-mentah",
+      title: "Kerupuk Ikan Bandeng Mentah",
+      price: "Rp 10.000",
       description:
-        "Ikan asap lele khas Ketapangtelu, diproses dengan bumbu tradisional. Gurih, tahan lama, dan kaya protein. Cocok untuk lauk sehari-hari atau oleh-oleh.",
+        "Kerupuk ikan bandeng mentah khas Ketapangtelu, dibuat dari bahan alami tanpa pengawet. Renyah dan lezat, cocok untuk camilan atau lauk pendamping.",
       images: [
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele",
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele+2",
+        KerupukIkanBandeng1,
+        KerupukIkanBandeng2,
+        KerupukIkanBandeng3,
+        KerupukIkanBandeng4,
+        KerupukIkanBandeng5,
+        KerupukIkanBandeng6,
+        KerupukIkanBandeng7,
+        KerupukIkanBandeng8,
+        KerupukIkanBandeng9,
+        KerupukIkanBandeng10,
+        KerupukIkanBandeng11,
+        KerupukIkanBandeng12,
       ],
       link: {
-        map: "https://goo.gl/maps/xyz123",
+        map: "https://maps.app.goo.gl/R5sNYwSJe3VN1r479?g_st=aw",
       },
-      category: "Ikan Asap",
+      category: "Kerupuk Ikan",
     },
     {
-      id: "ikan-asap-bandeng-1",
-      title: "Ikan Asap Bandeng",
-      price: "Rp 25.000",
+      id: "kerupuk-samiler-mentah",
+      title: "Kerupuk Samiler Mentah",
+      price: "Rp 10.000",
       description:
-        "Ikan bandeng asap dengan cita rasa autentik. Diolah dengan teknik pengasapan tradisional yang menghasilkan aroma dan rasa yang khas.",
+        "Kerupuk samiler mentah khas Ketapangtelu, terbuat dari bahan alami tanpa pengawet. Renyah dan lezat, cocok untuk camilan atau lauk pendamping.",
+      images: [KerupukSamiler1, KerupukSamiler2, KerupukSamiler3],
+      link: {
+        map: "https://maps.app.goo.gl/R5sNYwSJe3VN1r479?g_st=aw",
+      },
+      category: "Kerupuk Ikan",
+    },
+    {
+      id: "kerupuk-samiler-matang",
+      title: "Kerupuk Samiler Matang",
+      price: "Rp 1.000",
+      description:
+        "Kerupuk samiler matang khas Ketapangtelu, siap disantap. Renyah dan lezat, cocok untuk camilan atau lauk pendamping.",
       images: [
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bandeng",
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bandeng+2",
+        KerupukSamilerMatang1,
+        KerupukSamilerMatang2,
+        KerupukSamilerMatang3,
       ],
       link: {
-        map: "https://goo.gl/maps/xyz123",
+        map: "https://maps.app.goo.gl/R5sNYwSJe3VN1r479?g_st=aw",
       },
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-tongkol-1",
-      title: "Ikan Asap Tongkol",
-      price: "Rp 20.000",
-      description:
-        "Ikan tongkol asap dengan tekstur yang lembut dan rasa yang gurih. Diproses higienis dan berkualitas tinggi.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Tongkol"],
-      link: {
-        map: "https://goo.gl/maps/xyz123",
-      },
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-mujair-1",
-      title: "Ikan Asap Mujair",
-      price: "Rp 18.000",
-      description:
-        "Ikan mujair asap dengan bumbu rempah pilihan. Tekstur daging yang lembut dan cita rasa yang menggugah selera.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Mujair"],
-      link: {
-        map: "https://goo.gl/maps/xyz123",
-      },
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-patin-1",
-      title: "Ikan Asap Patin",
-      price: "Rp 22.000",
-      description:
-        "Ikan patin asap dengan daging tebal dan gurih. Diproses dengan standar kebersihan tinggi untuk kualitas terbaik.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Patin"],
-      link: {
-        map: "https://goo.gl/maps/xyz123",
-      },
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-bawal-1",
-      title: "Ikan Asap Bawal",
-      price: "Rp 30.000",
-      description:
-        "Ikan bawal asap premium dengan rasa yang istimewa. Cocok untuk hidangan spesial dan acara keluarga.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bawal"],
-      link: {
-        map: "https://goo.gl/maps/xyz123",
-      },
-      category: "Ikan Asap",
+      category: "Kerupuk Ikan",
     },
   ],
 };

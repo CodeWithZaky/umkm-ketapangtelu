@@ -1,3 +1,6 @@
+import { StaticImageData } from "next/image";
+import { sitinurhayati } from "./UMKM/sitinurhayati";
+
 type UMKMData = {
   sellerName: string;
   phoneNumber: string;
@@ -9,7 +12,7 @@ type UMKMData = {
     title: string;
     price: string;
     description: string;
-    images: string[];
+    images: StaticImageData[];
     link: {
       map: string;
     };
@@ -17,190 +20,7 @@ type UMKMData = {
   }[];
 }[];
 
-export const umkmData: UMKMData = [
-  {
-    sellerName: "Siti Nur Hayati",
-    phoneNumber: "086888666222",
-    subVillage: "Suklen",
-    address: "RT3 RW4, Dusun Suklen, Desa Ketapangtelu, Karangbinangun",
-    productTagline: "Murah, higienis, dan penuh gizi!",
-    products: [
-      {
-        id: "ikan-asap-lele-1",
-        title: "Ikan Asap Lele Premium",
-        price: "Rp 15.000",
-        description:
-          "Lele asap gurih khas desa, cocok untuk lauk dan oleh-oleh.",
-        images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele"],
-        link: { map: "https://goo.gl/maps/xyz123" },
-        category: "Ikan Asap",
-      },
-      {
-        id: "ikan-asap-bandeng-1",
-        title: "Ikan Asap Bandeng",
-        price: "Rp 25.000",
-        description: "Bandeng asap dengan teknik tradisional, rasa otentik.",
-        images: [
-          "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bandeng",
-        ],
-        link: { map: "https://goo.gl/maps/xyz123" },
-        category: "Ikan Asap",
-      },
-      {
-        id: "ikan-asap-tongkol-1",
-        title: "Ikan Asap Tongkol",
-        price: "Rp 20.000",
-        description:
-          "Ikan tongkol asap dengan tekstur yang lembut dan rasa yang gurih.",
-        images: [
-          "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Tongkol",
-        ],
-        link: { map: "https://goo.gl/maps/xyz123" },
-        category: "Ikan Asap",
-      },
-    ],
-  },
-  {
-    sellerName: "Siti Aisah",
-    phoneNumber: "086888777111",
-    subVillage: "Pupuk",
-    address: "RT1 RW3, Dusun Suklen, Desa Ketapangtelu, Karangbinangun",
-    productTagline: "Gurih kriuk sampai ketagihan!",
-    products: [
-      {
-        id: "keripik-usus-1",
-        title: "Keripik Usus Gurih",
-        price: "Rp 10.000",
-        description: "Usus ayam gurih digoreng renyah, cocok untuk camilan.",
-        images: ["/placeholder.svg?height=400&width=400&text=Keripik+Usus"],
-        link: { map: "https://goo.gl/maps/abc123" },
-        category: "Keripik",
-      },
-      {
-        id: "keripik-kulit-1",
-        title: "Keripik Kulit Ayam",
-        price: "Rp 12.000",
-        description:
-          "Kulit ayam garing dan gurih, cocok untuk lauk atau cemilan.",
-        images: ["/placeholder.svg?height=400&width=400&text=Keripik+Kulit"],
-        link: { map: "https://goo.gl/maps/abc123" },
-        category: "Keripik",
-      },
-      {
-        id: "keripik-singkong-1",
-        title: "Keripik Singkong Balado",
-        price: "Rp 8.000",
-        description: "Singkong renyah dengan bumbu balado pedas manis.",
-        images: ["/placeholder.svg?height=400&width=400&text=Keripik+Singkong"],
-        link: { map: "https://goo.gl/maps/abc123" },
-        category: "Keripik",
-      },
-    ],
-  },
-  {
-    sellerName: "Budi Santoso",
-    phoneNumber: "089912345678",
-    subVillage: "Kemantren",
-    address: "RT2 RW5, Dusun Kemantren, Desa Ketapangtelu, Karangbinangun",
-    productTagline: "Segar dan alami dari desa!",
-    products: [
-      {
-        id: "sirup-jahe-1",
-        title: "Sirup Jahe Merah",
-        price: "Rp 20.000",
-        description: "Minuman tradisional untuk daya tahan tubuh.",
-        images: ["/placeholder.svg?height=400&width=400&text=Sirup+Jahe"],
-        link: { map: "https://goo.gl/maps/def123" },
-        category: "Minuman",
-      },
-      {
-        id: "minuman-kunyit-1",
-        title: "Minuman Kunyit Asam",
-        price: "Rp 18.000",
-        description: "Segar dan menyehatkan, cocok diminum dingin.",
-        images: ["/placeholder.svg?height=400&width=400&text=Kunyit+Asam"],
-        link: { map: "https://goo.gl/maps/def123" },
-        category: "Minuman",
-      },
-      {
-        id: "wedang-uwuh-1",
-        title: "Wedang Uwuh Tradisional",
-        price: "Rp 15.000",
-        description: "Minuman herbal tradisional dengan rempah pilihan.",
-        images: ["/placeholder.svg?height=400&width=400&text=Wedang+Uwuh"],
-        link: { map: "https://goo.gl/maps/def123" },
-        category: "Minuman",
-      },
-    ],
-  },
-  {
-    sellerName: "Rina Kartika",
-    phoneNumber: "087788899900",
-    subVillage: "Mojosari",
-    address: "RT4 RW2, Dusun Mojosari, Desa Ketapangtelu, Karangbinangun",
-    productTagline: "Manis legit bikin nagih!",
-    products: [
-      {
-        id: "kue-kering-nastar-1",
-        title: "Kue Nastar Keju",
-        price: "Rp 35.000",
-        description: "Nastar homemade isi nanas dan taburan keju.",
-        images: ["/placeholder.svg?height=400&width=400&text=Nastar+Keju"],
-        link: { map: "https://goo.gl/maps/hij123" },
-        category: "Kue Kering",
-      },
-      {
-        id: "kue-kering-kastengel-1",
-        title: "Kastengel Premium",
-        price: "Rp 40.000",
-        description: "Kue keju asin khas lebaran, gurih dan renyah.",
-        images: ["/placeholder.svg?height=400&width=400&text=Kastengel"],
-        link: { map: "https://goo.gl/maps/hij123" },
-        category: "Kue Kering",
-      },
-      {
-        id: "kue-kering-putri-salju-1",
-        title: "Putri Salju Coklat",
-        price: "Rp 30.000",
-        description: "Kue kering lembut dengan taburan gula halus.",
-        images: ["/placeholder.svg?height=400&width=400&text=Putri+Salju"],
-        link: { map: "https://goo.gl/maps/hij123" },
-        category: "Kue Kering",
-      },
-    ],
-  },
-  {
-    sellerName: "Ahmad Fauzi",
-    phoneNumber: "085123456789",
-    subVillage: "Krajan",
-    address: "RT1 RW1, Dusun Krajan, Desa Ketapangtelu, Karangbinangun",
-    productTagline: "Terasi asli, aroma menggoda!",
-    products: [
-      {
-        id: "terasi-udang-1",
-        title: "Terasi Udang Premium",
-        price: "Rp 8.000",
-        description:
-          "Terasi udang asli buatan warga dengan aroma kuat dan sedap.",
-        images: ["/placeholder.svg?height=400&width=400&text=Terasi+Udang"],
-        link: { map: "https://goo.gl/maps/klm123" },
-        category: "Terasi",
-      },
-      {
-        id: "terasi-ikan-1",
-        title: "Terasi Ikan",
-        price: "Rp 6.000",
-        description:
-          "Terasi ikan dengan cita rasa khas untuk masakan tradisional.",
-        images: ["/placeholder.svg?height=400&width=400&text=Terasi+Ikan"],
-        link: { map: "https://goo.gl/maps/klm123" },
-        category: "Terasi",
-      },
-    ],
-  },
-];
-
-// FUNCTIONS
+export const umkmData: UMKMData = [sitinurhayati];
 
 // Get all products from all sellers
 export function getAllProducts() {
@@ -209,7 +29,7 @@ export function getAllProducts() {
     title: string;
     price: string;
     description: string;
-    images: string[];
+    images: StaticImageData[];
     link: { map: string };
     category: string;
     seller: {

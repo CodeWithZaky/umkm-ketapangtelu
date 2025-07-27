@@ -1,3 +1,4 @@
+import DetailProductImage from "@/components/detail-product-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -93,34 +94,7 @@ export default function ProductPage({ params }: ProductPageProps) {
       <div className="px-4 py-8 container">
         <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
           {/* Product Images */}
-          <div className="space-y-4">
-            <div className="relative rounded-lg h-96 overflow-hidden">
-              <Image
-                src={product.images[0] || "/placeholder.svg"}
-                alt={product.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {product.images.length > 1 && (
-              <div className="gap-2 grid grid-cols-3">
-                {product.images.slice(1).map((image, index) => (
-                  <div
-                    key={index}
-                    className="relative rounded-lg h-24 overflow-hidden"
-                  >
-                    <Image
-                      src={image || "/placeholder.svg"}
-                      alt={`${product.title} ${index + 2}`}
-                      fill
-                      className="object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <DetailProductImage product={product} />
 
           {/* Product Details */}
           <div className="space-y-6">
