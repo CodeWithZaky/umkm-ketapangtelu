@@ -1,238 +1,237 @@
-export const umkmData = {
-  ikanasap: [
-    {
-      id: "ikan-asap-lele-1",
-      title: "Ikan Asap Lele Premium",
-      price: "Rp 15.000",
-      description:
-        "Ikan asap lele khas Ketapangtelu, diproses dengan bumbu tradisional. Gurih, tahan lama, dan kaya protein. Cocok untuk lauk sehari-hari atau oleh-oleh.",
-      images: [
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele",
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele+2",
-      ],
-      link: ["https://instagram.com/ikanasap_lele"],
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-bandeng-1",
-      title: "Ikan Asap Bandeng",
-      price: "Rp 25.000",
-      description:
-        "Ikan bandeng asap dengan cita rasa autentik. Diolah dengan teknik pengasapan tradisional yang menghasilkan aroma dan rasa yang khas.",
-      images: [
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bandeng",
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bandeng+2",
-      ],
-      link: ["https://instagram.com/ikanasap_bandeng"],
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-tongkol-1",
-      title: "Ikan Asap Tongkol",
-      price: "Rp 20.000",
-      description:
-        "Ikan tongkol asap dengan tekstur yang lembut dan rasa yang gurih. Diproses higienis dan berkualitas tinggi.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Tongkol"],
-      link: ["https://instagram.com/ikanasap_tongkol"],
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-mujair-1",
-      title: "Ikan Asap Mujair",
-      price: "Rp 18.000",
-      description:
-        "Ikan mujair asap dengan bumbu rempah pilihan. Tekstur daging yang lembut dan cita rasa yang menggugah selera.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Mujair"],
-      link: ["https://instagram.com/ikanasap_mujair"],
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-patin-1",
-      title: "Ikan Asap Patin",
-      price: "Rp 22.000",
-      description:
-        "Ikan patin asap dengan daging tebal dan gurih. Diproses dengan standar kebersihan tinggi untuk kualitas terbaik.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Patin"],
-      link: ["https://instagram.com/ikanasap_patin"],
-      category: "Ikan Asap",
-    },
-    {
-      id: "ikan-asap-bawal-1",
-      title: "Ikan Asap Bawal",
-      price: "Rp 30.000",
-      description:
-        "Ikan bawal asap premium dengan rasa yang istimewa. Cocok untuk hidangan spesial dan acara keluarga.",
-      images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bawal"],
-      link: ["https://instagram.com/ikanasap_bawal"],
-      category: "Ikan Asap",
-    },
-  ],
-  krupukikan: [
-    {
-      id: "kerupuk-ikan-tenggiri-1",
-      title: "Kerupuk Ikan Tenggiri",
-      price: "Rp 10.000",
-      description:
-        "Kerupuk ikan tenggiri dengan rasa gurih dan tekstur renyah. Dibuat dari ikan tenggiri segar pilihan, cocok untuk camilan atau pelengkap makan.",
-      images: [
-        "/placeholder.svg?height=400&width=400&text=Kerupuk+Tenggiri",
-        "/placeholder.svg?height=400&width=400&text=Kerupuk+Tenggiri+2",
-      ],
-      link: ["https://instagram.com/krupuk_tenggiri"],
-      category: "Kerupuk Ikan",
-    },
-    {
-      id: "kerupuk-ikan-gabus-1",
-      title: "Kerupuk Ikan Gabus",
-      price: "Rp 12.000",
-      description:
-        "Kerupuk ikan gabus khas daerah dengan kandungan protein tinggi. Renyah dan gurih, cocok untuk segala usia.",
-      images: ["/placeholder.svg?height=400&width=400&text=Kerupuk+Gabus"],
-      link: ["https://instagram.com/krupuk_gabus"],
-      category: "Kerupuk Ikan",
-    },
-    {
-      id: "kerupuk-ikan-mix-1",
-      title: "Kerupuk Ikan Campur",
-      price: "Rp 8.000",
-      description:
-        "Campuran berbagai jenis kerupuk ikan dalam satu kemasan. Variasi rasa yang menarik untuk dinikmati bersama keluarga.",
-      images: ["/placeholder.svg?height=400&width=400&text=Kerupuk+Mix"],
-      link: ["https://instagram.com/krupuk_mix"],
-      category: "Kerupuk Ikan",
-    },
-    {
-      id: "kerupuk-ikan-kakap-1",
-      title: "Kerupuk Ikan Kakap",
-      price: "Rp 14.000",
-      description:
-        "Kerupuk ikan kakap dengan cita rasa premium. Dibuat dari ikan kakap segar dengan proses yang higienis.",
-      images: ["/placeholder.svg?height=400&width=400&text=Kerupuk+Kakap"],
-      link: ["https://instagram.com/krupuk_kakap"],
-      category: "Kerupuk Ikan",
-    },
-    {
-      id: "kerupuk-ikan-belida-1",
-      title: "Kerupuk Ikan Belida",
-      price: "Rp 16.000",
-      description:
-        "Kerupuk ikan belida khas Palembang dengan tekstur yang unik dan rasa yang autentik.",
-      images: ["/placeholder.svg?height=400&width=400&text=Kerupuk+Belida"],
-      link: ["https://instagram.com/krupuk_belida"],
-      category: "Kerupuk Ikan",
-    },
-  ],
-  terasi: [
-    {
-      id: "terasi-udang-1",
-      title: "Terasi Udang Premium",
-      price: "Rp 8.000",
-      description:
-        "Terasi udang asli buatan warga Ketapangtelu. Aroma kuat dan sedap, dibuat dari udang segar pilihan dengan proses fermentasi tradisional.",
-      images: [
-        "/placeholder.svg?height=400&width=400&text=Terasi+Udang",
-        "/placeholder.svg?height=400&width=400&text=Terasi+Udang+2",
-      ],
-      link: ["https://instagram.com/terasi_udang"],
-      category: "Terasi",
-    },
-    {
-      id: "terasi-ikan-1",
-      title: "Terasi Ikan",
-      price: "Rp 6.000",
-      description:
-        "Terasi ikan dengan cita rasa khas yang cocok untuk berbagai masakan tradisional. Dibuat dengan resep turun temurun.",
-      images: ["/placeholder.svg?height=400&width=400&text=Terasi+Ikan"],
-      link: ["https://instagram.com/terasi_ikan"],
-      category: "Terasi",
-    },
-    {
-      id: "terasi-rebon-1",
-      title: "Terasi Rebon",
-      price: "Rp 7.000",
-      description:
-        "Terasi rebon dengan aroma yang harum dan rasa yang autentik. Cocok untuk sambal dan berbagai masakan nusantara.",
-      images: ["/placeholder.svg?height=400&width=400&text=Terasi+Rebon"],
-      link: ["https://instagram.com/terasi_rebon"],
-      category: "Terasi",
-    },
-    {
-      id: "terasi-kepiting-1",
-      title: "Terasi Kepiting",
-      price: "Rp 12.000",
-      description:
-        "Terasi kepiting premium dengan aroma yang khas dan rasa yang istimewa. Cocok untuk masakan seafood.",
-      images: ["/placeholder.svg?height=400&width=400&text=Terasi+Kepiting"],
-      link: ["https://instagram.com/terasi_kepiting"],
-      category: "Terasi",
-    },
-  ],
-  sambal: [
-    {
-      id: "sambal-terasi-1",
-      title: "Sambal Terasi Pedas",
-      price: "Rp 5.000",
-      description:
-        "Sambal terasi dengan tingkat kepedasan yang pas, dibuat dari cabai segar dan terasi berkualitas.",
-      images: ["/placeholder.svg?height=400&width=400&text=Sambal+Terasi"],
-      link: ["https://instagram.com/sambal_terasi"],
-      category: "Sambal",
-    },
-    {
-      id: "sambal-ikan-1",
-      title: "Sambal Ikan Teri",
-      price: "Rp 7.000",
-      description:
-        "Sambal ikan teri dengan rasa gurih dan pedas yang menggugah selera.",
-      images: ["/placeholder.svg?height=400&width=400&text=Sambal+Ikan+Teri"],
-      link: ["https://instagram.com/sambal_ikan"],
-      category: "Sambal",
-    },
-  ],
-  abon: [
-    {
-      id: "abon-ikan-1",
-      title: "Abon Ikan Tuna",
-      price: "Rp 15.000",
-      description:
-        "Abon ikan tuna dengan tekstur halus dan rasa yang gurih, cocok untuk sarapan atau camilan.",
-      images: ["/placeholder.svg?height=400&width=400&text=Abon+Ikan+Tuna"],
-      link: ["https://instagram.com/abon_ikan"],
-      category: "Abon Ikan",
-    },
-    {
-      id: "abon-udang-1",
-      title: "Abon Udang",
-      price: "Rp 18.000",
-      description:
-        "Abon udang premium dengan cita rasa seafood yang khas dan tekstur yang lembut.",
-      images: ["/placeholder.svg?height=400&width=400&text=Abon+Udang"],
-      link: ["https://instagram.com/abon_udang"],
-      category: "Abon Ikan",
-    },
-  ],
-  dendeng: [
-    {
-      id: "dendeng-ikan-1",
-      title: "Dendeng Ikan Tongkol",
-      price: "Rp 20.000",
-      description:
-        "Dendeng ikan tongkol yang tahan lama dengan rasa manis gurih yang khas.",
-      images: ["/placeholder.svg?height=400&width=400&text=Dendeng+Ikan"],
-      link: ["https://instagram.com/dendeng_ikan"],
-      category: "Dendeng Ikan",
-    },
-  ],
-};
+type UMKMData = {
+  sellerName: string;
+  phoneNumber: string;
+  subVillage: string;
+  address: string;
+  productTagline: string;
+  products: {
+    id: string;
+    title: string;
+    price: string;
+    description: string;
+    images: string[];
+    link: {
+      map: string;
+    };
+    category: string;
+  }[];
+}[];
 
+export const umkmData: UMKMData = [
+  {
+    sellerName: "Siti Nur Hayati",
+    phoneNumber: "086888666222",
+    subVillage: "Suklen",
+    address: "RT3 RW4, Dusun Suklen, Desa Ketapangtelu, Karangbinangun",
+    productTagline: "Murah, higienis, dan penuh gizi!",
+    products: [
+      {
+        id: "ikan-asap-lele-1",
+        title: "Ikan Asap Lele Premium",
+        price: "Rp 15.000",
+        description:
+          "Lele asap gurih khas desa, cocok untuk lauk dan oleh-oleh.",
+        images: ["/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele"],
+        link: { map: "https://goo.gl/maps/xyz123" },
+        category: "Ikan Asap",
+      },
+      {
+        id: "ikan-asap-bandeng-1",
+        title: "Ikan Asap Bandeng",
+        price: "Rp 25.000",
+        description: "Bandeng asap dengan teknik tradisional, rasa otentik.",
+        images: [
+          "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Bandeng",
+        ],
+        link: { map: "https://goo.gl/maps/xyz123" },
+        category: "Ikan Asap",
+      },
+      {
+        id: "ikan-asap-tongkol-1",
+        title: "Ikan Asap Tongkol",
+        price: "Rp 20.000",
+        description:
+          "Ikan tongkol asap dengan tekstur yang lembut dan rasa yang gurih.",
+        images: [
+          "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Tongkol",
+        ],
+        link: { map: "https://goo.gl/maps/xyz123" },
+        category: "Ikan Asap",
+      },
+    ],
+  },
+  {
+    sellerName: "Siti Aisah",
+    phoneNumber: "086888777111",
+    subVillage: "Pupuk",
+    address: "RT1 RW3, Dusun Suklen, Desa Ketapangtelu, Karangbinangun",
+    productTagline: "Gurih kriuk sampai ketagihan!",
+    products: [
+      {
+        id: "keripik-usus-1",
+        title: "Keripik Usus Gurih",
+        price: "Rp 10.000",
+        description: "Usus ayam gurih digoreng renyah, cocok untuk camilan.",
+        images: ["/placeholder.svg?height=400&width=400&text=Keripik+Usus"],
+        link: { map: "https://goo.gl/maps/abc123" },
+        category: "Keripik",
+      },
+      {
+        id: "keripik-kulit-1",
+        title: "Keripik Kulit Ayam",
+        price: "Rp 12.000",
+        description:
+          "Kulit ayam garing dan gurih, cocok untuk lauk atau cemilan.",
+        images: ["/placeholder.svg?height=400&width=400&text=Keripik+Kulit"],
+        link: { map: "https://goo.gl/maps/abc123" },
+        category: "Keripik",
+      },
+      {
+        id: "keripik-singkong-1",
+        title: "Keripik Singkong Balado",
+        price: "Rp 8.000",
+        description: "Singkong renyah dengan bumbu balado pedas manis.",
+        images: ["/placeholder.svg?height=400&width=400&text=Keripik+Singkong"],
+        link: { map: "https://goo.gl/maps/abc123" },
+        category: "Keripik",
+      },
+    ],
+  },
+  {
+    sellerName: "Budi Santoso",
+    phoneNumber: "089912345678",
+    subVillage: "Kemantren",
+    address: "RT2 RW5, Dusun Kemantren, Desa Ketapangtelu, Karangbinangun",
+    productTagline: "Segar dan alami dari desa!",
+    products: [
+      {
+        id: "sirup-jahe-1",
+        title: "Sirup Jahe Merah",
+        price: "Rp 20.000",
+        description: "Minuman tradisional untuk daya tahan tubuh.",
+        images: ["/placeholder.svg?height=400&width=400&text=Sirup+Jahe"],
+        link: { map: "https://goo.gl/maps/def123" },
+        category: "Minuman",
+      },
+      {
+        id: "minuman-kunyit-1",
+        title: "Minuman Kunyit Asam",
+        price: "Rp 18.000",
+        description: "Segar dan menyehatkan, cocok diminum dingin.",
+        images: ["/placeholder.svg?height=400&width=400&text=Kunyit+Asam"],
+        link: { map: "https://goo.gl/maps/def123" },
+        category: "Minuman",
+      },
+      {
+        id: "wedang-uwuh-1",
+        title: "Wedang Uwuh Tradisional",
+        price: "Rp 15.000",
+        description: "Minuman herbal tradisional dengan rempah pilihan.",
+        images: ["/placeholder.svg?height=400&width=400&text=Wedang+Uwuh"],
+        link: { map: "https://goo.gl/maps/def123" },
+        category: "Minuman",
+      },
+    ],
+  },
+  {
+    sellerName: "Rina Kartika",
+    phoneNumber: "087788899900",
+    subVillage: "Mojosari",
+    address: "RT4 RW2, Dusun Mojosari, Desa Ketapangtelu, Karangbinangun",
+    productTagline: "Manis legit bikin nagih!",
+    products: [
+      {
+        id: "kue-kering-nastar-1",
+        title: "Kue Nastar Keju",
+        price: "Rp 35.000",
+        description: "Nastar homemade isi nanas dan taburan keju.",
+        images: ["/placeholder.svg?height=400&width=400&text=Nastar+Keju"],
+        link: { map: "https://goo.gl/maps/hij123" },
+        category: "Kue Kering",
+      },
+      {
+        id: "kue-kering-kastengel-1",
+        title: "Kastengel Premium",
+        price: "Rp 40.000",
+        description: "Kue keju asin khas lebaran, gurih dan renyah.",
+        images: ["/placeholder.svg?height=400&width=400&text=Kastengel"],
+        link: { map: "https://goo.gl/maps/hij123" },
+        category: "Kue Kering",
+      },
+      {
+        id: "kue-kering-putri-salju-1",
+        title: "Putri Salju Coklat",
+        price: "Rp 30.000",
+        description: "Kue kering lembut dengan taburan gula halus.",
+        images: ["/placeholder.svg?height=400&width=400&text=Putri+Salju"],
+        link: { map: "https://goo.gl/maps/hij123" },
+        category: "Kue Kering",
+      },
+    ],
+  },
+  {
+    sellerName: "Ahmad Fauzi",
+    phoneNumber: "085123456789",
+    subVillage: "Krajan",
+    address: "RT1 RW1, Dusun Krajan, Desa Ketapangtelu, Karangbinangun",
+    productTagline: "Terasi asli, aroma menggoda!",
+    products: [
+      {
+        id: "terasi-udang-1",
+        title: "Terasi Udang Premium",
+        price: "Rp 8.000",
+        description:
+          "Terasi udang asli buatan warga dengan aroma kuat dan sedap.",
+        images: ["/placeholder.svg?height=400&width=400&text=Terasi+Udang"],
+        link: { map: "https://goo.gl/maps/klm123" },
+        category: "Terasi",
+      },
+      {
+        id: "terasi-ikan-1",
+        title: "Terasi Ikan",
+        price: "Rp 6.000",
+        description:
+          "Terasi ikan dengan cita rasa khas untuk masakan tradisional.",
+        images: ["/placeholder.svg?height=400&width=400&text=Terasi+Ikan"],
+        link: { map: "https://goo.gl/maps/klm123" },
+        category: "Terasi",
+      },
+    ],
+  },
+];
+
+// FUNCTIONS
+
+// Get all products from all sellers
 export function getAllProducts() {
-  const allProducts: any = [];
+  const allProducts: Array<{
+    id: string;
+    title: string;
+    price: string;
+    description: string;
+    images: string[];
+    link: { map: string };
+    category: string;
+    seller: {
+      name: string;
+      phone: string;
+      subVillage: string;
+      address: string;
+      tagline: string;
+    };
+  }> = [];
 
-  Object.entries(umkmData).forEach(([categoryKey, products]) => {
-    products.forEach((product) => {
+  umkmData.forEach((seller) => {
+    seller.products.forEach((product) => {
       allProducts.push({
         ...product,
-        categoryKey,
+        seller: {
+          name: seller.sellerName,
+          phone: seller.phoneNumber,
+          subVillage: seller.subVillage,
+          address: seller.address,
+          tagline: seller.productTagline,
+        },
       });
     });
   });
@@ -240,66 +239,73 @@ export function getAllProducts() {
   return allProducts;
 }
 
+// Get product by ID
 export function getProductById(id: string) {
   const allProducts = getAllProducts();
-  return allProducts.find((product: any) => product.id === id);
+  return allProducts.find((product) => product.id === id);
 }
 
+// Get products by category
 export function getProductsByCategory(category: string) {
-  return umkmData[category as keyof typeof umkmData] || [];
+  const allProducts = getAllProducts();
+  return allProducts.filter((product) => product.category === category);
 }
 
+// Get all unique categories with product counts
 export function getCategories() {
-  return [
+  const allProducts = getAllProducts();
+  const categoryMap = new Map<string, number>();
+
+  allProducts.forEach((product) => {
+    const count = categoryMap.get(product.category) || 0;
+    categoryMap.set(product.category, count + 1);
+  });
+
+  const categories = [
     {
-      id: "ikanasap",
+      id: "ikan-asap",
       name: "Ikan Asap",
       description: "Ikan asap berkualitas tinggi dengan cita rasa autentik",
       image: "/placeholder.svg?height=200&width=300&text=Ikan+Asap",
-      count: umkmData.ikanasap.length,
+      count: categoryMap.get("Ikan Asap") || 0,
       color: "bg-orange-500",
     },
     {
-      id: "krupukikan",
-      name: "Kerupuk Ikan",
-      description: "Kerupuk ikan renyah dan gurih untuk camilan",
-      image: "/placeholder.svg?height=200&width=300&text=Kerupuk+Ikan",
-      count: umkmData.krupukikan.length,
+      id: "keripik",
+      name: "Keripik",
+      description: "Keripik renyah dan gurih untuk camilan",
+      image: "/placeholder.svg?height=200&width=300&text=Keripik",
+      count: categoryMap.get("Keripik") || 0,
       color: "bg-yellow-500",
+    },
+    {
+      id: "minuman",
+      name: "Minuman",
+      description: "Minuman tradisional segar dan menyehatkan",
+      image: "/placeholder.svg?height=200&width=300&text=Minuman",
+      count: categoryMap.get("Minuman") || 0,
+      color: "bg-blue-500",
+    },
+    {
+      id: "kue-kering",
+      name: "Kue Kering",
+      description: "Kue kering homemade dengan berbagai varian rasa",
+      image: "/placeholder.svg?height=200&width=300&text=Kue+Kering",
+      count: categoryMap.get("Kue Kering") || 0,
+      color: "bg-pink-500",
     },
     {
       id: "terasi",
       name: "Terasi",
       description: "Terasi asli buatan warga dengan aroma khas",
       image: "/placeholder.svg?height=200&width=300&text=Terasi",
-      count: umkmData.terasi.length,
+      count: categoryMap.get("Terasi") || 0,
       color: "bg-red-500",
     },
-    {
-      id: "sambal",
-      name: "Sambal",
-      description: "Sambal pedas khas daerah dengan berbagai varian",
-      image: "/placeholder.svg?height=200&width=300&text=Sambal",
-      count: umkmData.sambal.length,
-      color: "bg-green-500",
-    },
-    {
-      id: "abon",
-      name: "Abon Ikan",
-      description: "Abon ikan segar dan gurih untuk pelengkap makan",
-      image: "/placeholder.svg?height=200&width=300&text=Abon+Ikan",
-      count: umkmData.abon.length,
-      color: "bg-blue-500",
-    },
-    {
-      id: "dendeng",
-      name: "Dendeng Ikan",
-      description: "Dendeng ikan kering tahan lama dengan rasa manis gurih",
-      image: "/placeholder.svg?height=200&width=300&text=Dendeng+Ikan",
-      count: umkmData.dendeng.length,
-      color: "bg-purple-500",
-    },
   ];
+
+  // Filter out categories with 0 products
+  return categories.filter((category) => category.count > 0);
 }
 
 // Deterministic shuffle using a simple algorithm that doesn't rely on Math.random()
@@ -312,10 +318,10 @@ export function getShuffledProducts(limit?: number) {
       // Create a simple hash from the product ID for consistent ordering
       const hashA = a.id
         .split("")
-        .reduce((acc: any, char: any) => acc + char.charCodeAt(0), 0);
+        .reduce((acc, char) => acc + char.charCodeAt(0), 0);
       const hashB = b.id
         .split("")
-        .reduce((acc: any, char: any) => acc + char.charCodeAt(0), 0);
+        .reduce((acc, char) => acc + char.charCodeAt(0), 0);
       return hashA - hashB;
     })
     .reverse(); // Reverse to get a different but consistent order
@@ -326,4 +332,66 @@ export function getShuffledProducts(limit?: number) {
 // For backward compatibility
 export function getRandomProducts(limit?: number) {
   return getShuffledProducts(limit);
+}
+
+// Get all sellers
+export function getSellers() {
+  return umkmData.map((seller) => ({
+    name: seller.sellerName,
+    phone: seller.phoneNumber,
+    subVillage: seller.subVillage,
+    address: seller.address,
+    tagline: seller.productTagline,
+    productCount: seller.products.length,
+  }));
+}
+
+// Get seller information by product ID
+export function getSellerByProduct(productId: string) {
+  for (const seller of umkmData) {
+    const product = seller.products.find((p) => p.id === productId);
+    if (product) {
+      return {
+        name: seller.sellerName,
+        phone: seller.phoneNumber,
+        subVillage: seller.subVillage,
+        address: seller.address,
+        tagline: seller.productTagline,
+      };
+    }
+  }
+  return null;
+}
+
+// Get all products from a specific seller
+export function getProductsBySeller(sellerName: string) {
+  const seller = umkmData.find((s) => s.sellerName === sellerName);
+  if (!seller) return [];
+
+  return seller.products.map((product) => ({
+    ...product,
+    seller: {
+      name: seller.sellerName,
+      phone: seller.phoneNumber,
+      subVillage: seller.subVillage,
+      address: seller.address,
+      tagline: seller.productTagline,
+    },
+  }));
+}
+
+// Get products by category key (for URL routing)
+export function getProductsByCategoryKey(categoryKey: string) {
+  const categoryMap: { [key: string]: string } = {
+    "ikan-asap": "Ikan Asap",
+    keripik: "Keripik",
+    minuman: "Minuman",
+    "kue-kering": "Kue Kering",
+    terasi: "Terasi",
+  };
+
+  const categoryName = categoryMap[categoryKey];
+  if (!categoryName) return [];
+
+  return getProductsByCategory(categoryName);
 }

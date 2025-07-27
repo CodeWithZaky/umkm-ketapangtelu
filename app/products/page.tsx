@@ -1,6 +1,5 @@
 "use client";
 
-import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getAllProducts, getCategories } from "@/lib/data";
-import { ArrowLeft, Grid3X3 } from "lucide-react";
+import { ArrowLeft, Grid3X3, ShoppingBag, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -38,7 +37,7 @@ export default function ProductsPage() {
     // Filter by category
     if (filterCategory !== "all") {
       filteredProducts = filteredProducts.filter(
-        (product) => product.categoryKey === filterCategory
+        (product) => product.category === filterCategory
       );
     }
 
@@ -69,10 +68,10 @@ export default function ProductsPage() {
         filteredProducts.sort((a, b) => {
           const hashA = a.id
             .split("")
-            .reduce((acc: any, char: any) => acc + char.charCodeAt(0), 0);
+            .reduce((acc, char) => acc + char.charCodeAt(0), 0);
           const hashB = b.id
             .split("")
-            .reduce((acc: any, char: any) => acc + char.charCodeAt(0), 0);
+            .reduce((acc, char) => acc + char.charCodeAt(0), 0);
           return hashB - hashA; // Reverse order for variety
         });
     }
@@ -148,7 +147,7 @@ export default function ProductsPage() {
             </Button>
           </Link>
           <div className="flex items-center space-x-2">
-            <LogoUmkmKetapangtelu />
+            <ShoppingBag className="w-6 h-6 text-primary" />
             <span className="font-bold text-primary text-xl">
               UMKM KETAPANGTELU
             </span>
@@ -192,7 +191,7 @@ export default function ProductsPage() {
               <SelectContent>
                 <SelectItem value="all">Semua Kategori</SelectItem>
                 {categories.map((category) => (
-                  <SelectItem key={category.id} value={category.id}>
+                  <SelectItem key={category.id} value={category.name}>
                     {category.name}
                   </SelectItem>
                 ))}
@@ -253,9 +252,15 @@ export default function ProductsPage() {
                   <p className="mb-3 font-bold text-primary text-2xl">
                     {product.price}
                   </p>
-                  <CardDescription className="text-sm line-clamp-3 leading-relaxed">
+                  <CardDescription className="mb-3 text-sm line-clamp-2 leading-relaxed">
                     {product.description}
                   </CardDescription>
+                  <div className="flex items-center gap-2 text-muted-foreground text-xs">
+                    <User className="w-3 h-3" />
+                    <span>{product.seller.name}</span>
+                    <span>•</span>
+                    <span>Dusun {product.seller.subVillage}</span>
+                  </div>
                 </CardContent>
               </Card>
             </Link>
@@ -303,7 +308,7 @@ export default function ProductsPage() {
         {products.length === 0 && (
           <div className="py-16 text-center">
             <div className="flex justify-center items-center bg-muted mx-auto mb-6 rounded-full w-24 h-24">
-              <LogoUmkmKetapangtelu />
+              <ShoppingBag className="w-12 h-12 text-muted-foreground" />
             </div>
             <h3 className="mb-2 font-semibold text-xl">Tidak Ada Produk</h3>
             <p className="mb-6 text-muted-foreground">

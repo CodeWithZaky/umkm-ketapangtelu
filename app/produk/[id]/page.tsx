@@ -2,8 +2,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { getAllProducts } from "@/lib/data";
-import { ArrowLeft, ExternalLink, MapPin, PhoneCall } from "lucide-react";
+import { getAllProducts, getProductsByCategory } from "@/lib/data";
+import { ArrowLeft, Home, MapPin, Phone, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -16,18 +16,23 @@ interface ProductPageProps {
 
 export async function generateStaticParams() {
   const products = getAllProducts();
-  return products.map((product: any) => ({
+  return products.map((product) => ({
     id: product.id,
   }));
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
   const products = getAllProducts();
-  const product = products.find((p: any) => p.id === params.id);
+  const product = products.find((p) => p.id === params.id);
 
   if (!product) {
     notFound();
   }
+
+  // Get related products from the same category
+  const relatedProducts = getProductsByCategory(product.category)
+    .filter((p) => p.id !== product.id)
+    .slice(0, 4);
 
   return (
     <div className="bg-background min-h-screen">
@@ -100,7 +105,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 
             {product.images.length > 1 && (
               <div className="gap-2 grid grid-cols-3">
-                {product.images.slice(1).map((image: string, index: number) => (
+                {product.images.slice(1).map((image, index) => (
                   <div
                     key={index}
                     className="relative rounded-lg h-24 overflow-hidden"
@@ -130,6 +135,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <Separator />
+
             <div>
               <h2 className="mb-3 font-semibold text-xl">Deskripsi Produk</h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -138,46 +144,64 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <Separator />
-            {/* Social Media Links */}
-            {product.link && product.link.length > 0 && (
-              <div>
-                <h2 className="mb-3 font-semibold text-xl">Hubungi Penjual</h2>
-                <div className="space-y-2">
-                  {product.link.map((url: string, index: number) => (
-                    <div key={index}>
-                      <Link
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button
-                          variant="outline"
-                          className="justify-start bg-green-500/80 w-full text-slate-100"
-                        >
-                          <PhoneCall className="mr-2 w-4 h-4" />
-                          Whatsapp
-                          <ExternalLink className="ml-auto w-4 h-4" />
-                        </Button>
-                      </Link>
-                      <Link
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button
-                          variant="outline"
-                          className="justify-start bg-red-500/80 w-full text-slate-100"
-                        >
-                          <MapPin className="mr-2 w-4 h-4" />
-                          Map
-                          <ExternalLink className="ml-auto w-4 h-4" />
-                        </Button>
-                      </Link>
+
+            {/* Seller Information */}
+            <div>
+              <h2 className="mb-4 font-semibold text-xl">Informasi Penjual</h2>
+              <Card className="p-4">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <User className="w-5 h-5 text-primary" />
+                    <div>
+                      <p className="font-semibold">{product.seller.name}</p>
+                      <p className="text-muted-foreground text-sm">
+                        {product.seller.tagline}
+                      </p>
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Home className="w-5 h-5 text-muted-foreground" />
+                    <div>
+                      <p className="font-medium text-sm">
+                        Dusun {product.seller.subVillage}
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {product.seller.address}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Link
+                      href={`https://wa.me/62${product.seller.phone.substring(
+                        1
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="flex-1">
+                        <Phone className="mr-2 w-4 h-4" />
+                        WhatsApp
+                      </Button>
+                    </Link>
+                    <Link
+                      href={product.link.map}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        className="flex-1 bg-transparent"
+                      >
+                        <MapPin className="mr-2 w-4 h-4" />
+                        Lokasi
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            )}
+              </Card>
+            </div>
 
             {/* Additional Info Card */}
             <Card>
@@ -190,8 +214,14 @@ export default function ProductPage({ params }: ProductPageProps) {
                   <span className="font-medium">{product.category}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Asal:</span>
-                  <span className="font-medium">Ketapangtelu</span>
+                  <span className="text-muted-foreground">Penjual:</span>
+                  <span className="font-medium">{product.seller.name}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Lokasi:</span>
+                  <span className="font-medium">
+                    Dusun {product.seller.subVillage}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Status:</span>
@@ -205,16 +235,11 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
 
         {/* Related Products */}
-        <div className="mt-12">
-          <h2 className="mb-6 font-bold text-2xl">Produk Lainnya</h2>
-          <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {products
-              .filter(
-                (p: any) =>
-                  p.category === product.category && p.id !== product.id
-              )
-              .slice(0, 4)
-              .map((relatedProduct: any) => (
+        {relatedProducts.length > 0 && (
+          <div className="mt-12">
+            <h2 className="mb-6 font-bold text-2xl">Produk Sejenis</h2>
+            <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedProducts.map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
                   href={`/produk/${relatedProduct.id}`}
@@ -234,15 +259,19 @@ export default function ProductPage({ params }: ProductPageProps) {
                       <CardTitle className="mb-1 text-sm line-clamp-2">
                         {relatedProduct.title}
                       </CardTitle>
-                      <p className="font-bold text-primary text-sm">
+                      <p className="mb-1 font-bold text-primary text-sm">
                         {relatedProduct.price}
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {relatedProduct.seller.name}
                       </p>
                     </CardContent>
                   </Card>
                 </Link>
               ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

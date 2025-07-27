@@ -1,4 +1,3 @@
-import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,8 +6,8 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
-import { getProductsByCategory, umkmData } from "@/lib/data";
-import { ArrowLeft, ShoppingBag } from "lucide-react";
+import { getProductsByCategoryKey } from "@/lib/data";
+import { ArrowLeft, ShoppingBag, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -20,21 +19,39 @@ interface CategoryPageProps {
 }
 
 export async function generateStaticParams() {
-  return [{ slug: "ikanasap" }, { slug: "krupukikan" }, { slug: "terasi" }];
+  return [
+    { slug: "ikan-asap" },
+    { slug: "keripik" },
+    { slug: "minuman" },
+    { slug: "kue-kering" },
+    { slug: "terasi" },
+  ];
 }
 
 const categoryInfo = {
-  ikanasap: {
+  "ikan-asap": {
     name: "Ikan Asap",
     description:
       "Koleksi lengkap ikan asap berkualitas tinggi dengan cita rasa autentik khas Ketapangtelu",
     color: "bg-orange-500",
   },
-  krupukikan: {
-    name: "Kerupuk Ikan",
+  keripik: {
+    name: "Keripik",
     description:
-      "Berbagai jenis kerupuk ikan renyah dan gurih, cocok untuk camilan atau pelengkap makan",
+      "Berbagai jenis keripik renyah dan gurih, cocok untuk camilan atau pelengkap makan",
     color: "bg-yellow-500",
+  },
+  minuman: {
+    name: "Minuman",
+    description:
+      "Minuman tradisional segar dan menyehatkan untuk kesehatan tubuh",
+    color: "bg-blue-500",
+  },
+  "kue-kering": {
+    name: "Kue Kering",
+    description:
+      "Kue kering homemade dengan berbagai varian rasa yang menggugah selera",
+    color: "bg-pink-500",
   },
   terasi: {
     name: "Terasi",
@@ -45,7 +62,7 @@ const categoryInfo = {
 };
 
 export default function CategoryPage({ params }: CategoryPageProps) {
-  const products = getProductsByCategory(params.slug);
+  const products = getProductsByCategoryKey(params.slug);
   const category = categoryInfo[params.slug as keyof typeof categoryInfo];
 
   if (!category || products.length === 0) {
@@ -119,7 +136,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             </Button>
           </Link>
           <div className="flex items-center space-x-2">
-            <LogoUmkmKetapangtelu />
+            <ShoppingBag className="w-6 h-6 text-primary" />
             <span className="font-bold text-primary text-xl">
               UMKM KETAPANGTELU
             </span>
@@ -207,9 +224,15 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                         </p>
 
                         {isLarge && (
-                          <CardDescription className="text-white/80 text-sm line-clamp-3">
-                            {product.description}
-                          </CardDescription>
+                          <>
+                            <CardDescription className="mb-2 text-white/80 text-sm line-clamp-2">
+                              {product.description}
+                            </CardDescription>
+                            <div className="flex items-center gap-2 text-white/70 text-xs">
+                              <User className="w-3 h-3" />
+                              <span>{product.seller.name}</span>
+                            </div>
+                          </>
                         )}
                       </div>
 
@@ -231,7 +254,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         {products.length === 0 && (
           <div className="py-16 text-center">
             <div className="flex justify-center items-center bg-muted mx-auto mb-6 rounded-full w-24 h-24">
-              <LogoUmkmKetapangtelu />
+              <ShoppingBag className="w-12 h-12 text-muted-foreground" />
             </div>
             <h3 className="mb-2 font-semibold text-xl">Belum Ada Produk</h3>
             <p className="mb-6 text-muted-foreground">
@@ -256,6 +279,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mx-auto max-w-2xl">
             {Object.entries(categoryInfo)
               .filter(([slug]) => slug !== params.slug)
+              .slice(0, 4)
               .map(([slug, info]) => (
                 <Link key={slug} href={`/category/${slug}`}>
                   <Card className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer">
@@ -267,8 +291,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                       </div>
                       <CardTitle className="mb-2">{info.name}</CardTitle>
                       <CardDescription className="text-sm">
-                        {umkmData[slug as keyof typeof umkmData].length} produk
-                        tersedia
+                        {getProductsByCategoryKey(slug).length} produk tersedia
                       </CardDescription>
                     </CardContent>
                   </Card>
