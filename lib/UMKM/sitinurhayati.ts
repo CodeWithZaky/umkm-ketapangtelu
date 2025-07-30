@@ -11,9 +11,9 @@ import KerupukIkanBandeng7 from "@/public/umkmImagesData/sitinurhayati/krupuk-ik
 import KerupukIkanBandeng8 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-8.jpg";
 import KerupukIkanBandeng9 from "@/public/umkmImagesData/sitinurhayati/krupuk-ikan-bandeng/kerupuk-ikan-bandeng-9.jpg";
 
-import KerupukSamiler1 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-1.jpg";
-import KerupukSamiler2 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-2.jpg";
-import KerupukSamiler3 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-3.jpg";
+import KerupukSamiler1 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-1.jpeg";
+import KerupukSamiler2 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-2.jpeg";
+import KerupukSamiler3 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler/kerupuk-samiler-3.jpeg";
 
 import KerupukSamilerMatang1 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler-matang/kerupuk-samiler-matang-1.jpg";
 import KerupukSamilerMatang2 from "@/public/umkmImagesData/sitinurhayati/kerupuk-samiler-matang/kerupuk-samiler-matang-2.jpg";
@@ -21,19 +21,19 @@ import KerupukSamilerMatang3 from "@/public/umkmImagesData/sitinurhayati/kerupuk
 
 export const sitinurhayati = {
   sellerName: "Siti Nur Hayati",
-  productName: "ikan asap",
+  productName: "Kerupuk & Ikan Asap",
   phoneNumber: "086888666222",
-  subVillage: "suklen",
+  subVillage: "Suklen",
   address:
-    "rt3, rw4, dusun suklen, desa ketapang telu, kecamatan karangbinangun",
-  productTagline: "murah higenis aman",
+    "RT 03 RW 04, Dusun Suklen, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",
+  productTagline: "Produk Olahan Ikan – Murah, Higienis, dan Aman",
   products: [
     {
       id: "kerupuk-ikan-bandeng-mentah",
       title: "Kerupuk Ikan Bandeng Mentah",
       price: "Rp 10.000",
       description:
-        "Kerupuk ikan bandeng mentah khas Ketapangtelu, dibuat dari bahan alami tanpa pengawet. Renyah dan lezat, cocok untuk camilan atau lauk pendamping.",
+        "Kerupuk ikan bandeng mentah khas Desa Ketapangtelu, diolah dari bahan alami tanpa pengawet. Siap digoreng untuk menjadi camilan gurih atau pelengkap lauk.",
       images: [
         KerupukIkanBandeng1,
         KerupukIkanBandeng2,
@@ -58,19 +58,19 @@ export const sitinurhayati = {
       title: "Kerupuk Samiler Mentah",
       price: "Rp 10.000",
       description:
-        "Kerupuk samiler mentah khas Ketapangtelu, terbuat dari bahan alami tanpa pengawet. Renyah dan lezat, cocok untuk camilan atau lauk pendamping.",
+        "Kerupuk samiler mentah khas Ketapangtelu, dibuat dari bahan berkualitas tanpa bahan pengawet. Teksturnya renyah dan cocok untuk gorengan rumahan.",
       images: [KerupukSamiler1, KerupukSamiler2, KerupukSamiler3],
       link: {
         map: "https://maps.app.goo.gl/R5sNYwSJe3VN1r479?g_st=aw",
       },
-      category: "Kerupuk Ikan",
+      category: "Kerupuk Tradisional",
     },
     {
       id: "kerupuk-samiler-matang",
       title: "Kerupuk Samiler Matang",
       price: "Rp 1.000",
       description:
-        "Kerupuk samiler matang khas Ketapangtelu, siap disantap. Renyah dan lezat, cocok untuk camilan atau lauk pendamping.",
+        "Kerupuk samiler yang telah digoreng dan siap disantap. Praktis dan cocok untuk cemilan maupun teman makan, dengan harga sangat terjangkau.",
       images: [
         KerupukSamilerMatang1,
         KerupukSamilerMatang2,
@@ -79,7 +79,7 @@ export const sitinurhayati = {
       link: {
         map: "https://maps.app.goo.gl/R5sNYwSJe3VN1r479?g_st=aw",
       },
-      category: "Kerupuk Ikan",
+      category: "Kerupuk Siap Saji",
     },
   ],
 };

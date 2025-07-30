@@ -8,20 +8,20 @@ export const niswatunafifah = {
   phoneNumber: "085732615278",
   subVillage: "Pupuk",
   address:
-    "Dusun Pupuk, RT 02 RW 03, desa Ketapangtelu, kec. Karangbinangun, Kab. Lamongan",
-  productTagline: "Kerupuk Ikan ",
+    "Dusun Pupuk, RT 02 RW 03, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",
+  productTagline: "Kerupuk Ikan Bandeng – Gurih, Praktis, dan Siap Saji!",
   products: [
     {
-      id: "Kerupuk-Ikan",
-      title: "Kerupuk Ikan",
-      price: "Rp 40.000",
+      id: "kerupuk-ikan",
+      title: "Kerupuk Ikan Mentah & Matang",
+      price: "Rp 2.000 – Rp 40.000",
       description:
-        "Kerupuk terbuat dari ikan bandeng bisa di beli mentah atau matang. Yang mentah 40.000/kg dan yang matang bisa kemasan 2000 atau 5000.",
+        "Kerupuk ikan bandeng yang bisa dibeli mentah seharga Rp 40.000/kg atau matang dalam kemasan Rp 2.000 atau Rp 5.000. Cocok untuk camilan gurih atau lauk rumahan.",
       images: [KerupukIkan1, KerupukIkan2, KerupukIkan3],
       link: {
         map: "https://maps.app.goo.gl/zYpVN5CKwWkthsJC9",
       },
-      category: "Kerupuk Ikan",
+      category: "Olahan Ikan",
     },
   ],
 };

@@ -1,6 +1,14 @@
 import { StaticImageData } from "next/image";
+import { bapakKusen } from "./UMKM/bapakkusen";
+import { buAwik } from "./UMKM/buawik";
+import { ifatunHaniah } from "./UMKM/ifatunhaniah";
+import { khoirima } from "./UMKM/khoirima";
+import { lailatulMaghfiroh } from "./UMKM/lailatulmaghfiroh";
+import { mbakWarda } from "./UMKM/mbakwarda";
 import { niswatunafifah } from "./UMKM/niswatunafifah";
 import { sitinurhayati } from "./UMKM/sitinurhayati";
+import { titin } from "./UMKM/titin";
+import { ulfa } from "./UMKM/ulfa";
 
 type UMKMData = {
   sellerName: string;
@@ -21,7 +29,18 @@ type UMKMData = {
   }[];
 }[];
 
-export const umkmData: UMKMData = [sitinurhayati, niswatunafifah];
+export const umkmData: UMKMData = [
+  bapakKusen,
+  buAwik,
+  ifatunHaniah,
+  khoirima,
+  lailatulMaghfiroh,
+  mbakWarda,
+  niswatunafifah,
+  sitinurhayati,
+  titin,
+  ulfa,
+];
 
 // Update type untuk getAllProducts function
 export function getAllProducts() {
