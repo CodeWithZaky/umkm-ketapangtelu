@@ -223,7 +223,7 @@ export default function ContactPage() {
                       href="mailto:umkm.ketapangtelu@gmail.com"
                       className="text-primary text-sm hover:underline"
                     >
-                      umkm.ketapangtelu@gmail.com
+                      umkmketapangtelu@gmail.com
                     </Link>
                   </div>
                 </CardContent>
