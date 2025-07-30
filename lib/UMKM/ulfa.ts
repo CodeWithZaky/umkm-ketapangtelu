@@ -1,5 +1,5 @@
-import IkanAsapSiliKecil from "@/public/umkmImagesData/ulfa/ikan-asap-sili-kecil.jpg";
-import IkanAsapSumbro from "@/public/umkmImagesData/ulfa/ikan-asap-sumbro.jpg";
+import IkanAsapSiliKecil from "@/public/umkmImagesData/ulfa/ikan-asap-sili-kecil.jpeg";
+import IkanAsapSumbro from "@/public/umkmImagesData/ulfa/ikan-asap-sumbro.jpeg";
 
 export const ulfa = {
   sellerName: "Ulfa",

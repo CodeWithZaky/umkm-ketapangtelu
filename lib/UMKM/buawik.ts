@@ -1,8 +1,8 @@
-import KeripikPisang1 from "@/public/umkmImagesData/buawik/keripik-pisang-1.jpg";
-import KeripikPisang2 from "@/public/umkmImagesData/buawik/keripik-pisang-2.jpg";
-import KeripikPisang3 from "@/public/umkmImagesData/buawik/keripik-pisang-3.jpg";
-import KeripikPisang4 from "@/public/umkmImagesData/buawik/keripik-pisang-4.jpg";
-import KeripikPisang5 from "@/public/umkmImagesData/buawik/keripik-pisang-5.jpg";
+import KeripikPisang1 from "@/public/umkmImagesData/buawik/keripik-pisang-1.jpeg";
+import KeripikPisang2 from "@/public/umkmImagesData/buawik/keripik-pisang-2.jpeg";
+import KeripikPisang3 from "@/public/umkmImagesData/buawik/keripik-pisang-3.jpeg";
+import KeripikPisang4 from "@/public/umkmImagesData/buawik/keripik-pisang-4.jpeg";
+import KeripikPisang5 from "@/public/umkmImagesData/buawik/keripik-pisang-5.jpeg";
 
 export const buAwik = {
   sellerName: "Bu Awik Bu Kades",

@@ -1,8 +1,8 @@
-import Kue1 from "@/public/umkmImagesData/khoirima/kue-1.jpg";
-import Kue2 from "@/public/umkmImagesData/khoirima/kue-2.jpg";
-import Kue3 from "@/public/umkmImagesData/khoirima/kue-3.jpg";
-import Kue4 from "@/public/umkmImagesData/khoirima/kue-4.jpg";
-import Kue5 from "@/public/umkmImagesData/khoirima/kue-5.jpg";
+import Kue1 from "@/public/umkmImagesData/khoirima/kue-1.jpeg";
+import Kue2 from "@/public/umkmImagesData/khoirima/kue-2.jpeg";
+import Kue3 from "@/public/umkmImagesData/khoirima/kue-3.jpeg";
+import Kue4 from "@/public/umkmImagesData/khoirima/kue-4.jpeg";
+import Kue5 from "@/public/umkmImagesData/khoirima/kue-5.jpeg";
 
 export const khoirima = {
   sellerName: "Khoirima",

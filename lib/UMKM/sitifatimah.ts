@@ -1,8 +1,8 @@
-import KeripikUsus1 from "@/public/umkmImagesData/sitifatimah/keripik-usus-1.jpg";
-import KeripikUsus2 from "@/public/umkmImagesData/sitifatimah/keripik-usus-2.jpg";
-import KeripikUsus3 from "@/public/umkmImagesData/sitifatimah/keripik-usus-3.jpg";
-import KeripikUsus4 from "@/public/umkmImagesData/sitifatimah/keripik-usus-4.jpg";
-import KeripikUsus5 from "@/public/umkmImagesData/sitifatimah/keripik-usus-5.jpg";
+import KeripikUsus1 from "@/public/umkmImagesData/sitifatimah/keripik-usus-1.jpeg";
+import KeripikUsus2 from "@/public/umkmImagesData/sitifatimah/keripik-usus-2.jpeg";
+import KeripikUsus3 from "@/public/umkmImagesData/sitifatimah/keripik-usus-3.jpeg";
+import KeripikUsus4 from "@/public/umkmImagesData/sitifatimah/keripik-usus-4.jpeg";
+import KeripikUsus5 from "@/public/umkmImagesData/sitifatimah/keripik-usus-5.jpeg";
 
 export const sitiFatimah = {
   sellerName: "Siti Fatimah",
