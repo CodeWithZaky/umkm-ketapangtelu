@@ -2,7 +2,6 @@ import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Mememe from "@/public/mememe.jpeg";
 import { ArrowLeft, Award, Heart, Target, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -149,8 +148,8 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            // src="/placeholder.svg?height=600&width=1200&text=KKN+Team+Photo"
-            src={Mememe}
+            src="/placeholder.svg?height=600&width=1200&text=KKN+Team+Photo"
+            // src={Mememe}
             alt="KKN Kelompok 12 Team Photo"
             fill
             className="object-cover"
