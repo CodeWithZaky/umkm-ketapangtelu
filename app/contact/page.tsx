@@ -102,7 +102,7 @@ export default function ContactPage() {
             <div className="flex justify-center items-center gap-4 text-muted-foreground text-sm">
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
-                24/7 Online
+                24 jam respon
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
