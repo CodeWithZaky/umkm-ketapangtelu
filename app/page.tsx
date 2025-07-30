@@ -139,7 +139,7 @@ export default function HomePage() {
           </div>
 
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <LogoUmkmKetapangtelu />
             <span className="flex gap-2 font-bold text-primary text-xl">
               <span>
@@ -148,8 +148,21 @@ export default function HomePage() {
               </span>
               <span>KETAPANGTELU</span>
             </span>
+          </div> */}
+          <div className="flex items-center space-x-2">
+            {!isSearchExpanded && (
+              <div className="flex items-center space-x-2 transition-all duration-300">
+                <LogoUmkmKetapangtelu />
+                <span className="flex md:flex-row flex-col gap-0 md:gap-2 font-bold text-primary text-xl">
+                  <span>
+                    <span className="text-yellow-500">UM</span>
+                    <span>KM</span>
+                  </span>
+                  <span>KETAPANGTELU</span>
+                </span>
+              </div>
+            )}
           </div>
-
           {/* Search Bar */}
           <div className="flex items-center">
             {/* Desktop Search */}
@@ -175,7 +188,7 @@ export default function HomePage() {
                 </Button>
               ) : (
                 <div className="slide-in-from-right-2 flex items-center space-x-2 animate-in duration-200">
-                  <div className="relative w-48">
+                  <div className="relative w-full">
                     <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
                     <Input
                       placeholder="Cari produk..."
