@@ -18,7 +18,7 @@ export const mbakWarda = {
         "Beragam pilihan cake dan cookies rumahan dengan cita rasa premium. Cocok untuk sajian keluarga, hampers, hingga oleh-oleh khas desa.",
       images: [CakeCookies],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/UZ84NRGuC1h79U1x9",
       },
       category: "Kue & Cookies",
     },

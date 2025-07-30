@@ -29,7 +29,7 @@ export const titin = {
         NasiKotak,
       ],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/b2jehzJUdjBd5nEN6?g_st=aw",
       },
       category: "Katering & Paket Acara",
     },

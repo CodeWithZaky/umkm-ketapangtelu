@@ -18,7 +18,7 @@ export const ulfa = {
         "Ikan Asap Sumbro khas Lamongan, memiliki cita rasa gurih dan aroma asap yang menggoda. Cocok dijadikan lauk harian maupun olahan tradisional.",
       images: [IkanAsapSumbro],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/zYpVN5CKwWkthsJC9",
       },
       category: "Ikan Asap",
     },
@@ -30,7 +30,7 @@ export const ulfa = {
     //     "Ikan Kutuk yang diasap dengan teknik tradisional, menghasilkan tekstur lembut dan rasa otentik. Cocok untuk menu khas rumahan maupun oleh-oleh.",
     //   images: ["image-url-1.jpg", "image-url-2.jpg", "image-url-3.jpg"],
     //   link: {
-    //     map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+    //     map: "https://maps.app.goo.gl/zYpVN5CKwWkthsJC9",
     //   },
     //   category: "Ikan Asap",
     // },
@@ -42,7 +42,7 @@ export const ulfa = {
     //     "Ikan Mujair pilihan yang diasap secara alami, menghadirkan rasa gurih dengan aroma yang khas. Ideal untuk pelengkap nasi hangat.",
     //   images: ["image-url-1.jpg", "image-url-2.jpg", "image-url-3.jpg"],
     //   link: {
-    //     map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+    //     map: "https://maps.app.goo.gl/zYpVN5CKwWkthsJC9",
     //   },
     //   category: "Ikan Asap",
     // },
@@ -54,7 +54,7 @@ export const ulfa = {
         "Ikan Sili kecil yang langka dan bergizi, diolah dengan metode pengasapan tradisional. Nikmat dan cocok dijadikan lauk istimewa.",
       images: [IkanAsapSiliKecil],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/zYpVN5CKwWkthsJC9",
       },
       category: "Ikan Asap",
     },
@@ -66,7 +66,7 @@ export const ulfa = {
     //     "Ikan Sili besar berkualitas tinggi yang diasap dengan teknik khusus. Rasa khas dan lezat, cocok untuk sajian premium.",
     //   images: ["image-url-1.jpg", "image-url-2.jpg", "image-url-3.jpg"],
     //   link: {
-    //     map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+    //     map: "https://maps.app.goo.gl/zYpVN5CKwWkthsJC9",
     //   },
     //   category: "Ikan Asap",
     // },

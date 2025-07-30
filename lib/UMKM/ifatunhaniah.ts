@@ -17,7 +17,7 @@ export const ifatunHaniah = {
         "Seblak prasmanan khas Soklen yang menggugah selera, tersedia berbagai topping favorit. Harga terjangkau mulai dari Rp 5.000 – Rp 15.000. Cocok dinikmati oleh semua kalangan.",
       images: [SeblakPrasamanan],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/eKSU49E6Gf4eR2aZ6",
       },
       category: "Makanan Siap Saji",
     },

@@ -21,7 +21,7 @@ export const khoirima = {
         "Tersedia beragam pilihan jajanan pasar dan kue tradisional yang dibuat sesuai pesanan. Cocok untuk acara, hajatan, maupun suguhan harian.",
       images: [Kue1, Kue2, Kue3, Kue4, Kue5],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/nB6PMwGWXetKSrtz6",
       },
       category: "Jajanan Tradisional",
     },

@@ -27,7 +27,7 @@ export const sitiFatimah = {
         KeripikUsus5,
       ],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/CqXJ334PsmiGBg8N9",
       },
       category: "Kripik & Camilan",
     },

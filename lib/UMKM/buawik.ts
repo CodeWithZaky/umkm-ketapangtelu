@@ -27,7 +27,7 @@ export const buAwik = {
         KeripikPisang5,
       ],
       link: {
-        map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
+        map: "https://maps.app.goo.gl/3n47SwhCYhhpURXz7",
       },
       category: "Kripik & Camilan",
     },
