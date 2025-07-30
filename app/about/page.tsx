@@ -1,8 +1,8 @@
-import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
+import BackToHome from "@/components/back-to-home";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Award, Heart, Target, Users } from "lucide-react";
+import { Award, Heart, Target, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,7 +31,7 @@ export default function AboutPage() {
     {
       division: "Sie Acara",
       members: [
-        "M. Khafid Abdullah (co)",
+        "M. Khafidz Abdullah (co)",
         "Camelia F. M.",
         "Fina Nur Azizah",
         "Silvia Tri Utami",
@@ -127,20 +127,7 @@ export default function AboutPage() {
         </div>
 
         {/* Main Navbar */}
-        <div className="flex items-center px-4 h-16 container">
-          <Link href="/">
-            <Button variant="ghost" size="sm" className="mr-4">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Beranda
-            </Button>
-          </Link>
-          <div className="flex items-center space-x-2">
-            <LogoUmkmKetapangtelu />
-            <span className="font-bold text-primary text-xl">
-              UMKM KETAPANGTELU
-            </span>
-          </div>
-        </div>
+        <BackToHome />
       </nav>
 
       {/* Hero Section with Background */}
