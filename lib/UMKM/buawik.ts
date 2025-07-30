@@ -5,7 +5,7 @@ import KeripikPisang4 from "@/public/umkmImagesData/buawik/keripik-pisang-4.jpg"
 import KeripikPisang5 from "@/public/umkmImagesData/buawik/keripik-pisang-5.jpg";
 
 export const buAwik = {
-  sellerName: "Bu Awik (Bu Kades)",
+  sellerName: "Bu Awik Bu Kades",
   productName: "Kripik Pisang By. Bu Jaguar",
   phoneNumber: "+62 823-3680-3102",
   subVillage: "Ketapang",
