@@ -22,7 +22,7 @@ type UMKMData = {
 
 export const umkmData: UMKMData = [sitinurhayati];
 
-// Get all products from all sellers
+// Update type untuk getAllProducts function
 export function getAllProducts() {
   const allProducts: Array<{
     id: string;
@@ -71,61 +71,42 @@ export function getProductsByCategory(category: string) {
   return allProducts.filter((product) => product.category === category);
 }
 
-// Get all unique categories with product counts
+// Update fungsi getCategories untuk return data per seller/UMKM
 export function getCategories() {
-  const allProducts = getAllProducts();
-  const categoryMap = new Map<string, number>();
+  return umkmData.map((seller) => ({
+    id: seller.sellerName.toLowerCase().replace(/\s+/g, "-"), // slug dari nama seller
+    name: seller.sellerName,
+    description: `${seller.productTagline} - ${seller.products.length} produk tersedia`,
+    image:
+      seller.products[0]?.images[0] ||
+      "/placeholder.svg?height=200&width=300&text=UMKM",
+    count: seller.products.length,
+    color: getSellerColor(seller.sellerName), // Warna berdasarkan seller
+    subVillage: seller.subVillage,
+    address: seller.address,
+    phone: seller.phoneNumber,
+    tagline: seller.productTagline,
+  }));
+}
 
-  allProducts.forEach((product) => {
-    const count = categoryMap.get(product.category) || 0;
-    categoryMap.set(product.category, count + 1);
-  });
-
-  const categories = [
-    {
-      id: "ikan-asap",
-      name: "Ikan Asap",
-      description: "Ikan asap berkualitas tinggi dengan cita rasa autentik",
-      image: "/placeholder.svg?height=200&width=300&text=Ikan+Asap",
-      count: categoryMap.get("Ikan Asap") || 0,
-      color: "bg-orange-500",
-    },
-    {
-      id: "keripik",
-      name: "Keripik",
-      description: "Keripik renyah dan gurih untuk camilan",
-      image: "/placeholder.svg?height=200&width=300&text=Keripik",
-      count: categoryMap.get("Keripik") || 0,
-      color: "bg-yellow-500",
-    },
-    {
-      id: "minuman",
-      name: "Minuman",
-      description: "Minuman tradisional segar dan menyehatkan",
-      image: "/placeholder.svg?height=200&width=300&text=Minuman",
-      count: categoryMap.get("Minuman") || 0,
-      color: "bg-blue-500",
-    },
-    {
-      id: "kue-kering",
-      name: "Kue Kering",
-      description: "Kue kering homemade dengan berbagai varian rasa",
-      image: "/placeholder.svg?height=200&width=300&text=Kue+Kering",
-      count: categoryMap.get("Kue Kering") || 0,
-      color: "bg-pink-500",
-    },
-    {
-      id: "terasi",
-      name: "Terasi",
-      description: "Terasi asli buatan warga dengan aroma khas",
-      image: "/placeholder.svg?height=200&width=300&text=Terasi",
-      count: categoryMap.get("Terasi") || 0,
-      color: "bg-red-500",
-    },
+// Fungsi helper untuk warna seller
+function getSellerColor(sellerName: string) {
+  const colors = [
+    "bg-blue-500",
+    "bg-green-500",
+    "bg-purple-500",
+    "bg-orange-500",
+    "bg-pink-500",
+    "bg-indigo-500",
+    "bg-red-500",
+    "bg-yellow-500",
   ];
 
-  // Filter out categories with 0 products
-  return categories.filter((category) => category.count > 0);
+  // Hash nama seller untuk konsistensi warna
+  const hash = sellerName
+    .split("")
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return colors[hash % colors.length];
 }
 
 // Deterministic shuffle using a simple algorithm that doesn't rely on Math.random()
@@ -200,18 +181,23 @@ export function getProductsBySeller(sellerName: string) {
   }));
 }
 
-// Get products by category key (for URL routing)
+// Update fungsi getProductsByCategoryKey untuk ambil produk berdasarkan seller
 export function getProductsByCategoryKey(categoryKey: string) {
-  const categoryMap: { [key: string]: string } = {
-    "ikan-asap": "Ikan Asap",
-    keripik: "Keripik",
-    minuman: "Minuman",
-    "kue-kering": "Kue Kering",
-    terasi: "Terasi",
-  };
+  // Convert slug kembali ke nama seller
+  const sellerName = categoryKey
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
-  const categoryName = categoryMap[categoryKey];
-  if (!categoryName) return [];
+  return getProductsBySeller(sellerName);
+}
 
-  return getProductsByCategory(categoryName);
+// Tambah fungsi untuk mendapatkan seller berdasarkan slug
+export function getSellerBySlug(slug: string) {
+  const sellerName = slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  return umkmData.find((seller) => seller.sellerName === sellerName);
 }

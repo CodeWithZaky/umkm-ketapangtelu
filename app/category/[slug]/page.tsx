@@ -6,7 +6,11 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
-import { getProductsByCategoryKey } from "@/lib/data";
+import {
+  getCategories,
+  getProductsByCategoryKey,
+  getSellerBySlug,
+} from "@/lib/data";
 import { ArrowLeft, ShoppingBag, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,55 +22,51 @@ interface CategoryPageProps {
   };
 }
 
+// Update generateStaticParams untuk slug seller
 export async function generateStaticParams() {
-  return [
-    { slug: "ikan-asap" },
-    { slug: "keripik" },
-    { slug: "minuman" },
-    { slug: "kue-kering" },
-    { slug: "terasi" },
-  ];
+  const categories = getCategories();
+  return categories.map((category) => ({
+    slug: category.id,
+  }));
 }
 
-const categoryInfo = {
-  "ikan-asap": {
-    name: "Ikan Asap",
-    description:
-      "Koleksi lengkap ikan asap berkualitas tinggi dengan cita rasa autentik khas Ketapangtelu",
-    color: "bg-orange-500",
-  },
-  keripik: {
-    name: "Keripik",
-    description:
-      "Berbagai jenis keripik renyah dan gurih, cocok untuk camilan atau pelengkap makan",
-    color: "bg-yellow-500",
-  },
-  minuman: {
-    name: "Minuman",
-    description:
-      "Minuman tradisional segar dan menyehatkan untuk kesehatan tubuh",
-    color: "bg-blue-500",
-  },
-  "kue-kering": {
-    name: "Kue Kering",
-    description:
-      "Kue kering homemade dengan berbagai varian rasa yang menggugah selera",
-    color: "bg-pink-500",
-  },
-  terasi: {
-    name: "Terasi",
-    description:
-      "Terasi premium dengan aroma khas dan rasa yang autentik untuk masakan nusantara",
-    color: "bg-red-500",
-  },
-};
-
+// Update categoryInfo untuk menggunakan data seller
 export default function CategoryPage({ params }: CategoryPageProps) {
   const products = getProductsByCategoryKey(params.slug);
-  const category = categoryInfo[params.slug as keyof typeof categoryInfo];
+  const seller = getSellerBySlug(params.slug);
 
-  if (!category || products.length === 0) {
+  if (!seller || products.length === 0) {
     notFound();
+  }
+
+  // Buat category info dari data seller
+  const category = {
+    name: seller.sellerName,
+    description: `${seller.productTagline} - Produk berkualitas dari Dusun ${seller.subVillage}`,
+    color: getSellerColor(seller.sellerName),
+    subVillage: seller.subVillage,
+    address: seller.address,
+    phone: seller.phoneNumber,
+    tagline: seller.productTagline,
+  };
+
+  // Fungsi helper untuk warna seller (sama seperti di data.ts)
+  function getSellerColor(sellerName: string) {
+    const colors = [
+      "bg-blue-500",
+      "bg-green-500",
+      "bg-purple-500",
+      "bg-orange-500",
+      "bg-pink-500",
+      "bg-indigo-500",
+      "bg-red-500",
+      "bg-yellow-500",
+    ];
+
+    const hash = sellerName
+      .split("")
+      .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return colors[hash % colors.length];
   }
 
   // Create masonry layout pattern - different heights for visual variety
@@ -85,6 +85,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     return patterns[index % patterns.length];
   };
 
+  // Update hero section untuk menampilkan info seller
   return (
     <div className="bg-background min-h-screen">
       {/* Navigation */}
@@ -144,18 +145,21 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </nav>
 
-      {/* Category Hero */}
+      {/* Category Hero - update untuk seller */}
       <section className="relative bg-gradient-to-br from-primary/10 to-primary/5 py-16">
         <div className="px-4 container">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4 text-sm">
-              Kategori Produk
+              UMKM Ketapangtelu
             </Badge>
             <h1 className="bg-clip-text bg-gradient-to-r from-primary to-primary/70 mb-4 font-bold text-transparent text-4xl md:text-5xl">
               {category.name}
             </h1>
-            <p className="mb-6 text-muted-foreground text-lg">
+            <p className="mb-4 text-muted-foreground text-lg">
               {category.description}
+            </p>
+            <p className="mb-6 text-muted-foreground text-sm">
+              📍 {category.address}
             </p>
             <div className="flex justify-center items-center gap-4 text-muted-foreground text-sm">
               <span className="flex items-center gap-1">
@@ -163,7 +167,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 {products.length} Produk Tersedia
               </span>
               <span>•</span>
-              <span>Kualitas Premium</span>
+              <span>Dusun {category.subVillage}</span>
               <span>•</span>
               <span>Produksi Lokal</span>
             </div>
@@ -171,7 +175,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </section>
 
-      {/* Products Masonry Grid */}
+      {/* Products Grid - update badge untuk menampilkan nama seller */}
       <section className="px-4 py-12 container">
         <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[200px]">
           {products.map((product, index) => {
@@ -204,7 +208,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                           variant="secondary"
                           className="bg-white/20 mb-2 border-white/30 text-white"
                         >
-                          {category.name}
+                          {product.category}
                         </Badge>
 
                         <CardTitle
@@ -270,28 +274,29 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         )}
       </section>
 
-      {/* Related Categories */}
+      {/* Related UMKM - update untuk menampilkan UMKM lain */}
       <section className="bg-muted/30 py-12">
         <div className="px-4 container">
-          <h2 className="mb-8 font-bold text-2xl text-center">
-            Kategori Lainnya
-          </h2>
+          <h2 className="mb-8 font-bold text-2xl text-center">UMKM Lainnya</h2>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mx-auto max-w-2xl">
-            {Object.entries(categoryInfo)
-              .filter(([slug]) => slug !== params.slug)
+            {getCategories()
+              .filter((cat) => cat.id !== params.slug)
               .slice(0, 4)
-              .map(([slug, info]) => (
-                <Link key={slug} href={`/category/${slug}`}>
+              .map((umkm) => (
+                <Link key={umkm.id} href={`/category/${umkm.id}`}>
                   <Card className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer">
                     <CardContent className="p-6 text-center">
                       <div
-                        className={`w-12 h-12 ${info.color} rounded-full mx-auto mb-4 flex items-center justify-center`}
+                        className={`w-12 h-12 ${umkm.color} rounded-full mx-auto mb-4 flex items-center justify-center`}
                       >
-                        <ShoppingBag className="w-6 h-6 text-white" />
+                        <User className="w-6 h-6 text-white" />
                       </div>
-                      <CardTitle className="mb-2">{info.name}</CardTitle>
-                      <CardDescription className="text-sm">
-                        {getProductsByCategoryKey(slug).length} produk tersedia
+                      <CardTitle className="mb-2">{umkm.name}</CardTitle>
+                      <CardDescription className="mb-1 text-sm">
+                        Dusun {umkm.subVillage}
+                      </CardDescription>
+                      <CardDescription className="text-xs">
+                        {umkm.count} produk tersedia
                       </CardDescription>
                     </CardContent>
                   </Card>

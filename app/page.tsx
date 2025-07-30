@@ -1,6 +1,5 @@
 "use client";
 
-import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,7 +27,7 @@ import {
 } from "@/components/ui/sheet";
 import { getAllProducts, getCategories, getShuffledProducts } from "@/lib/data";
 import Autoplay from "embla-carousel-autoplay";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -60,7 +59,7 @@ export default function HomePage() {
   // Filter products based on search query
   const filteredProducts = useMemo(() => {
     if (!searchQuery.trim()) return allProducts;
-    return allProducts.filter((product: any) =>
+    return allProducts.filter((product) =>
       product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }, [searchQuery, allProducts]);
@@ -140,14 +139,10 @@ export default function HomePage() {
 
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            {!isSearchExpanded && (
-              <>
-                <LogoUmkmKetapangtelu />
-                <span className="font-bold text-primary text-xl">
-                  UMKM KETAPANGTELU
-                </span>
-              </>
-            )}
+            <ShoppingBag className="w-6 h-6 text-primary" />
+            <span className="font-bold text-primary text-xl">
+              UMKM KETAPANGTELU
+            </span>
           </div>
 
           {/* Search Bar */}
@@ -164,7 +159,7 @@ export default function HomePage() {
             </div>
 
             {/* Mobile Search */}
-            <div className="md:hidden relative flex items-center">
+            <div className="md:hidden flex items-center">
               {!isSearchExpanded ? (
                 <Button
                   variant="ghost"
@@ -175,7 +170,7 @@ export default function HomePage() {
                 </Button>
               ) : (
                 <div className="slide-in-from-right-2 flex items-center space-x-2 animate-in duration-200">
-                  <div className="w-full">
+                  <div className="relative w-48">
                     <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
                     <Input
                       placeholder="Cari produk..."
@@ -220,7 +215,7 @@ export default function HomePage() {
             }}
           >
             <CarouselContent>
-              {featuredProducts.map((product: any, index: number) => (
+              {featuredProducts.map((product, index) => (
                 <CarouselItem key={index}>
                   <Link href={`/produk/${product.id}`}>
                     <div className="group relative rounded-lg h-[400px] overflow-hidden cursor-pointer">
@@ -259,21 +254,21 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Category Cards */}
+      {/* Category Cards - sekarang menampilkan UMKM */}
       {!searchQuery && (
         <section className="px-4 py-8 container">
           <h2 className="mb-6 font-bold text-2xl text-center">
-            Kategori Produk
+            UMKM Ketapangtelu
           </h2>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
-            {categories.slice(0, visibleCategories).map((category) => (
-              <Link key={category.id} href={`/category/${category.id}`}>
+            {categories.slice(0, visibleCategories).map((umkm) => (
+              <Link key={umkm.id} href={`/category/${umkm.id}`}>
                 <Card className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer">
                   <CardHeader className="p-0">
                     <div className="relative rounded-t-lg h-48 overflow-hidden">
                       <Image
-                        src={category.image || "/placeholder.svg"}
-                        alt={category.name}
+                        src={umkm.image || "/placeholder.svg"}
+                        alt={umkm.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                       />
@@ -281,11 +276,14 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent className="p-4">
                     <CardTitle className="flex justify-between items-center">
-                      {category.name}
-                      <Badge variant="secondary">{category.count} produk</Badge>
+                      {umkm.name}
+                      <Badge variant="secondary">{umkm.count} produk</Badge>
                     </CardTitle>
-                    <CardDescription className="mt-2">
-                      {category.description}
+                    <CardDescription className="mt-1 text-sm">
+                      📍 Dusun {umkm.subVillage}
+                    </CardDescription>
+                    <CardDescription className="mt-2 line-clamp-2">
+                      {umkm.tagline}
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -301,7 +299,7 @@ export default function HomePage() {
                 variant="outline"
                 className="bg-transparent px-8"
               >
-                Lihat Kategori Lainnya
+                Lihat UMKM Lainnya
               </Button>
             </div>
           )}
@@ -336,7 +334,7 @@ export default function HomePage() {
               {(searchQuery
                 ? filteredProducts
                 : shuffledProducts.slice(0, visibleProducts)
-              ).map((product: any) => (
+              ).map((product) => (
                 <Link key={product.id} href={`/produk/${product.id}`}>
                   <Card className="group hover:shadow-xl h-full transition-all hover:-translate-y-2 duration-300 cursor-pointer">
                     <CardHeader className="p-0">
