@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { niswatunafifah } from "./UMKM/niswatunafifah";
 import { sitinurhayati } from "./UMKM/sitinurhayati";
 
 type UMKMData = {
@@ -20,7 +21,7 @@ type UMKMData = {
   }[];
 }[];
 
-export const umkmData: UMKMData = [sitinurhayati];
+export const umkmData: UMKMData = [sitinurhayati, niswatunafifah];
 
 // Update type untuk getAllProducts function
 export function getAllProducts() {
