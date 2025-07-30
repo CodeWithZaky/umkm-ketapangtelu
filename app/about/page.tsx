@@ -10,30 +10,80 @@ import Link from "next/link";
 export default function AboutPage() {
   const teamMembers = [
     {
-      division: "Koordinator",
-      members: ["Ahmad Rizki Pratama", "Siti Nurhaliza"],
+      division: "Koordinator Desa",
+      members: ["Ahmad Zaky Ubaidillah"],
     },
     {
-      division: "Divisi Pemasaran",
-      members: ["Budi Santoso", "Dewi Sartika", "Eko Prasetyo"],
+      division: "Wakil Koordinator Desa",
+      members: ["Auliah Riska K."],
     },
     {
-      division: "Divisi Teknologi",
-      members: ["Fajar Nugroho", "Gita Permata", "Hendra Wijaya"],
+      division: "Koordinator Lapangan",
+      members: ["M. Falas Jati I.R."],
     },
     {
-      division: "Divisi Dokumentasi",
-      members: ["Indira Sari", "Joko Widodo", "Kartika Dewi"],
+      division: "Sekretaris",
+      members: ["Fifin Ida Auliyah", "Nihaya Alifiya C."],
     },
     {
-      division: "Divisi Keuangan",
-      members: ["Lestari Wulandari", "Muhammad Iqbal"],
+      division: "Bendahara",
+      members: ["Diana Rahma S.", "Frah Hanun A."],
     },
     {
-      division: "Divisi Hubungan Masyarakat",
-      members: ["Nanda Pratiwi", "Oki Setiawan", "Putri Maharani"],
+      division: "Sie Acara",
+      members: [
+        "M. Khafid Abdullah (co)",
+        "Camelia F. M.",
+        "Fina Nur Azizah",
+        "Silvia Tri Utami",
+        "Della Riski",
+        "Hanif Widya Wirawan",
+      ],
+    },
+    {
+      division: "Sie Logistik",
+      members: [
+        "Maheswara (co)",
+        "Ilman Data",
+        "Serly Alkhila",
+        "Deswita A. M",
+        "Alfina M.",
+        "Sania Sallamah",
+        "Muhammad Dimas Taufiqurrohman",
+      ],
+    },
+    {
+      division: "Sie Humas",
+      members: [
+        "Eka Putri R. J (co)",
+        "A Fauzil Adhim F",
+        "Sayid Ubaidillah I",
+        "Kharomah Siska L",
+        "Tia Putri",
+      ],
+    },
+    {
+      division: "Sie Publikasi, Dokumentasi, dan Desain (PDD)",
+      members: [
+        "Qori Resiana (co)",
+        "Febri Dwi S.",
+        "Fatma Putri F",
+        "Suci Shochitafatul",
+        "Erika Putri N.",
+      ],
+    },
+    {
+      division: "Sie Keamanan",
+      members: ["Abid Galih P. (co)", "Wiwin Annisa", "Abdul Muiz L"],
     },
   ];
+
+  const totalMembers = teamMembers.reduce(
+    (acc, team) => acc + team.members.length,
+    0
+  );
+
+  const countDivisionMembers = teamMembers.length;
 
   return (
     <div className="bg-background min-h-screen">
@@ -117,12 +167,10 @@ export default function AboutPage() {
             >
               Tentang Kami
             </Badge>
-            <h1 className="mb-6 font-bold text-4xl md:text-6xl leading-tight">
-              KKN KELOMPOK 12
-              <br />
-              <span className="text-primary-foreground">
-                UNISLA X DESA KETAPANGTELU
-              </span>
+            <h1 className="flex flex-col justify-center items-center gap-5 mb-6 font-bold text-4xl md:text-6xl leading-tight">
+              <span className="text-primary-foreground">KKN KELOMPOK 12</span>
+              <span className="text-primary-foreground text-9xl">X</span>
+              <span className="text-primary-foreground">DESA KETAPANGTELU</span>
             </h1>
             <p className="mb-8 text-white/90 text-xl md:text-2xl leading-relaxed">
               Membangun dan memberdayakan UMKM lokal melalui inovasi teknologi
@@ -131,11 +179,11 @@ export default function AboutPage() {
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5" />
-                <span>15 Mahasiswa</span>
+                <span>{totalMembers} Mahasiswa</span>
               </div>
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5" />
-                <span>6 Divisi</span>
+                <span>{countDivisionMembers} Divisi</span>
               </div>
               <div className="flex items-center gap-2">
                 <Heart className="w-5 h-5" />
