@@ -1,5 +1,6 @@
 "use client";
 
+import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,7 +28,7 @@ import {
 } from "@/components/ui/sheet";
 import { getAllProducts, getCategories, getShuffledProducts } from "@/lib/data";
 import Autoplay from "embla-carousel-autoplay";
-import { Menu, Search, ShoppingBag, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -139,9 +140,13 @@ export default function HomePage() {
 
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <ShoppingBag className="w-6 h-6 text-primary" />
-            <span className="font-bold text-primary text-xl">
-              UMKM KETAPANGTELU
+            <LogoUmkmKetapangtelu />
+            <span className="flex gap-2 font-bold text-primary text-xl">
+              <span>
+                <span className="text-yellow-500">UM</span>
+                <span>KM</span>
+              </span>
+              <span>KETAPANGTELU</span>
             </span>
           </div>
 
@@ -223,6 +228,7 @@ export default function HomePage() {
                         src={product.images[0] || "/placeholder.svg"}
                         alt={product.title}
                         fill
+                        quality={90}
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
