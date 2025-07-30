@@ -1,3 +1,9 @@
+import KeripikPisang1 from "@/public/umkmImagesData/buawik/keripik-pisang-1.jpg";
+import KeripikPisang2 from "@/public/umkmImagesData/buawik/keripik-pisang-2.jpg";
+import KeripikPisang3 from "@/public/umkmImagesData/buawik/keripik-pisang-3.jpg";
+import KeripikPisang4 from "@/public/umkmImagesData/buawik/keripik-pisang-4.jpg";
+import KeripikPisang5 from "@/public/umkmImagesData/buawik/keripik-pisang-5.jpg";
+
 export const buAwik = {
   sellerName: "Bu Awik (Bu Kades)",
   productName: "Kripik Pisang By. Bu Jaguar",
@@ -14,11 +20,11 @@ export const buAwik = {
       description:
         "Nikmati aneka kripik pisang dan kripik pisang lumer dari Bu Jaguar dengan berbagai varian rasa yang lezat dan menggugah selera. Cocok untuk camilan santai maupun oleh-oleh khas desa.",
       images: [
-        "image-url-1.jpg", // WhatsApp Image 2025-07-24 at 17.28.00_a59c0e92
-        "image-url-2.jpg", // WhatsApp Image 2025-07-24 at 17.28.00_e8dd6faa
-        "image-url-3.jpg", // WhatsApp Image 2025-07-24 at 17.32.10_eccca3a2
-        "image-url-4.jpg", // WhatsApp Image 2025-07-24 at 17.34.38_bbe77c6f
-        "image-url-5.jpg", // WhatsApp Image 2025-07-24 at 17.37.31_eae9a3e4
+        KeripikPisang1,
+        KeripikPisang2,
+        KeripikPisang3,
+        KeripikPisang4,
+        KeripikPisang5,
       ],
       link: {
         map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",

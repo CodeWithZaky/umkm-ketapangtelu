@@ -1,3 +1,10 @@
+import Hantaran1 from "@/public/umkmImagesData/titin/hanntaran-1.jpg";
+import Hantaran2 from "@/public/umkmImagesData/titin/hanntaran-2.jpg";
+import Hantaran3 from "@/public/umkmImagesData/titin/hanntaran-3.jpg";
+import Hantaran4 from "@/public/umkmImagesData/titin/hanntaran-4.jpg";
+import Hantaran5 from "@/public/umkmImagesData/titin/hanntaran-5.jpg";
+import NasiKotak from "@/public/umkmImagesData/titin/nasi-kotak.jpg";
+
 export const titin = {
   sellerName: "Titin",
   productName: "Hantaran, Kue Hantaran, Snack Box, & Nasi Kotak",
@@ -14,11 +21,12 @@ export const titin = {
       description:
         "Tersedia aneka paket hantaran, kue spesial, snack box, dan nasi kotak. Cocok untuk kebutuhan hajatan, arisan, acara kantor, dan lainnya. Bisa dipesan sesuai permintaan.",
       images: [
-        "IMG-20250724-WA0009.jpg",
-        "IMG-20250724-WA0013.jpg",
-        "IMG-20250724-WA0015.jpg",
-        "IMG-20250724-WA0008.jpg",
-        "IMG-20250724-WA0018.jpg",
+        Hantaran1,
+        Hantaran2,
+        Hantaran3,
+        Hantaran4,
+        Hantaran5,
+        NasiKotak,
       ],
       link: {
         map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",

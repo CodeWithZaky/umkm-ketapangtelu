@@ -1,3 +1,9 @@
+import Kue1 from "@/public/umkmImagesData/khoirima/kue-1.jpg";
+import Kue2 from "@/public/umkmImagesData/khoirima/kue-2.jpg";
+import Kue3 from "@/public/umkmImagesData/khoirima/kue-3.jpg";
+import Kue4 from "@/public/umkmImagesData/khoirima/kue-4.jpg";
+import Kue5 from "@/public/umkmImagesData/khoirima/kue-5.jpg";
+
 export const khoirima = {
   sellerName: "Khoirima",
   productName: "Jajanan Pasar dan Kue",
@@ -13,13 +19,7 @@ export const khoirima = {
       price: "Rp 2.000 – Rp 2.500",
       description:
         "Tersedia beragam pilihan jajanan pasar dan kue tradisional yang dibuat sesuai pesanan. Cocok untuk acara, hajatan, maupun suguhan harian.",
-      images: [
-        "WhatsApp Image 2025-07-27 at 14.08.11_2dcd51db.jpg",
-        "WhatsApp Image 2025-07-27 at 14.08.12_cb42fc89.jpg",
-        "WhatsApp Image 2025-07-27 at 14.08.13_4f6e793f.jpg",
-        "WhatsApp Image 2025-07-27 at 14.08.13_a4f0fc79.jpg",
-        "WhatsApp Image 2025-07-27 at 14.08.11_7b29e9fd.jpg",
-      ],
+      images: [Kue1, Kue2, Kue3, Kue4, Kue5],
       link: {
         map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
       },

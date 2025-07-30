@@ -1,3 +1,5 @@
+import SeblakPrasamanan from "@/public/umkmImagesData/ifatunhaniah/seblakprasmanan.jpg";
+
 export const ifatunHaniah = {
   sellerName: "Ifatun Hani'ah",
   productName: "Seblak Prasmanan",
@@ -13,9 +15,7 @@ export const ifatunHaniah = {
       price: "Rp 5.000 – Rp 15.000",
       description:
         "Seblak prasmanan khas Soklen yang menggugah selera, tersedia berbagai topping favorit. Harga terjangkau mulai dari Rp 5.000 – Rp 15.000. Cocok dinikmati oleh semua kalangan.",
-      images: [
-        "IMG-20250725-WA0013.jpg", // Ganti dengan URL jika sudah diunggah
-      ],
+      images: [SeblakPrasamanan],
       link: {
         map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
       },

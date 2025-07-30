@@ -1,3 +1,6 @@
+import TerasiJambret1 from "@/public/umkmImagesData/bapakkusen/terasi-1.jpeg";
+import TerasiJambret2 from "@/public/umkmImagesData/bapakkusen/terasi-2.jpeg";
+
 export const bapakKusen = {
   sellerName: "Bapak Kusen",
   productName: "Terasi Jembret",
@@ -13,10 +16,7 @@ export const bapakKusen = {
       price: "Rp 50.000",
       description:
         "Terasi jembret asli Ketapangtelu, terbuat dari bahan alami tanpa pengawet. Renyah dan lezat, cocok untuk camilan atau lauk pendamping.",
-      images: [
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele",
-        "/placeholder.svg?height=400&width=400&text=Ikan+Asap+Lele+2",
-      ],
+      images: [TerasiJambret1, TerasiJambret2],
       link: {
         map: "https://maps.app.goo.gl/NSpv5ci8Bnysqe7B8",
       },

@@ -1,3 +1,6 @@
+import Bonggolan1 from "@/public/umkmImagesData/lailatulmaghfiroh/bonggolan-1.jpg";
+import Bonggolan2 from "@/public/umkmImagesData/lailatulmaghfiroh/bonggolan-2.jpg";
+
 export const lailatulMaghfiroh = {
   sellerName: "Lailatul Maghfiroh",
   productName: "Bonggolan Ikan Bandeng",
@@ -13,10 +16,7 @@ export const lailatulMaghfiroh = {
       price: "Rp 5.000 / pcs",
       description:
         "Bonggolan berukuran besar yang terbuat dari campuran ikan bandeng segar, tepung kanji, bawang putih, penyedap rasa, dan garam. Cocok untuk camilan atau lauk praktis.",
-      images: [
-        "image-url-1.jpg", // Ganti dengan URL gambar asli
-        "image-url-2.jpg",
-      ],
+      images: [Bonggolan2],
       link: {
         map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
       },
@@ -28,10 +28,7 @@ export const lailatulMaghfiroh = {
       price: "Rp 3.000 / pcs",
       description:
         "Bonggolan ukuran kecil dengan rasa gurih khas dari ikan bandeng dan bumbu tradisional. Lezat dinikmati kapan saja.",
-      images: [
-        "image-url-1.jpg", // Ganti dengan URL gambar asli
-        "image-url-2.jpg",
-      ],
+      images: [Bonggolan1],
       link: {
         map: "https://maps.app.goo.gl/EnDeemw2PmuGcBCo6",
       },
