@@ -1,3 +1,4 @@
+import BackToHome from "@/components/back-to-home";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -129,20 +130,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </div>
 
         {/* Main Navbar */}
-        <div className="flex items-center px-4 h-16 container">
-          <Link href="/">
-            <Button variant="ghost" size="sm" className="mr-4">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Kembali
-            </Button>
-          </Link>
-          <div className="flex items-center space-x-2">
-            <ShoppingBag className="w-6 h-6 text-primary" />
-            <span className="font-bold text-primary text-xl">
-              UMKM KETAPANGTELU
-            </span>
-          </div>
-        </div>
+        <BackToHome />
       </nav>
 
       {/* Category Hero - update untuk seller */}

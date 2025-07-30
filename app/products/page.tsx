@@ -1,5 +1,6 @@
 "use client";
 
+import BackToHome from "@/components/back-to-home";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getAllProducts, getCategories } from "@/lib/data";
-import { ArrowLeft, Grid3X3, ShoppingBag, User } from "lucide-react";
+import { Grid3X3, ShoppingBag, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -139,20 +140,7 @@ export default function ProductsPage() {
         </div>
 
         {/* Main Navbar */}
-        <div className="flex items-center px-4 h-16 container">
-          <Link href="/">
-            <Button variant="ghost" size="sm" className="mr-4">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Beranda
-            </Button>
-          </Link>
-          <div className="flex items-center space-x-2">
-            <ShoppingBag className="w-6 h-6 text-primary" />
-            <span className="font-bold text-primary text-xl">
-              UMKM KETAPANGTELU
-            </span>
-          </div>
-        </div>
+        <BackToHome />
       </nav>
 
       {/* Hero Section */}

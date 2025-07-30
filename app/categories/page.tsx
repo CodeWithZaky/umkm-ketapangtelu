@@ -1,4 +1,4 @@
-import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
+import BackToHome from "@/components/back-to-home";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getCategories, getRandomProducts } from "@/lib/data";
-import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -59,7 +58,7 @@ export default function CategoriesPage() {
         </div>
 
         {/* Main Navbar */}
-        <div className="flex items-center px-4 h-16 container">
+        {/* <div className="flex items-center px-4 h-16 container">
           <Link href="/">
             <Button variant="ghost" size="sm" className="mr-4">
               <ArrowLeft className="mr-2 w-4 h-4" />
@@ -72,7 +71,8 @@ export default function CategoriesPage() {
               UMKM KETAPANGTELU
             </span>
           </div>
-        </div>
+        </div> */}
+        <BackToHome />
       </nav>
 
       {/* Hero Section */}

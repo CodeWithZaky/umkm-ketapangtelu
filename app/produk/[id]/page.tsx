@@ -1,10 +1,11 @@
+import BackToHome from "@/components/back-to-home";
 import DetailProductImage from "@/components/detail-product-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getAllProducts, getProductsByCategory } from "@/lib/data";
-import { ArrowLeft, Home, MapPin, Phone, User } from "lucide-react";
+import { Home, MapPin, Phone, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -78,17 +79,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
 
         {/* Main Navbar */}
-        <div className="flex items-center px-4 h-16 container">
-          <Link href="/">
-            <Button variant="ghost" size="sm" className="mr-4">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Kembali
-            </Button>
-          </Link>
-          <span className="font-bold text-primary text-xl">
-            UMKM KETAPANGTELU
-          </span>
-        </div>
+        <BackToHome />
       </nav>
 
       <div className="px-4 py-8 container">
