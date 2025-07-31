@@ -40,7 +40,7 @@ function DetailProductImage({ product }: any) {
                   <div className="absolute inset-0 bg-black opacity-30 backdrop-blur-lg"></div>{" "}
                   {/* Overlay lebih gelap */}
                   <div className="absolute inset-0 flex justify-center items-center">
-                    <span className="font-bold text-white text-lg">
+                    <span className="font-bold text-white text-xs md:text-lg">
                       {`--Dilihat--`}
                     </span>
                   </div>
