@@ -30,8 +30,8 @@ type UMKMData = {
 }[];
 
 export const umkmData: UMKMData = [
-  bapakKusen,
   buAwik,
+  bapakKusen,
   ifatunHaniah,
   khoirima,
   lailatulMaghfiroh,
