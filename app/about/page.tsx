@@ -2,6 +2,7 @@ import BackToHome from "@/components/back-to-home";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Fotbar from "@/public/fotbar.jpeg";
 import {
   ArrowRight,
   Award,
@@ -172,7 +173,7 @@ export default function AboutPage() {
         {/* Animated Background */}
         <div className="absolute inset-0">
           <Image
-            src="/placeholder.svg?height=800&width=1400&text=KKN+Team+Collaboration"
+            src={Fotbar}
             alt="KKN Kelompok 12 Team Photo"
             fill
             className="object-cover"
