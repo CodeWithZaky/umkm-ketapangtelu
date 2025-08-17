@@ -17,16 +17,16 @@ import Link from "next/link";
 export default function ContactPage() {
   const contactPersons = [
     {
-      name: "Ahmad Rizki Pratama",
-      role: "Koordinator KKN",
-      phone: "+62 812-3456-7890",
-      whatsapp: "https://wa.me/6281234567890",
+      name: "Fadhil",
+      role: "Ketua Karangtaruna",
+      phone: "+62 813-5805-3354",
+      whatsapp: "https://wa.me/6281358053354",
     },
     {
-      name: "Siti Nurhaliza",
-      role: "Koordinator UMKM",
-      phone: "+62 813-9876-5432",
-      whatsapp: "https://wa.me/6281398765432",
+      name: "A. Zaky Ubaidillah",
+      role: "Koordinator KKN",
+      phone: "+62 857-4953-4548",
+      whatsapp: "https://wa.me/6285749534548",
     },
   ];
 
