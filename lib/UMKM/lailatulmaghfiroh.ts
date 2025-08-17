@@ -4,7 +4,7 @@ import Bonggolan2 from "@/public/umkmImagesData/lailatulmaghfiroh/bonggolan-2.jp
 export const lailatulMaghfiroh = {
   sellerName: "Lailatul Maghfiroh",
   productName: "Bonggolan Ikan Bandeng",
-  phoneNumber: "085730043776",
+  phoneNumber: "85730043776",
   subVillage: "Pupuk",
   address:
     "Dusun Pupuk, RT. 02 RW. 03, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

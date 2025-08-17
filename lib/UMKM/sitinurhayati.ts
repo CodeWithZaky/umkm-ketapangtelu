@@ -17,7 +17,7 @@ import KerupukSamilerMatang3 from "@/public/umkmImagesData/sitinurhayati/kerupuk
 export const sitinurhayati = {
   sellerName: "Siti Nur Hayati",
   productName: "Kerupuk & Ikan Asap",
-  phoneNumber: "086888666222",
+  phoneNumber: "85812353332",
   subVillage: "Suklen",
   address:
     "RT 03 RW 04, Dusun Suklen, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

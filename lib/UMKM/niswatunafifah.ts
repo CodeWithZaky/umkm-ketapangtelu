@@ -5,7 +5,7 @@ import KerupukIkan3 from "@/public/umkmImagesData/niswatunafifah/kerupuk-ikan-3.
 export const niswatunafifah = {
   sellerName: "Niswatun Afifah",
   productName: "Kerupuk Ikan",
-  phoneNumber: "085732615278",
+  phoneNumber: "85732615278",
   subVillage: "Pupuk",
   address:
     "Dusun Pupuk, RT 02 RW 03, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

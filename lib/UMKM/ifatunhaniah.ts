@@ -3,7 +3,7 @@ import SeblakPrasamanan from "@/public/umkmImagesData/ifatunhaniah/seblakprasman
 export const ifatunHaniah = {
   sellerName: "Ifatun Hani'ah",
   productName: "Seblak Prasmanan",
-  phoneNumber: "085731272350",
+  phoneNumber: "85731272350",
   subVillage: "Soklen",
   address:
     "Dusun Soklen, RT 01 RW 04, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

@@ -8,7 +8,7 @@ import NasiKotak from "@/public/umkmImagesData/titin/nasi-kotak.jpg";
 export const titin = {
   sellerName: "Titin",
   productName: "Hantaran, Kue Hantaran, Snack Box, & Nasi Kotak",
-  phoneNumber: "0812-4973-0455",
+  phoneNumber: "81249730455",
   subVillage: "Ketapang",
   address:
     "RT. 02 RW. 02, Dusun Ketapang, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

@@ -139,9 +139,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 
                   <div className="flex gap-2">
                     <Link
-                      href={`https://wa.me/62${product.seller.phone.substring(
-                        1
-                      )}`}
+                      href={`https://wa.me/62${product.seller.phone}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

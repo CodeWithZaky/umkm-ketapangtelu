@@ -7,7 +7,7 @@ import KeripikUsus5 from "@/public/umkmImagesData/sitifatimah/keripik-usus-5.jpe
 export const sitiFatimah = {
   sellerName: "Siti Fatimah",
   productName: "Kripik Usus",
-  phoneNumber: "085735421016",
+  phoneNumber: "85735421016",
   subVillage: "Suklen",
   address:
     "RT. 01 RW. 04, Dusun Suklen, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

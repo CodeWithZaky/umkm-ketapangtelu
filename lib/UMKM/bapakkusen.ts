@@ -4,7 +4,7 @@ import TerasiJambret2 from "@/public/umkmImagesData/bapakkusen/terasi-2.jpeg";
 export const bapakKusen = {
   sellerName: "Bapak Kusen",
   productName: "Terasi Jembret",
-  phoneNumber: "082223379573",
+  phoneNumber: "82223379573",
   subVillage: "Ketapang",
   address:
     "Dusun Ketapang, RT.02 RW.01, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

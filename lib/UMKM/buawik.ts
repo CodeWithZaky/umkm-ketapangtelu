@@ -7,7 +7,7 @@ import KeripikPisang5 from "@/public/umkmImagesData/buawik/keripik-pisang-5.jpeg
 export const buAwik = {
   sellerName: "Bu Awik Bu Kades",
   productName: "Kripik Pisang By. Bu Jaguar",
-  phoneNumber: "+62 823-3680-3102",
+  phoneNumber: "82336803102",
   subVillage: "Ketapang",
   address:
     "Dusun Ketapang, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

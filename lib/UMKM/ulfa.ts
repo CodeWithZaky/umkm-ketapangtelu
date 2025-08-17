@@ -4,7 +4,7 @@ import IkanAsapSumbro from "@/public/umkmImagesData/ulfa/ikan-asap-sumbro.jpeg";
 export const ulfa = {
   sellerName: "Ulfa",
   productName: "Ikan Asap",
-  phoneNumber: "085850180723",
+  phoneNumber: "85850180723",
   subVillage: "Pupuk",
   address:
     "Dusun Pupuk, RT. 02 RW. 03, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",

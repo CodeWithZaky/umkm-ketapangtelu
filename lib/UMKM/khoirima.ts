@@ -7,7 +7,7 @@ import Kue5 from "@/public/umkmImagesData/khoirima/kue-5.jpeg";
 export const khoirima = {
   sellerName: "Khoirima",
   productName: "Jajanan Pasar dan Kue",
-  phoneNumber: "085706078149",
+  phoneNumber: "85706078149",
   subVillage: "Mediyeng",
   address:
     "RT. 02 RW. 04, Dusun Mediyeng, Desa Ketapang Telu, Kec. Karangbinangun, Kab. Lamongan",
