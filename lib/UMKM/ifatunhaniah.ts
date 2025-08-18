@@ -4,7 +4,7 @@ export const ifatunHaniah = {
   sellerName: "Ifatun Hani'ah",
   productName: "Seblak Prasmanan",
   phoneNumber: "85731272350",
-  subVillage: "Soklen",
+  subVillage: "Suklen",
   address:
     "Dusun Soklen, RT 01 RW 04, Desa Ketapangtelu, Kec. Karangbinangun, Kab. Lamongan",
   productTagline: "Seblak Prasmanan – Pedas, Nikmat, dan Variatif!",
