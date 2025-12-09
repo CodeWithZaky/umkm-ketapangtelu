@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   description:
     "Website resmi UMKM Ketapangtelu menyediakan ikan asap, kerupuk ikan, dan terasi berkualitas tinggi dari produksi lokal.",
   keywords: "UMKM, Ketapangtelu, ikan asap, kerupuk ikan, terasi, produk lokal",
-  generator: "v0.dev",
 };
 
 export default function RootLayout({
