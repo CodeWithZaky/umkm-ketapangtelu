@@ -37,53 +37,9 @@ export default function ProductPage({ params }: ProductPageProps) {
     .slice(0, 4);
 
   return (
-    <div className="bg-background min-h-screen">
-      {/* Navigation */}
-      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
-        {/* Desktop Navigation */}
-        <div className="hidden md:block border-b border-border/40">
-          <div className="px-4 container">
-            <div className="flex justify-center items-center space-x-8 h-12">
-              <Link
-                href="/"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Beranda
-              </Link>
-              <Link
-                href="/about"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Tentang
-              </Link>
-              <Link
-                href="/categories"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Kategori
-              </Link>
-              <Link
-                href="/products"
-                className="font-medium text-primary text-sm transition-colors"
-              >
-                Produk
-              </Link>
-              <Link
-                href="/contact"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Kontak
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Navbar */}
-        <BackToHome />
-      </nav>
-
-      <div className="px-4 py-8 container">
-        <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
+    <div className="min-h-screen bg-background">
+      <div className="container px-4 py-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* Product Images */}
           <DetailProductImage product={product} />
 
@@ -93,8 +49,8 @@ export default function ProductPage({ params }: ProductPageProps) {
               <Badge variant="secondary" className="mb-2">
                 {product.category}
               </Badge>
-              <h1 className="mb-4 font-bold text-3xl">{product.title}</h1>
-              <p className="mb-4 font-bold text-primary text-3xl">
+              <h1 className="mb-4 text-3xl font-bold">{product.title}</h1>
+              <p className="mb-4 text-3xl font-bold text-primary">
                 {product.price}
               </p>
             </div>
@@ -102,8 +58,8 @@ export default function ProductPage({ params }: ProductPageProps) {
             <Separator />
 
             <div>
-              <h2 className="mb-3 font-semibold text-xl">Deskripsi Produk</h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <h2 className="mb-3 text-xl font-semibold">Deskripsi Produk</h2>
+              <p className="leading-relaxed text-muted-foreground">
                 {product.description}
               </p>
             </div>
@@ -112,26 +68,26 @@ export default function ProductPage({ params }: ProductPageProps) {
 
             {/* Seller Information */}
             <div>
-              <h2 className="mb-4 font-semibold text-xl">Informasi Penjual</h2>
+              <h2 className="mb-4 text-xl font-semibold">Informasi Penjual</h2>
               <Card className="p-4">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <User className="w-5 h-5 text-primary" />
+                    <User className="h-5 w-5 text-primary" />
                     <div>
                       <p className="font-semibold">{product.seller.name}</p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-sm text-muted-foreground">
                         {product.seller.tagline}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <Home className="w-5 h-5 text-muted-foreground" />
+                    <Home className="h-5 w-5 text-muted-foreground" />
                     <div>
-                      <p className="font-medium text-sm">
+                      <p className="text-sm font-medium">
                         Dusun {product.seller.subVillage}
                       </p>
-                      <p className="text-muted-foreground text-xs">
+                      <p className="text-xs text-muted-foreground">
                         {product.seller.address}
                       </p>
                     </div>
@@ -144,7 +100,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                       rel="noopener noreferrer"
                     >
                       <Button className="flex-1">
-                        <Phone className="mr-2 w-4 h-4" />
+                        <Phone className="mr-2 h-4 w-4" />
                         WhatsApp
                       </Button>
                     </Link>
@@ -157,7 +113,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                         variant="outline"
                         className="flex-1 bg-transparent"
                       >
-                        <MapPin className="mr-2 w-4 h-4" />
+                        <MapPin className="mr-2 h-4 w-4" />
                         Lokasi
                       </Button>
                     </Link>
@@ -200,32 +156,32 @@ export default function ProductPage({ params }: ProductPageProps) {
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-12">
-            <h2 className="mb-6 font-bold text-2xl">Produk Sejenis</h2>
-            <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <h2 className="mb-6 text-2xl font-bold">Produk Sejenis</h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
                   href={`/produk/${relatedProduct.id}`}
                 >
-                  <Card className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer">
+                  <Card className="group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <CardHeader className="p-0">
-                      <div className="relative rounded-t-lg h-32 overflow-hidden">
+                      <div className="relative h-32 overflow-hidden rounded-t-lg">
                         <Image
                           src={relatedProduct.images[0] || "/placeholder.svg"}
                           alt={relatedProduct.title}
                           fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
                         />
                       </div>
                     </CardHeader>
                     <CardContent className="p-3">
-                      <CardTitle className="mb-1 text-sm line-clamp-2">
+                      <CardTitle className="mb-1 line-clamp-2 text-sm">
                         {relatedProduct.title}
                       </CardTitle>
-                      <p className="mb-1 font-bold text-primary text-sm">
+                      <p className="mb-1 text-sm font-bold text-primary">
                         {relatedProduct.price}
                       </p>
-                      <p className="text-muted-foreground text-xs">
+                      <p className="text-xs text-muted-foreground">
                         {relatedProduct.seller.name}
                       </p>
                     </CardContent>

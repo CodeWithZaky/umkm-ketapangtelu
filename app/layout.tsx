@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type React from "react";
 import "./globals.css";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import { SearchProvider } from "@/context/search-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={inter.className}>
-        <main className="flex justify-center items-center">{children}</main>
+      <body
+        className={`flex flex-col items-center justify-center ${inter.className}`}
+      >
+        <SearchProvider>
+          <Navbar />
+          <main className="flex items-center justify-center">{children}</main>
+          <Footer />
+        </SearchProvider>
       </body>
     </html>
   );
