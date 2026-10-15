@@ -1,7 +1,11 @@
 "use client";
 
-import Footer from "@/components/footer";
-import LogoUmkmKetapangtelu from "@/components/logo-umkm-ketapangtelu";
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
+import { Search } from "lucide-react";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,249 +21,72 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import { Input } from "@/components/ui/input";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { getAllProducts, getCategories, getShuffledProducts } from "@/lib/data";
-import Autoplay from "embla-carousel-autoplay";
-import { Menu, Search, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useSearch } from "@/context/search-context";
 
 export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const { searchQuery, clearSearch } = useSearch();
   const [visibleCategories, setVisibleCategories] = useState(3);
   const [visibleProducts, setVisibleProducts] = useState(8);
-  const [api, setApi] = useState<CarouselApi>();
 
   const allProducts = useMemo(() => getAllProducts(), []);
   const categories = useMemo(() => getCategories(), []);
   const shuffledProducts = useMemo(() => getShuffledProducts(), []);
 
-  // Auto-play carousel setup
-  useEffect(() => {
-    if (!api) return;
-
-    const autoplay = Autoplay({ delay: 4000, stopOnInteraction: false });
-
-    // Enable infinite loop
-    api.on("select", () => {
-      // This ensures infinite scrolling
-    });
-  }, [api]);
-
-  // Filter products based on search query
   const filteredProducts = useMemo(() => {
     if (!searchQuery.trim()) return allProducts;
-    return allProducts.filter((product) =>
-      product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    const q = searchQuery.toLowerCase();
+    return allProducts.filter(
+      (p) =>
+        p.title.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q),
     );
   }, [searchQuery, allProducts]);
 
-  // Get featured products for carousel (first 6 products)
   const featuredProducts = useMemo(
     () => allProducts.slice(0, 6),
-    [allProducts]
+    [allProducts],
   );
 
-  const navigationItems = [
-    { name: "Beranda", href: "/" },
-    { name: "Tentang", href: "/about" },
-    { name: "Kategori", href: "/categories" },
-    { name: "Produk", href: "/products" },
-    { name: "Kontak", href: "/contact" },
-  ];
-
-  const handleLoadMoreCategories = () => {
-    setVisibleCategories((prev) => Math.min(prev + 3, categories.length));
-  };
-
-  const handleLoadMoreProducts = () => {
-    setVisibleProducts((prev) => Math.min(prev + 8, shuffledProducts.length));
-  };
-
   return (
-    <div className="bg-background min-h-screen">
-      {/* Navbar */}
-      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
-        {/* Desktop Navigation */}
-        <div className="hidden md:block border-b border-border/40">
-          <div className="px-4 container">
-            <div className="flex justify-center items-center space-x-8 h-12">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Main Navbar */}
-        <div className="flex justify-between items-center px-4 h-16 container">
-          {/* Mobile Menu */}
-          <div className="md:hidden">
-            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="sm">
-                  <Menu className="w-5 h-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px]">
-                <SheetHeader>
-                  <SheetTitle className="text-left">Menu</SheetTitle>
-                </SheetHeader>
-                <div className="flex flex-col space-y-4 mt-6">
-                  {navigationItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="py-2 font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-                      onClick={() => setIsSheetOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-
-          {/* Logo */}
-          {/* <div className="flex items-center space-x-2">
-            <LogoUmkmKetapangtelu />
-            <span className="flex gap-2 font-bold text-primary text-xl">
-              <span>
-                <span className="text-yellow-500">UM</span>
-                <span>KM</span>
-              </span>
-              <span>KETAPANGTELU</span>
-            </span>
-          </div> */}
-          <div className="flex items-center space-x-2">
-            {!isSearchExpanded && (
-              <div className="flex items-center space-x-2 transition-all duration-300">
-                <LogoUmkmKetapangtelu />
-                <span className="flex md:flex-row flex-col gap-0 md:gap-2 font-bold text-primary text-xl">
-                  <span>
-                    <span className="text-yellow-500">UM</span>
-                    <span>KM</span>
-                  </span>
-                  <span>KETAPANGTELU</span>
-                </span>
-              </div>
-            )}
-          </div>
-          {/* Search Bar */}
-          <div className="flex items-center">
-            {/* Desktop Search */}
-            <div className="hidden md:block relative w-full max-w-md">
-              <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
-              <Input
-                placeholder="Cari produk..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-
-            {/* Mobile Search */}
-            <div className="md:hidden flex items-center">
-              {!isSearchExpanded ? (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsSearchExpanded(true)}
-                >
-                  <Search className="w-5 h-5" />
-                </Button>
-              ) : (
-                <div className="slide-in-from-right-2 flex items-center space-x-2 animate-in duration-200">
-                  <div className="relative w-full">
-                    <Search className="top-1/2 left-3 absolute w-4 h-4 text-muted-foreground -translate-y-1/2" />
-                    <Input
-                      placeholder="Cari produk..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 text-sm"
-                      autoFocus
-                    />
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => {
-                      setIsSearchExpanded(false);
-                      setSearchQuery("");
-                    }}
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-background">
       {/* Hero Carousel */}
       {!searchQuery && (
-        <section className="px-4 py-8 container">
+        <section className="container px-4 py-8">
           <Carousel
             className="w-full"
-            setApi={setApi}
-            plugins={[
-              Autoplay({
-                delay: 4000,
-                stopOnInteraction: false,
-              }),
-            ]}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
+            plugins={[Autoplay({ delay: 4000, stopOnInteraction: false })]}
+            opts={{ align: "start", loop: true }}
           >
             <CarouselContent>
               {featuredProducts.map((product, index) => (
                 <CarouselItem key={index}>
                   <Link href={`/produk/${product.id}`}>
-                    <div className="group relative rounded-lg h-[400px] overflow-hidden cursor-pointer">
+                    <div className="group relative h-[400px] cursor-pointer overflow-hidden rounded-lg">
                       <Image
                         src={product.images[0] || "/placeholder.svg"}
                         alt={product.title}
                         fill
                         quality={90}
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                      <div className="bottom-6 left-6 absolute text-white">
+                      <div className="absolute bottom-6 left-6 text-white">
                         <Badge
                           variant="secondary"
-                          className="bg-white/20 mb-2 border-white/30 text-white"
+                          className="mb-2 border-white/30 bg-white/20 text-white"
                         >
                           {product.category}
                         </Badge>
-                        <h2 className="mb-2 font-bold text-3xl">
+                        <h2 className="mb-2 text-3xl font-bold">
                           {product.title}
                         </h2>
-                        <p className="mb-2 font-semibold text-primary-foreground text-lg">
+                        <p className="mb-2 text-lg font-semibold text-primary-foreground">
                           {product.price}
                         </p>
-                        <p className="opacity-90 max-w-md text-sm line-clamp-2">
+                        <p className="line-clamp-2 max-w-md text-sm opacity-90">
                           {product.description}
                         </p>
                       </div>
@@ -274,28 +101,28 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Category Cards - sekarang menampilkan UMKM */}
+      {/* UMKM */}
       {!searchQuery && (
-        <section className="px-4 py-8 container">
-          <h2 className="mb-6 font-bold text-2xl text-center">
+        <section className="container px-4 py-8">
+          <h2 className="mb-6 text-center text-2xl font-bold">
             UMKM Ketapangtelu
           </h2>
-          <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {categories.slice(0, visibleCategories).map((umkm) => (
               <Link key={umkm.id} href={`/category/${umkm.id}`}>
-                <Card className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer">
+                <Card className="group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                   <CardHeader className="p-0">
-                    <div className="relative rounded-t-lg h-48 overflow-hidden">
+                    <div className="relative h-48 overflow-hidden rounded-t-lg">
                       <Image
                         src={umkm.image || "/placeholder.svg"}
                         alt={umkm.name}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
                   </CardHeader>
                   <CardContent className="p-4">
-                    <CardTitle className="flex justify-between items-center">
+                    <CardTitle className="flex items-center justify-between">
                       {umkm.name}
                       <Badge variant="secondary">{umkm.count} produk</Badge>
                     </CardTitle>
@@ -310,12 +137,14 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-
-          {/* Load More Categories Button */}
           {visibleCategories < categories.length && (
             <div className="mt-8 text-center">
               <Button
-                onClick={handleLoadMoreCategories}
+                onClick={() =>
+                  setVisibleCategories((p) =>
+                    Math.min(p + 3, categories.length),
+                  )
+                }
                 variant="outline"
                 className="bg-transparent px-8"
               >
@@ -326,46 +155,46 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Products Grid */}
-      <section className="px-4 py-8 container">
-        <h2 className="mb-6 font-bold text-2xl text-center">
+      {/* Products */}
+      <section className="container px-4 py-8">
+        <h2 className="mb-6 text-center text-2xl font-bold">
           {searchQuery ? `Hasil Pencarian "${searchQuery}"` : "Produk Pilihan"}
         </h2>
 
         {filteredProducts.length === 0 ? (
           <div className="py-12 text-center">
-            <div className="flex justify-center items-center bg-muted mx-auto mb-6 rounded-full w-24 h-24">
-              <Search className="w-12 h-12 text-muted-foreground" />
+            <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-muted">
+              <Search className="h-12 w-12 text-muted-foreground" />
             </div>
             <p className="text-muted-foreground">
               Tidak ada produk yang ditemukan untuk "{searchQuery}".
             </p>
             <Button
               variant="outline"
-              className="bg-transparent mt-4"
-              onClick={() => setSearchQuery("")}
+              className="mt-4 bg-transparent"
+              onClick={clearSearch}
             >
               Hapus Pencarian
             </Button>
           </div>
         ) : (
           <>
-            <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {(searchQuery
                 ? filteredProducts
                 : shuffledProducts.slice(0, visibleProducts)
               ).map((product) => (
                 <Link key={product.id} href={`/produk/${product.id}`}>
-                  <Card className="group hover:shadow-xl h-full transition-all hover:-translate-y-2 duration-300 cursor-pointer">
+                  <Card className="group h-full cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                     <CardHeader className="p-0">
-                      <div className="relative rounded-t-lg h-48 overflow-hidden">
+                      <div className="relative h-48 overflow-hidden rounded-t-lg">
                         <Image
                           src={product.images[0] || "/placeholder.svg"}
                           alt={product.title}
                           fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
                         />
-                        <div className="top-2 right-2 absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                           <Badge
                             variant="secondary"
                             className="bg-white/90 text-primary"
@@ -375,14 +204,14 @@ export default function HomePage() {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="flex flex-col flex-grow p-4">
-                      <CardTitle className="mb-2 text-lg line-clamp-2">
+                    <CardContent className="flex flex-grow flex-col p-4">
+                      <CardTitle className="mb-2 line-clamp-2 text-lg">
                         {product.title}
                       </CardTitle>
-                      <p className="mb-2 font-bold text-primary text-xl">
+                      <p className="mb-2 text-xl font-bold text-primary">
                         {product.price}
                       </p>
-                      <CardDescription className="flex-grow line-clamp-3">
+                      <CardDescription className="line-clamp-3 flex-grow">
                         {product.description}
                       </CardDescription>
                     </CardContent>
@@ -390,12 +219,14 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
-
-            {/* Load More Products Button */}
             {!searchQuery && visibleProducts < shuffledProducts.length && (
               <div className="mt-8 text-center">
                 <Button
-                  onClick={handleLoadMoreProducts}
+                  onClick={() =>
+                    setVisibleProducts((p) =>
+                      Math.min(p + 8, shuffledProducts.length),
+                    )
+                  }
                   variant="outline"
                   className="bg-transparent px-8"
                 >
@@ -407,9 +238,6 @@ export default function HomePage() {
           </>
         )}
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

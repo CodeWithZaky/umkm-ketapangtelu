@@ -120,7 +120,7 @@ export default function AboutPage() {
 
   const totalMembers = teamMembers.reduce(
     (acc, team) => acc + team.members.length,
-    0
+    0,
   );
   const countDivisionMembers = teamMembers.length;
 
@@ -136,52 +136,9 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="bg-background min-h-screen">
-      {/* Navigation */}
-      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
-        {/* Desktop Navigation */}
-        <div className="hidden md:block border-b border-border/40">
-          <div className="px-4 container">
-            <div className="flex justify-center items-center space-x-8 h-12">
-              <Link
-                href="/"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Beranda
-              </Link>
-              <Link
-                href="/about"
-                className="font-medium text-primary text-sm transition-colors"
-              >
-                Tentang
-              </Link>
-              <Link
-                href="/categories"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Kategori
-              </Link>
-              <Link
-                href="/products"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Produk
-              </Link>
-              <Link
-                href="/contact"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Kontak
-              </Link>
-            </div>
-          </div>
-        </div>
-        {/* Main Navbar */}
-        <BackToHome />
-      </nav>
-
+    <div className="min-h-screen bg-background">
       {/* Hero Section with Enhanced Background */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative overflow-hidden py-32">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <Image
@@ -194,43 +151,43 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/70 to-black/90" />
 
           {/* Floating Elements */}
-          <div className="top-20 left-10 absolute bg-primary/20 blur-xl rounded-full w-20 h-20 animate-pulse" />
-          <div className="right-10 bottom-20 absolute bg-blue-500/20 blur-xl rounded-full w-32 h-32 animate-pulse delay-1000" />
-          <div className="top-1/2 left-1/4 absolute bg-purple-500/20 blur-xl rounded-full w-16 h-16 animate-pulse delay-500" />
+          <div className="absolute left-10 top-20 h-20 w-20 animate-pulse rounded-full bg-primary/20 blur-xl" />
+          <div className="absolute bottom-20 right-10 h-32 w-32 animate-pulse rounded-full bg-blue-500/20 blur-xl delay-1000" />
+          <div className="absolute left-1/4 top-1/2 h-16 w-16 animate-pulse rounded-full bg-purple-500/20 blur-xl delay-500" />
         </div>
 
         {/* Enhanced Content */}
-        <div className="relative px-4 container">
-          <div className="mx-auto max-w-5xl text-white text-center">
+        <div className="container relative px-4">
+          <div className="mx-auto max-w-5xl text-center text-white">
             <div className="animate-fade-in-up">
               <Badge
                 variant="secondary"
-                className="bg-white/10 backdrop-blur-sm mb-8 px-6 py-2 border-white/20 text-white text-lg"
+                className="mb-8 border-white/20 bg-white/10 px-6 py-2 text-lg text-white backdrop-blur-sm"
               >
-                <Sparkles className="mr-2 w-4 h-4" />
+                <Sparkles className="mr-2 h-4 w-4" />
                 Tentang Kami
               </Badge>
             </div>
 
             <div className="animate-fade-in-up delay-200">
-              <h1 className="flex flex-col justify-center items-center gap-8 mb-8 font-bold leading-tight">
-                <span className="bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent text-4xl md:text-6xl lg:text-7xl">
+              <h1 className="mb-8 flex flex-col items-center justify-center gap-8 font-bold leading-tight">
+                <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-4xl text-transparent md:text-6xl lg:text-7xl">
                   KKN KELOMPOK 12
                 </span>
                 <div className="relative">
-                  <span className="bg-clip-text bg-gradient-to-r from-primary to-primary/70 font-black text-transparent text-6xl md:text-8xl lg:text-9xl">
+                  <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-6xl font-black text-transparent md:text-8xl lg:text-9xl">
                     ✕
                   </span>
-                  <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full" />
+                  <div className="absolute inset-0 rounded-full bg-primary/20 blur-2xl" />
                 </div>
-                <span className="bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent text-3xl md:text-5xl lg:text-6xl">
+                <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-3xl text-transparent md:text-5xl lg:text-6xl">
                   DESA KETAPANGTELU
                 </span>
               </h1>
             </div>
 
             <div className="animate-fade-in-up delay-400">
-              <p className="mx-auto mb-12 max-w-4xl text-white/90 text-xl md:text-2xl lg:text-3xl leading-relaxed">
+              <p className="mx-auto mb-12 max-w-4xl text-xl leading-relaxed text-white/90 md:text-2xl lg:text-3xl">
                 Membangun dan memberdayakan UMKM lokal melalui{" "}
                 <span className="font-semibold text-primary">
                   inovasi teknologi
@@ -243,16 +200,16 @@ export default function AboutPage() {
             </div>
 
             <div className="animate-fade-in-up delay-600">
-              <div className="gap-6 grid grid-cols-2 md:grid-cols-4 mx-auto max-w-3xl">
+              <div className="mx-auto grid max-w-3xl grid-cols-2 gap-6 md:grid-cols-4">
                 {achievements.map((achievement, index) => (
                   <div
                     key={index}
-                    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 border border-white/20 rounded-2xl hover:scale-105 transition-all duration-300"
+                    className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
                   >
                     <achievement.icon
-                      className={`w-8 h-8 mx-auto mb-3 ${achievement.color}`}
+                      className={`mx-auto mb-3 h-8 w-8 ${achievement.color}`}
                     />
-                    <span className="block font-medium text-sm md:text-base">
+                    <span className="block text-sm font-medium md:text-base">
                       {achievement.label}
                     </span>
                   </div>
@@ -265,19 +222,19 @@ export default function AboutPage() {
 
       {/* Enhanced Mission & Vision */}
       <section className="bg-gradient-to-br from-muted/30 to-muted/10 py-20">
-        <div className="px-4 container">
-          <div className="gap-12 grid grid-cols-1 lg:grid-cols-2 mx-auto max-w-7xl">
-            <Card className="group bg-gradient-to-br from-white to-gray-50 shadow-xl hover:shadow-2xl p-8 border-none transition-all hover:-translate-y-2 duration-500">
+        <div className="container px-4">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-2">
+            <Card className="group border-none bg-gradient-to-br from-white to-gray-50 p-8 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
               <CardHeader className="pb-8 text-center">
-                <div className="flex justify-center items-center bg-gradient-to-br from-primary/20 to-primary/10 mx-auto mb-6 rounded-2xl w-20 h-20 group-hover:scale-110 transition-transform duration-300">
-                  <Target className="w-10 h-10 text-primary" />
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 transition-transform duration-300 group-hover:scale-110">
+                  <Target className="h-10 w-10 text-primary" />
                 </div>
-                <CardTitle className="bg-clip-text bg-gradient-to-r from-primary to-primary/70 font-bold text-transparent text-3xl">
+                <CardTitle className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-3xl font-bold text-transparent">
                   Visi Kami
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <p className="text-lg leading-relaxed text-muted-foreground">
                   Menjadi{" "}
                   <span className="font-semibold text-primary">katalis</span>{" "}
                   dalam pengembangan UMKM Desa Ketapangtelu yang berkelanjutan,
@@ -287,12 +244,12 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="group bg-gradient-to-br from-white to-gray-50 shadow-xl hover:shadow-2xl p-8 border-none transition-all hover:-translate-y-2 duration-500">
+            <Card className="group border-none bg-gradient-to-br from-white to-gray-50 p-8 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
               <CardHeader className="pb-8 text-center">
-                <div className="flex justify-center items-center bg-gradient-to-br from-red-500/20 to-pink-500/10 mx-auto mb-6 rounded-2xl w-20 h-20 group-hover:scale-110 transition-transform duration-300">
-                  <Heart className="w-10 h-10 text-red-500" />
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500/20 to-pink-500/10 transition-transform duration-300 group-hover:scale-110">
+                  <Heart className="h-10 w-10 text-red-500" />
                 </div>
-                <CardTitle className="bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 font-bold text-transparent text-3xl">
+                <CardTitle className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-3xl font-bold text-transparent">
                   Misi Kami
                 </CardTitle>
               </CardHeader>
@@ -308,8 +265,8 @@ export default function AboutPage() {
                       key={index}
                       className="group/item flex items-start gap-4"
                     >
-                      <div className="flex-shrink-0 bg-gradient-to-r from-primary to-primary/70 mt-2 rounded-full w-3 h-3 group-hover/item:scale-125 transition-transform duration-200" />
-                      <span className="group-hover/item:text-foreground text-lg leading-relaxed transition-colors duration-200">
+                      <div className="mt-2 h-3 w-3 flex-shrink-0 rounded-full bg-gradient-to-r from-primary to-primary/70 transition-transform duration-200 group-hover/item:scale-125" />
+                      <span className="text-lg leading-relaxed transition-colors duration-200 group-hover/item:text-foreground">
                         {mission}
                       </span>
                     </li>
@@ -323,7 +280,7 @@ export default function AboutPage() {
 
       {/* Enhanced Team Credits */}
       <section className="py-20">
-        <div className="px-4 container">
+        <div className="container px-4">
           <div className="mb-16 text-center">
             <Badge
               variant="outline"
@@ -331,28 +288,28 @@ export default function AboutPage() {
             >
               Tim Terbaik Kami
             </Badge>
-            <h2 className="bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-6 font-bold text-transparent text-4xl md:text-5xl">
+            <h2 className="mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
               Tim KKN Kelompok 12
             </h2>
-            <p className="mx-auto max-w-3xl text-muted-foreground text-xl leading-relaxed">
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
               Mahasiswa UNISLA yang berdedikasi untuk memajukan UMKM Desa
               Ketapangtelu dengan semangat kolaborasi dan inovasi
             </p>
           </div>
 
-          <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto max-w-8xl">
+          <div className="max-w-8xl mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {teamMembers.map((team, index) => (
               <Card
                 key={index}
-                className="group bg-gradient-to-br from-white to-gray-50/50 shadow-lg hover:shadow-2xl border-none overflow-hidden transition-all hover:-translate-y-3 duration-500"
+                className="group overflow-hidden border-none bg-gradient-to-br from-white to-gray-50/50 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl"
               >
                 <CardHeader className="relative pb-4">
                   <div
-                    className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${team.color}`}
+                    className={`absolute left-0 right-0 top-0 h-2 bg-gradient-to-r ${team.color}`}
                   />
-                  <div className="flex justify-between items-center mb-4">
+                  <div className="mb-4 flex items-center justify-between">
                     <div
-                      className={`text-3xl p-3 rounded-xl bg-gradient-to-r ${team.color} text-white shadow-lg`}
+                      className={`rounded-xl bg-gradient-to-r p-3 text-3xl ${team.color} text-white shadow-lg`}
                     >
                       {team.icon}
                     </div>
@@ -360,7 +317,7 @@ export default function AboutPage() {
                       {team.members.length} anggota
                     </Badge>
                   </div>
-                  <CardTitle className="font-bold group-hover:text-primary text-lg text-center leading-tight transition-colors duration-300">
+                  <CardTitle className="text-center text-lg font-bold leading-tight transition-colors duration-300 group-hover:text-primary">
                     {team.division}
                   </CardTitle>
                 </CardHeader>
@@ -368,7 +325,7 @@ export default function AboutPage() {
                   {team.members.map((member, memberIndex) => (
                     <div
                       key={memberIndex}
-                      className="bg-gradient-to-r from-muted/30 hover:from-primary/10 to-muted/10 hover:to-primary/5 px-4 py-3 border hover:border-primary/20 border-transparent rounded-xl text-sm text-center hover:scale-105 transition-all duration-300 cursor-default"
+                      className="cursor-default rounded-xl border border-transparent bg-gradient-to-r from-muted/30 to-muted/10 px-4 py-3 text-center text-sm transition-all duration-300 hover:scale-105 hover:border-primary/20 hover:from-primary/10 hover:to-primary/5"
                     >
                       <span className="font-medium">{member}</span>
                     </div>
@@ -381,42 +338,42 @@ export default function AboutPage() {
       </section>
 
       {/* Enhanced Call to Action */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background py-20 overflow-hidden">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-background py-20">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="top-10 left-10 absolute bg-primary blur-3xl rounded-full w-32 h-32" />
-          <div className="right-10 bottom-10 absolute bg-blue-500 blur-3xl rounded-full w-40 h-40" />
-          <div className="top-1/2 left-1/2 absolute bg-purple-500 blur-3xl rounded-full w-60 h-60 -translate-x-1/2 -translate-y-1/2 transform" />
+          <div className="absolute left-10 top-10 h-32 w-32 rounded-full bg-primary blur-3xl" />
+          <div className="absolute bottom-10 right-10 h-40 w-40 rounded-full bg-blue-500 blur-3xl" />
+          <div className="absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-purple-500 blur-3xl" />
         </div>
 
-        <div className="relative px-4 container">
+        <div className="container relative px-4">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-8">
-              <h2 className="bg-clip-text bg-gradient-to-r from-foreground to-muted-foreground mb-6 font-bold text-transparent text-4xl md:text-5xl">
+              <h2 className="mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
                 Mari Bersama Memajukan UMKM Lokal
               </h2>
-              <p className="mx-auto mb-8 max-w-3xl text-muted-foreground text-xl leading-relaxed">
+              <p className="mx-auto mb-8 max-w-3xl text-xl leading-relaxed text-muted-foreground">
                 Dukung produk-produk berkualitas dari UMKM Ketapangtelu dan
                 jadilah bagian dari gerakan pemberdayaan ekonomi lokal yang
                 berkelanjutan.
               </p>
             </div>
 
-            <div className="flex sm:flex-row flex-col justify-center gap-6">
+            <div className="flex flex-col justify-center gap-6 sm:flex-row">
               <Link href="/products">
                 <Button
                   size="lg"
-                  className="group bg-gradient-to-r from-primary hover:from-primary/90 to-primary/80 hover:to-primary/70 shadow-lg hover:shadow-xl px-10 py-4 font-semibold text-lg hover:scale-105 transition-all duration-300"
+                  className="group bg-gradient-to-r from-primary to-primary/80 px-10 py-4 text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:from-primary/90 hover:to-primary/70 hover:shadow-xl"
                 >
                   Lihat Produk UMKM
-                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1 duration-300" />
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
                 <Button
                   variant="outline"
                   size="lg"
-                  className="bg-white/80 hover:bg-white shadow-lg hover:shadow-xl backdrop-blur-sm px-10 py-4 border-2 border-primary/20 hover:border-primary/40 font-semibold text-lg hover:scale-105 transition-all duration-300"
+                  className="border-2 border-primary/20 bg-white/80 px-10 py-4 text-lg font-semibold shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:bg-white hover:shadow-xl"
                 >
                   Hubungi Kami
                 </Button>
