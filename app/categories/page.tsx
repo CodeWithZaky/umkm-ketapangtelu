@@ -16,80 +16,22 @@ export default function CategoriesPage() {
   const recommendedProducts = getRandomProducts(8);
 
   return (
-    <div className="bg-background min-h-screen">
-      {/* Navigation */}
-      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
-        {/* Desktop Navigation */}
-        <div className="hidden md:block border-b border-border/40">
-          <div className="px-4 container">
-            <div className="flex justify-center items-center space-x-8 h-12">
-              <Link
-                href="/"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Beranda
-              </Link>
-              <Link
-                href="/about"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Tentang
-              </Link>
-              <Link
-                href="/categories"
-                className="font-medium text-primary text-sm transition-colors"
-              >
-                Kategori
-              </Link>
-              <Link
-                href="/products"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Produk
-              </Link>
-              <Link
-                href="/contact"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Kontak
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Navbar */}
-        {/* <div className="flex items-center px-4 h-16 container">
-          <Link href="/">
-            <Button variant="ghost" size="sm" className="mr-4">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Beranda
-            </Button>
-          </Link>
-          <div className="flex items-center space-x-2">
-            <LogoUmkmKetapangtelu />
-            <span className="font-bold text-primary text-xl">
-              UMKM KETAPANGTELU
-            </span>
-          </div>
-        </div> */}
-        <BackToHome />
-      </nav>
-
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/10 to-primary/5 py-16">
-        <div className="px-4 container">
+        <div className="container px-4">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4 text-sm">
               Semua Kategori
             </Badge>
-            <h1 className="bg-clip-text bg-gradient-to-r from-primary to-primary/70 mb-4 font-bold text-transparent text-4xl md:text-5xl">
+            <h1 className="mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
               Kategori Produk
             </h1>
-            <p className="mb-6 text-muted-foreground text-lg">
+            <p className="mb-6 text-lg text-muted-foreground">
               Jelajahi berbagai kategori produk UMKM berkualitas tinggi dari
               Ketapangtelu
             </p>
-            <div className="flex justify-center items-center gap-4 text-muted-foreground text-sm">
+            <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
               <span>{categories.length} Kategori Tersedia</span>
               <span>•</span>
               <span>Produk Lokal</span>
@@ -101,27 +43,27 @@ export default function CategoriesPage() {
       </section>
 
       {/* Categories Grid */}
-      <section className="px-4 py-12 container">
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <section className="container px-4 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (
             <Link key={category.id} href={`/category/${category.id}`}>
-              <Card className="group hover:shadow-xl h-full transition-all hover:-translate-y-2 duration-300 cursor-pointer">
-                <div className="relative rounded-t-lg h-64 overflow-hidden">
+              <Card className="group h-full cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="relative h-64 overflow-hidden rounded-t-lg">
                   <Image
                     src={category.image || "/placeholder.svg"}
                     alt={category.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                   {/* Category Color Indicator */}
                   <div
-                    className={`absolute top-4 left-4 w-4 h-4 ${category.color} rounded-full shadow-lg`}
+                    className={`absolute left-4 top-4 h-4 w-4 ${category.color} rounded-full shadow-lg`}
                   />
 
                   {/* Product Count Badge */}
-                  <div className="top-4 right-4 absolute">
+                  <div className="absolute right-4 top-4">
                     <Badge
                       variant="secondary"
                       className="bg-white/90 text-primary"
@@ -131,11 +73,11 @@ export default function CategoriesPage() {
                   </div>
 
                   {/* Category Info Overlay */}
-                  <div className="right-0 bottom-0 left-0 absolute p-6 text-white">
-                    <CardTitle className="mb-2 group-hover:text-primary-foreground text-2xl transition-colors">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <CardTitle className="mb-2 text-2xl transition-colors group-hover:text-primary-foreground">
                       {category.name}
                     </CardTitle>
-                    <CardDescription className="text-white/90 line-clamp-2">
+                    <CardDescription className="line-clamp-2 text-white/90">
                       {category.description}
                     </CardDescription>
                   </div>
@@ -148,42 +90,42 @@ export default function CategoriesPage() {
 
       {/* Recommended Products */}
       <section className="bg-muted/30 py-12">
-        <div className="px-4 container">
+        <div className="container px-4">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-bold text-3xl">Produk Rekomendasi</h2>
+            <h2 className="mb-4 text-3xl font-bold">Produk Rekomendasi</h2>
             <p className="text-muted-foreground">
               Produk pilihan dari berbagai kategori
             </p>
           </div>
 
-          <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {recommendedProducts.map((product) => (
               <Link key={product.id} href={`/produk/${product.id}`}>
-                <Card className="group hover:shadow-lg h-full transition-all hover:-translate-y-1 duration-300 cursor-pointer">
-                  <div className="relative rounded-t-lg h-48 overflow-hidden">
+                <Card className="group h-full cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
                     <Image
                       src={product.images[0] || "/placeholder.svg"}
                       alt={product.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div className="top-2 right-2 absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                       <Badge
                         variant="secondary"
-                        className="bg-white/90 text-primary text-xs"
+                        className="bg-white/90 text-xs text-primary"
                       >
                         {product.category}
                       </Badge>
                     </div>
                   </div>
                   <CardContent className="p-4">
-                    <CardTitle className="mb-2 text-sm line-clamp-2">
+                    <CardTitle className="mb-2 line-clamp-2 text-sm">
                       {product.title}
                     </CardTitle>
-                    <p className="mb-1 font-bold text-primary text-lg">
+                    <p className="mb-1 text-lg font-bold text-primary">
                       {product.price}
                     </p>
-                    <CardDescription className="text-xs line-clamp-2">
+                    <CardDescription className="line-clamp-2 text-xs">
                       {product.description}
                     </CardDescription>
                   </CardContent>

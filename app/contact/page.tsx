@@ -40,73 +40,29 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-background min-h-screen">
-      {/* Navigation */}
-      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
-        {/* Desktop Navigation */}
-        <div className="hidden md:block border-b border-border/40">
-          <div className="px-4 container">
-            <div className="flex justify-center items-center space-x-8 h-12">
-              <Link
-                href="/"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Beranda
-              </Link>
-              <Link
-                href="/about"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Tentang
-              </Link>
-              <Link
-                href="/categories"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Kategori
-              </Link>
-              <Link
-                href="/products"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Produk
-              </Link>
-              <Link
-                href="/contact"
-                className="font-medium text-primary text-sm transition-colors"
-              >
-                Kontak
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Navbar */}
-        <BackToHome />
-      </nav>
-
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/10 to-primary/5 py-16">
-        <div className="px-4 container">
+        <div className="container px-4">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4 text-sm">
               Hubungi Kami
             </Badge>
-            <h1 className="bg-clip-text bg-gradient-to-r from-primary to-primary/70 mb-4 font-bold text-transparent text-4xl md:text-5xl">
+            <h1 className="mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
               Kontak & Informasi
             </h1>
-            <p className="mb-6 text-muted-foreground text-lg">
+            <p className="mb-6 text-lg text-muted-foreground">
               Kami siap membantu Anda dengan informasi produk UMKM dan kerjasama
               yang berkelanjutan
             </p>
-            <div className="flex justify-center items-center gap-4 text-muted-foreground text-sm">
+            <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
+                <Clock className="h-4 w-4" />
                 24 jam respon
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Users className="w-4 h-4" />
+                <Users className="h-4 w-4" />
                 Respon Cepat
               </span>
               <span>•</span>
@@ -117,26 +73,26 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Information */}
-      <section className="px-4 py-12 container">
-        <div className="gap-12 grid grid-cols-1 lg:grid-cols-2">
+      <section className="container px-4 py-12">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Contact Persons */}
           <div className="space-y-8">
             <div>
-              <h2 className="mb-6 font-bold text-2xl">Contact Person</h2>
+              <h2 className="mb-6 text-2xl font-bold">Contact Person</h2>
               <div className="space-y-6">
                 {contactPersons.map((person, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-lg p-6 transition-shadow duration-300"
+                    className="p-6 transition-shadow duration-300 hover:shadow-lg"
                   >
                     <CardHeader className="pb-4">
                       <CardTitle className="flex items-center gap-3">
-                        <div className="flex justify-center items-center bg-primary/10 rounded-full w-12 h-12">
-                          <Users className="w-6 h-6 text-primary" />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                          <Users className="h-6 w-6 text-primary" />
                         </div>
                         <div>
                           <h3 className="text-lg">{person.name}</h3>
-                          <p className="text-muted-foreground text-sm">
+                          <p className="text-sm text-muted-foreground">
                             {person.role}
                           </p>
                         </div>
@@ -144,7 +100,7 @@ export default function ContactPage() {
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="flex items-center gap-3">
-                        <Phone className="w-4 h-4 text-muted-foreground" />
+                        <Phone className="h-4 w-4 text-muted-foreground" />
                         <span className="text-sm">{person.phone}</span>
                       </div>
                       <Link
@@ -154,9 +110,9 @@ export default function ContactPage() {
                       >
                         <Button
                           variant="outline"
-                          className="justify-start bg-green-50 hover:bg-green-100 border-green-200 w-full"
+                          className="w-full justify-start border-green-200 bg-green-50 hover:bg-green-100"
                         >
-                          <Phone className="mr-2 w-4 h-4 text-green-600" />
+                          <Phone className="mr-2 h-4 w-4 text-green-600" />
                           WhatsApp
                         </Button>
                       </Link>
@@ -168,7 +124,7 @@ export default function ContactPage() {
 
             {/* Social Media */}
             <div>
-              <h2 className="mb-6 font-bold text-2xl">Media Sosial</h2>
+              <h2 className="mb-6 text-2xl font-bold">Media Sosial</h2>
               <div className="space-y-4">
                 {socialMedia.map((social, index) => (
                   <Link
@@ -177,18 +133,18 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Card className="hover:shadow-lg p-4 transition-all hover:-translate-y-1 duration-300 cursor-pointer">
+                    <Card className="cursor-pointer p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                       <CardContent className="flex items-center gap-4 p-0">
-                        <div className="flex justify-center items-center bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg w-12 h-12">
-                          <social.icon className="w-6 h-6 text-white" />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-pink-500 to-purple-600">
+                          <social.icon className="h-6 w-6 text-white" />
                         </div>
                         <div className="flex-1">
                           <h3 className="font-semibold">{social.platform}</h3>
-                          <p className="text-muted-foreground text-sm">
+                          <p className="text-sm text-muted-foreground">
                             {social.handle}
                           </p>
                         </div>
-                        <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180" />
+                        <ArrowLeft className="h-4 w-4 rotate-180 text-muted-foreground" />
                       </CardContent>
                     </Card>
                   </Link>
@@ -198,17 +154,17 @@ export default function ContactPage() {
 
             {/* Email */}
             <div>
-              <h2 className="mb-6 font-bold text-2xl">Email</h2>
+              <h2 className="mb-6 text-2xl font-bold">Email</h2>
               <Card className="p-6">
                 <CardContent className="flex items-center gap-4 p-0">
-                  <div className="flex justify-center items-center bg-blue-100 rounded-lg w-12 h-12">
-                    <Mail className="w-6 h-6 text-blue-600" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
+                    <Mail className="h-6 w-6 text-blue-600" />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold">Email Resmi</h3>
                     <Link
                       href="mailto:umkm.ketapangtelu@gmail.com"
-                      className="text-primary text-sm hover:underline"
+                      className="text-sm text-primary hover:underline"
                     >
                       umkmketapangtelu@gmail.com
                     </Link>
@@ -221,11 +177,11 @@ export default function ContactPage() {
           {/* Map and Location */}
           <div className="space-y-8">
             <div>
-              <h2 className="mb-6 font-bold text-2xl">Lokasi</h2>
+              <h2 className="mb-6 text-2xl font-bold">Lokasi</h2>
 
               {/* Google Maps Embed */}
               <Card className="overflow-hidden">
-                <div className="relative bg-muted h-64">
+                <div className="relative h-64 bg-muted">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.0123456789!2d112.1234567!3d-7.9876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKetapangtelu%2C%20Lamongan!5e0!3m2!1sen!2sid!4v1234567890"
                     width="100%"
@@ -239,10 +195,10 @@ export default function ContactPage() {
                 </div>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
-                    <MapPin className="flex-shrink-0 mt-1 w-5 h-5 text-primary" />
+                    <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                     <div>
                       <h3 className="mb-1 font-semibold">Desa Ketapangtelu</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-sm leading-relaxed text-muted-foreground">
                         Kecamatan Karangbinangun, Kabupaten Lamongan
                         <br />
                         Jawa Timur, Indonesia
@@ -257,30 +213,30 @@ export default function ContactPage() {
             <Card className="p-6">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-primary" />
+                  <Clock className="h-5 w-5 text-primary" />
                   Jam Operasional
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <span className="text-sm">Senin - Jumat</span>
-                  <span className="font-medium text-sm">08:00 - 17:00 WIB</span>
+                  <span className="text-sm font-medium">08:00 - 17:00 WIB</span>
                 </div>
                 <Separator />
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <span className="text-sm">Sabtu</span>
-                  <span className="font-medium text-sm">08:00 - 15:00 WIB</span>
+                  <span className="text-sm font-medium">08:00 - 15:00 WIB</span>
                 </div>
                 <Separator />
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <span className="text-sm">Minggu</span>
-                  <span className="font-medium text-muted-foreground text-sm">
+                  <span className="text-sm font-medium text-muted-foreground">
                     Tutup
                   </span>
                 </div>
                 <Separator />
-                <div className="bg-primary/5 mt-4 p-3 rounded-lg">
-                  <p className="text-muted-foreground text-xs">
+                <div className="mt-4 rounded-lg bg-primary/5 p-3">
+                  <p className="text-xs text-muted-foreground">
                     * Untuk konsultasi dan pemesanan produk dapat dilakukan
                     kapan saja melalui WhatsApp
                   </p>
@@ -289,14 +245,14 @@ export default function ContactPage() {
             </Card>
 
             {/* Quick Actions */}
-            <div className="gap-4 grid grid-cols-2">
+            <div className="grid grid-cols-2 gap-4">
               <Link href="/products">
-                <Button className="w-full h-12">Lihat Produk</Button>
+                <Button className="h-12 w-full">Lihat Produk</Button>
               </Link>
               <Link href="/categories">
                 <Button
                   variant="outline"
-                  className="bg-transparent w-full h-12"
+                  className="h-12 w-full bg-transparent"
                 >
                   Jelajahi Kategori
                 </Button>
@@ -308,15 +264,15 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className="bg-muted/30 py-16">
-        <div className="px-4 container">
+        <div className="container px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-bold text-3xl">Pertanyaan Umum</h2>
+            <h2 className="mb-4 text-3xl font-bold">Pertanyaan Umum</h2>
             <p className="text-muted-foreground">
               Jawaban untuk pertanyaan yang sering diajukan
             </p>
           </div>
 
-          <div className="gap-8 grid grid-cols-1 md:grid-cols-2 mx-auto max-w-4xl">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
             <Card className="p-6">
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg">
@@ -324,7 +280,7 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-sm text-muted-foreground">
                   Anda dapat menghubungi kami melalui WhatsApp atau Instagram
                   untuk melakukan pemesanan. Tim kami akan membantu proses
                   pemesanan hingga pengiriman.
@@ -339,7 +295,7 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-sm text-muted-foreground">
                   Ya, kami melayani pengiriman ke seluruh Indonesia. Biaya
                   pengiriman akan disesuaikan dengan lokasi tujuan dan berat
                   produk.
@@ -354,7 +310,7 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-sm text-muted-foreground">
                   Semua produk UMKM kami diproduksi dengan standar kualitas
                   tinggi dan higienis. Kami menjamin kesegaran dan kualitas
                   setiap produk yang dikirim.
@@ -369,7 +325,7 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-sm text-muted-foreground">
                   Tentu saja! Kami terbuka untuk kerjasama reseller dan
                   distributor. Hubungi tim kami untuk informasi lebih lanjut
                   mengenai program kemitraan.
