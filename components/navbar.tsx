@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, Search, X } from "lucide-react";
@@ -12,7 +12,6 @@ import { Button } from "./ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -26,18 +25,11 @@ const navigationItems = [
   { name: "Kontak", href: "/contact" },
 ];
 
-const focusRing =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
-
 const Navbar = () => {
   const router = useRouter();
-  const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [query, setQuery] = useState("");
-
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const handleSearch = () => {
     const trimmed = query.trim();
@@ -46,197 +38,165 @@ const Navbar = () => {
     setIsSearchExpanded(false);
   };
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSearch();
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSearch();
+    }
   };
 
-  const closeSearch = () => {
-    setIsSearchExpanded(false);
-    setQuery("");
-  };
+  const handleClear = () => setQuery("");
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="container flex h-16 items-center justify-between gap-3 px-4 lg:gap-6">
-        {/* Pencarian mobile: mengambil seluruh baris */}
-        {isSearchExpanded && (
+    <nav className="container sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between gap-4 px-4">
+        {/* Mobile Menu */}
+        <div className="md:hidden">
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="sm" aria-label="Buka menu">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[300px]">
+              <SheetHeader>
+                <SheetTitle className="text-left">Menu</SheetTitle>
+              </SheetHeader>
+              <div className="mt-6 flex flex-col space-y-4">
+                {navigationItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    onClick={() => setIsSheetOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        {/* Logo */}
+        {!isSearchExpanded && (
+          <Link href="/" className="flex shrink-0 items-center space-x-2">
+            <Image
+              src={LogoUMKMKetapangelu}
+              alt="UMKM Ketapangtelu Logo"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+            <span className="flex flex-col gap-0 text-xl font-bold text-primary md:flex-row md:gap-2">
+              <span>
+                <span className="text-yellow-500">UM</span>
+                <span>KM</span>
+              </span>
+              <span className="hidden sm:inline">KETAPANGTELU</span>
+            </span>
+          </Link>
+        )}
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex md:flex-1 md:items-center md:justify-center">
+          <div className="flex items-center space-x-6">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Search */}
+        <div className="flex items-center">
+          {/* Desktop Search */}
           <form
-            onSubmit={submit}
-            role="search"
-            className="flex min-w-0 flex-1 items-center gap-2 duration-150 animate-in fade-in lg:hidden"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
+            className="relative hidden w-full max-w-sm md:flex md:items-center md:gap-2"
           >
-            <div className="relative min-w-0 flex-1">
+            <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                aria-label="Cari produk"
                 placeholder="Cari produk..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => e.key === "Escape" && closeSearch()}
-                inputMode="search"
-                enterKeyHint="search"
-                autoFocus
-                className="h-11 pl-10 text-base"
+                className="pl-10 pr-10"
               />
+              {query && (
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-1 text-muted-foreground hover:text-foreground"
+                  aria-label="Hapus pencarian"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
             </div>
-            <Button type="submit" className="h-11 shrink-0 px-4">
+            <Button type="submit" size="sm" className="shrink-0">
               Cari
             </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="h-11 w-11 shrink-0"
-              onClick={closeSearch}
-              aria-label="Tutup pencarian"
-            >
-              <X className="h-5 w-5" />
-            </Button>
           </form>
-        )}
 
-        {/* `contents` supaya anak-anaknya tetap ikut flex induk */}
-        <div className={isSearchExpanded ? "hidden lg:contents" : "contents"}>
-          {/* Menu mobile */}
-          <div className="lg:hidden">
-            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-11 w-11"
-                  aria-label="Buka menu"
-                >
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[85vw] max-w-[300px]">
-                <SheetHeader>
-                  <SheetTitle className="text-left">Menu</SheetTitle>
-                  <SheetDescription className="sr-only">
-                    Navigasi utama situs
-                  </SheetDescription>
-                </SheetHeader>
-                <nav aria-label="Navigasi utama" className="mt-6">
-                  <ul className="flex flex-col gap-1">
-                    {navigationItems.map((item) => {
-                      const active = isActive(item.href);
-                      return (
-                        <li key={item.name}>
-                          <Link
-                            href={item.href}
-                            aria-current={active ? "page" : undefined}
-                            onClick={() => setIsSheetOpen(false)}
-                            className={`block rounded-md px-3 py-3 text-base font-medium transition-colors ${focusRing} ${
-                              active
-                                ? "bg-primary/10 text-primary"
-                                : "hover:bg-muted"
-                            }`}
-                          >
-                            {item.name}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
-
-          {/* Logo */}
-          <Link
-            href="/"
-            className={`flex shrink-0 items-center gap-2 rounded-md ${focusRing}`}
-          >
-            <Image
-              src={LogoUMKMKetapangelu}
-              alt="Logo UMKM Ketapangtelu"
-              width={40}
-              height={40}
-              priority
-              className="h-9 w-9 shrink-0 rounded-full sm:h-10 sm:w-10"
-            />
-            <span className="whitespace-nowrap text-lg font-bold text-primary sm:text-xl">
-              <span className="text-yellow-500">UM</span>
-              <span>KM</span>
-              <span className="hidden sm:inline"> KETAPANGTELU</span>
-            </span>
-          </Link>
-
-          {/* Menu desktop */}
-          <nav
-            aria-label="Navigasi utama"
-            className="hidden lg:flex lg:flex-1 lg:justify-center"
-          >
-            <ul className="flex items-center gap-6">
-              {navigationItems.map((item) => {
-                const active = isActive(item.href);
-                return (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      className={`rounded text-sm font-medium transition-colors hover:text-primary ${focusRing} ${
-                        active
-                          ? "text-primary underline decoration-2 underline-offset-8"
-                          : "text-muted-foreground"
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-
-          {/* Pencarian */}
-          <div className="flex shrink-0 items-center">
-            <form
-              onSubmit={submit}
-              role="search"
-              className="hidden items-center gap-2 lg:flex"
-            >
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  aria-label="Cari produk"
-                  placeholder="Cari produk..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="w-52 pl-10 pr-9 xl:w-72"
-                />
-                {query && (
-                  <button
-                    type="button"
-                    onClick={() => setQuery("")}
-                    className={`absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-1 text-muted-foreground hover:text-foreground ${focusRing}`}
-                    aria-label="Hapus teks pencarian"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                )}
-              </div>
-              <Button type="submit" size="sm" className="shrink-0">
-                Cari
+          {/* Mobile Search */}
+          <div className="flex items-center md:hidden">
+            {!isSearchExpanded ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsSearchExpanded(true)}
+                aria-label="Buka pencarian"
+              >
+                <Search className="h-5 w-5" />
               </Button>
-            </form>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-11 w-11 lg:hidden"
-              onClick={() => setIsSearchExpanded(true)}
-              aria-label="Buka pencarian"
-            >
-              <Search className="h-5 w-5" />
-            </Button>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSearch();
+                }}
+                className="flex items-center gap-2 duration-200 animate-in slide-in-from-right-2"
+              >
+                <div className="relative w-full">
+                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    placeholder="Cari produk..."
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    className="pl-10 text-sm"
+                    autoFocus
+                  />
+                </div>
+                <Button type="submit" size="sm" className="shrink-0">
+                  Cari
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setIsSearchExpanded(false);
+                    handleClear();
+                  }}
+                  aria-label="Tutup pencarian"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </form>
+            )}
           </div>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 

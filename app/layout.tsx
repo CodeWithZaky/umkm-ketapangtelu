@@ -22,10 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`flex min-h-screen flex-col ${inter.className}`}>
+      <body
+        className={`flex flex-col items-center justify-center ${inter.className}`}
+      >
         <SearchProvider>
           <Navbar />
-          <main className="w-full min-w-0 flex-1">{children}</main>
+          <main className="flex items-center justify-center">{children}</main>
           <Footer />
         </SearchProvider>
       </body>
