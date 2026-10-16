@@ -46,7 +46,7 @@ export default function CategoriesPage() {
       <section className="container px-4 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (
-            <Link key={category.id} href={`/category/${category.id}`}>
+            <Link key={category.id} href={`/categories/${category.id}`}>
               <Card className="group h-full cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="relative h-64 overflow-hidden rounded-t-lg">
                   <Image
