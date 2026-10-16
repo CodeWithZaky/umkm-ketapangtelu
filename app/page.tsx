@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
-import { Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,6 @@ import { useSearch } from "@/context/search-context";
 
 export default function HomePage() {
   const { searchQuery, clearSearch } = useSearch();
-  const [visibleCategories, setVisibleCategories] = useState(3);
   const [visibleProducts, setVisibleProducts] = useState(8);
 
   const allProducts = useMemo(() => getAllProducts(), []);
@@ -101,126 +100,167 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* UMKM */}
+      {/* UMKM — Carousel */}
       {!searchQuery && (
         <section className="container px-4 py-8">
-          <h2 className="mb-6 text-center text-2xl font-bold">
-            UMKM Ketapangtelu
-          </h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {categories.slice(0, visibleCategories).map((umkm) => (
-              <Link key={umkm.id} href={`/category/${umkm.id}`}>
-                <Card className="group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <CardHeader className="p-0">
-                    <div className="relative h-48 overflow-hidden rounded-t-lg">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight">
+                UMKM Ketapangtelu
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Kenali pelaku usaha di setiap dusun.
+              </p>
+            </div>
+            <Link
+              href="/categories"
+              className="flex shrink-0 items-center gap-1 rounded text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Lihat semua
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <Carousel
+            opts={{ align: "start", loop: false, dragFree: true }}
+            className="w-full"
+            aria-label="Daftar UMKM"
+          >
+            <CarouselContent className="-ml-3 sm:-ml-4">
+              {categories.map((umkm) => (
+                <CarouselItem
+                  key={umkm.id}
+                  className="basis-[42%] pl-3 sm:basis-1/3 sm:pl-4 md:basis-1/4 lg:basis-1/5"
+                >
+                  <Link
+                    href={`/categories/${umkm.id}`}
+                    className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <div className="relative aspect-square overflow-hidden rounded-xl bg-muted">
                       <Image
                         src={umkm.image || "/placeholder.svg"}
-                        alt={umkm.name}
+                        alt=""
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, 42vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
-                  </CardHeader>
-                  <CardContent className="p-4">
-                    <CardTitle className="flex items-center justify-between">
+
+                    <h3 className="mt-2.5 line-clamp-2 text-sm font-semibold leading-snug group-hover:underline">
                       {umkm.name}
-                      <Badge variant="secondary">{umkm.count} produk</Badge>
-                    </CardTitle>
-                    <CardDescription className="mt-1 text-sm">
-                      📍 Dusun {umkm.subVillage}
-                    </CardDescription>
-                    <CardDescription className="mt-2 line-clamp-2">
-                      {umkm.tagline}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-          {visibleCategories < categories.length && (
-            <div className="mt-8 text-center">
-              <Button
-                onClick={() =>
-                  setVisibleCategories((p) =>
-                    Math.min(p + 3, categories.length),
-                  )
-                }
-                variant="outline"
-                className="bg-transparent px-8"
-              >
-                Lihat UMKM Lainnya
-              </Button>
-            </div>
-          )}
+                    </h3>
+                    <div className="mt-0.5 flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                      <span className="truncate">Dusun {umkm.subVillage}</span>
+                      <span className="shrink-0">{umkm.count} produk</span>
+                    </div>
+                  </Link>
+                </CarouselItem>
+              ))}
+
+              {/* Slide terakhir */}
+              <CarouselItem className="basis-[42%] pl-3 sm:basis-1/3 sm:pl-4 md:basis-1/4 lg:basis-1/5">
+                <Link
+                  href="/categories"
+                  className="group flex aspect-square flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border bg-muted/40 p-4 text-center transition-colors hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                    <ArrowRight className="h-5 w-5" />
+                  </span>
+                  <span className="text-sm font-semibold">
+                    Lihat UMKM lainnya
+                  </span>
+                </Link>
+              </CarouselItem>
+            </CarouselContent>
+
+            {/* Panah hanya di layar lebar, sejajar dengan tengah foto */}
+            <CarouselPrevious className="left-2 top-[calc(50%-1.75rem)] hidden h-9 w-9 border bg-background/95 shadow-sm disabled:invisible md:flex" />
+            <CarouselNext className="right-2 top-[calc(50%-1.75rem)] hidden h-9 w-9 border bg-background/95 shadow-sm disabled:invisible md:flex" />
+          </Carousel>
         </section>
       )}
 
       {/* Products */}
-      <section className="container px-4 py-8">
-        <h2 className="mb-6 text-center text-2xl font-bold">
-          {searchQuery ? `Hasil Pencarian "${searchQuery}"` : "Produk Pilihan"}
-        </h2>
-
-        {filteredProducts.length === 0 ? (
-          <div className="py-12 text-center">
-            <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-muted">
-              <Search className="h-12 w-12 text-muted-foreground" />
+      <section id="produk" className="container scroll-mt-20 px-4 py-8">
+        {searchQuery ? (
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <div className="min-w-0">
+              <h2 className="break-words text-2xl font-bold tracking-tight">
+                Hasil pencarian &ldquo;{searchQuery}&rdquo;
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {filteredProducts.length} produk ditemukan
+              </p>
             </div>
-            <p className="text-muted-foreground">
-              Tidak ada produk yang ditemukan untuk "{searchQuery}".
-            </p>
             <Button
               variant="outline"
-              className="mt-4 bg-transparent"
+              size="sm"
+              className="bg-transparent"
               onClick={clearSearch}
             >
-              Hapus Pencarian
+              Hapus pencarian
+            </Button>
+          </div>
+        ) : (
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold tracking-tight">
+              Produk pilihan
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Hasil karya warga, diacak setiap kali halaman dibuka.
+            </p>
+          </div>
+        )}
+
+        {filteredProducts.length === 0 ? (
+          <div className="mx-auto max-w-sm py-16 text-center">
+            <Search className="mx-auto mb-4 h-10 w-10 text-muted-foreground" />
+            <p className="font-medium">Produk tidak ditemukan</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Tidak ada hasil untuk &ldquo;{searchQuery}&rdquo;. Periksa ejaan
+              atau coba kata yang lebih umum.
+            </p>
+            <Button className="mt-5" onClick={clearSearch}>
+              Lihat semua produk
             </Button>
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <ul className="grid grid-cols-2 gap-x-3 gap-y-7 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-4 lg:gap-x-5">
               {(searchQuery
                 ? filteredProducts
                 : shuffledProducts.slice(0, visibleProducts)
               ).map((product) => (
-                <Link key={product.id} href={`/produk/${product.id}`}>
-                  <Card className="group h-full cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-                    <CardHeader className="p-0">
-                      <div className="relative h-48 overflow-hidden rounded-t-lg">
-                        <Image
-                          src={product.images[0] || "/placeholder.svg"}
-                          alt={product.title}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          <Badge
-                            variant="secondary"
-                            className="bg-white/90 text-primary"
-                          >
-                            {product.category}
-                          </Badge>
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="flex flex-grow flex-col p-4">
-                      <CardTitle className="mb-2 line-clamp-2 text-lg">
-                        {product.title}
-                      </CardTitle>
-                      <p className="mb-2 text-xl font-bold text-primary">
-                        {product.price}
-                      </p>
-                      <CardDescription className="line-clamp-3 flex-grow">
-                        {product.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <li key={product.id}>
+                  <Link
+                    href={`/produk/${product.id}`}
+                    className="group block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-muted">
+                      <Image
+                        src={product.images[0] || "/placeholder.svg"}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <p className="mt-2.5 truncate text-xs text-muted-foreground">
+                      {product.category}
+                    </p>
+                    <h3 className="mt-0.5 line-clamp-2 text-[15px] font-medium leading-snug group-hover:underline">
+                      {product.title}
+                    </h3>
+                    <p className="mt-1 text-base font-bold text-primary sm:text-lg">
+                      {product.price}
+                    </p>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
+
             {!searchQuery && visibleProducts < shuffledProducts.length && (
-              <div className="mt-8 text-center">
+              <div className="mt-10 text-center">
                 <Button
                   onClick={() =>
                     setVisibleProducts((p) =>
@@ -228,11 +268,16 @@ export default function HomePage() {
                     )
                   }
                   variant="outline"
-                  className="bg-transparent px-8"
+                  className="h-11 bg-transparent px-8"
                 >
-                  Lihat Produk Lainnya (
-                  {shuffledProducts.length - visibleProducts} tersisa)
+                  Tampilkan{" "}
+                  {Math.min(8, shuffledProducts.length - visibleProducts)}{" "}
+                  produk lagi
                 </Button>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Menampilkan {visibleProducts} dari {shuffledProducts.length}{" "}
+                  produk
+                </p>
               </div>
             )}
           </>
