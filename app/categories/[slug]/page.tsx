@@ -88,70 +88,26 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
   // Update hero section untuk menampilkan info seller
   return (
-    <div className="bg-background min-h-screen">
-      {/* Navigation */}
-      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b w-full">
-        {/* Desktop Navigation */}
-        <div className="hidden md:block border-b border-border/40">
-          <div className="px-4 container">
-            <div className="flex justify-center items-center space-x-8 h-12">
-              <Link
-                href="/"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Beranda
-              </Link>
-              <Link
-                href="/about"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Tentang
-              </Link>
-              <Link
-                href="/categories"
-                className="font-medium text-primary text-sm transition-colors"
-              >
-                Kategori
-              </Link>
-              <Link
-                href="/products"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Produk
-              </Link>
-              <Link
-                href="/contact"
-                className="font-medium text-muted-foreground hover:text-primary text-sm transition-colors"
-              >
-                Kontak
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Navbar */}
-        <BackToHome />
-      </nav>
-
+    <div className="min-h-screen bg-background">
       {/* Category Hero - update untuk seller */}
       <section className="relative bg-gradient-to-br from-primary/10 to-primary/5 py-16">
-        <div className="px-4 container">
+        <div className="container px-4">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4 text-sm">
               UMKM Ketapangtelu
             </Badge>
-            <h1 className="bg-clip-text bg-gradient-to-r from-primary to-primary/70 mb-4 font-bold text-transparent text-4xl md:text-5xl">
+            <h1 className="mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
               {category.name}
             </h1>
-            <p className="mb-4 text-muted-foreground text-lg">
+            <p className="mb-4 text-lg text-muted-foreground">
               {category.description}
             </p>
-            <p className="mb-6 text-muted-foreground text-sm">
+            <p className="mb-6 text-sm text-muted-foreground">
               📍 {category.address}
             </p>
-            <div className="flex justify-center items-center gap-4 text-muted-foreground text-sm">
+            <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
-                <div className={`w-2 h-2 rounded-full ${category.color}`} />
+                <div className={`h-2 w-2 rounded-full ${category.color}`} />
                 {products.length} Produk Tersedia
               </span>
               <span>•</span>
@@ -164,8 +120,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       </section>
 
       {/* Products Grid - update badge untuk menampilkan nama seller */}
-      <section className="px-4 py-12 container">
-        <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[200px]">
+      <section className="container px-4 py-12">
+        <div className="grid auto-rows-[200px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((product, index) => {
             const masonryClass = getMasonryClass(index);
             const isLarge =
@@ -175,7 +131,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             return (
               <Link key={product.id} href={`/produk/${product.id}`}>
                 <Card
-                  className={`group cursor-pointer transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full ${masonryClass} overflow-hidden`}
+                  className={`group h-full cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${masonryClass} overflow-hidden`}
                 >
                   <div className="relative h-full">
                     {/* Background Image */}
@@ -184,17 +140,17 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                         src={product.images[0] || "/placeholder.svg"}
                         alt={product.title}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     </div>
 
                     {/* Content Overlay */}
-                    <div className="relative flex flex-col justify-end p-4 h-full text-white">
-                      <div className="transition-transform translate-y-2 group-hover:translate-y-0 duration-300 transform">
+                    <div className="relative flex h-full flex-col justify-end p-4 text-white">
+                      <div className="translate-y-2 transform transition-transform duration-300 group-hover:translate-y-0">
                         <Badge
                           variant="secondary"
-                          className="bg-white/20 mb-2 border-white/30 text-white"
+                          className="mb-2 border-white/30 bg-white/20 text-white"
                         >
                           {product.category}
                         </Badge>
@@ -208,7 +164,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                         </CardTitle>
 
                         <p
-                          className={`font-bold text-primary-foreground mb-2 ${
+                          className={`mb-2 font-bold text-primary-foreground ${
                             isLarge ? "text-2xl" : "text-xl"
                           }`}
                         >
@@ -217,11 +173,11 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
                         {isLarge && (
                           <>
-                            <CardDescription className="mb-2 text-white/80 text-sm line-clamp-2">
+                            <CardDescription className="mb-2 line-clamp-2 text-sm text-white/80">
                               {product.description}
                             </CardDescription>
-                            <div className="flex items-center gap-2 text-white/70 text-xs">
-                              <User className="w-3 h-3" />
+                            <div className="flex items-center gap-2 text-xs text-white/70">
+                              <User className="h-3 w-3" />
                               <span>{product.seller.name}</span>
                             </div>
                           </>
@@ -229,9 +185,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                       </div>
 
                       {/* Hover Effect Indicator */}
-                      <div className="top-4 right-4 absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex justify-center items-center bg-white/20 backdrop-blur-sm rounded-full w-8 h-8">
-                          <ArrowLeft className="w-4 h-4 rotate-180" />
+                      <div className="absolute right-4 top-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                          <ArrowLeft className="h-4 w-4 rotate-180" />
                         </div>
                       </div>
                     </div>
@@ -245,16 +201,16 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         {/* Empty State */}
         {products.length === 0 && (
           <div className="py-16 text-center">
-            <div className="flex justify-center items-center bg-muted mx-auto mb-6 rounded-full w-24 h-24">
-              <ShoppingBag className="w-12 h-12 text-muted-foreground" />
+            <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-muted">
+              <ShoppingBag className="h-12 w-12 text-muted-foreground" />
             </div>
-            <h3 className="mb-2 font-semibold text-xl">Belum Ada Produk</h3>
+            <h3 className="mb-2 text-xl font-semibold">Belum Ada Produk</h3>
             <p className="mb-6 text-muted-foreground">
               Produk untuk kategori ini sedang dalam persiapan.
             </p>
             <Link href="/">
               <Button>
-                <ArrowLeft className="mr-2 w-4 h-4" />
+                <ArrowLeft className="mr-2 h-4 w-4" />
                 Kembali ke Beranda
               </Button>
             </Link>
@@ -264,20 +220,20 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
       {/* Related UMKM - update untuk menampilkan UMKM lain */}
       <section className="bg-muted/30 py-12">
-        <div className="px-4 container">
-          <h2 className="mb-8 font-bold text-2xl text-center">UMKM Lainnya</h2>
-          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mx-auto max-w-2xl">
+        <div className="container px-4">
+          <h2 className="mb-8 text-center text-2xl font-bold">UMKM Lainnya</h2>
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 md:grid-cols-2">
             {getCategories()
               .filter((cat) => cat.id !== params.slug)
               .slice(0, 4)
               .map((umkm) => (
-                <Link key={umkm.id} href={`/category/${umkm.id}`}>
-                  <Card className="group hover:shadow-lg transition-all hover:-translate-y-1 duration-300 cursor-pointer">
+                <Link key={umkm.id} href={`/categories/${umkm.id}`}>
+                  <Card className="group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <CardContent className="p-6 text-center">
                       <div
-                        className={`w-12 h-12 ${umkm.color} rounded-full mx-auto mb-4 flex items-center justify-center`}
+                        className={`h-12 w-12 ${umkm.color} mx-auto mb-4 flex items-center justify-center rounded-full`}
                       >
-                        <User className="w-6 h-6 text-white" />
+                        <User className="h-6 w-6 text-white" />
                       </div>
                       <CardTitle className="mb-2">{umkm.name}</CardTitle>
                       <CardDescription className="mb-1 text-sm">
